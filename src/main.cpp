@@ -21,6 +21,7 @@ void initThread() {
 }
 
 int main(){
+    cout << getOS() << "\n";
     initThread();
     return 0;
 }
