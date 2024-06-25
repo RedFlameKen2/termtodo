@@ -6,9 +6,9 @@ This Program will make use of the different Object Oriented Principles and follo
 - [ ] Read the contents of a local File
 - [ ] Process Data from a local File
 
-Group Members:
-Kenneth Lacaba 8)
-Jonas David Celos XD
-Josiah Aldeah :p
-Catherine Inocencio :D
-Laurence Flores Sy ;)
+Group Members:  return
+Kenneth Lacaba 8)  return 
+Jonas David Celos XD  return
+Josiah Aldeah :p  return 
+Catherine Inocencio :D  return
+Laurence Flores Sy ;)  return 
