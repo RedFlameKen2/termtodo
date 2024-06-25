@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <thread>
 
 using std::cout;
@@ -8,6 +9,8 @@ using std::cin;
 using std::string;
 using std::endl;
 using std::this_thread::sleep_for;
+using std::ofstream;
+using std::ifstream;
 
 string getOS(){
     #ifdef _WIN64
@@ -16,8 +19,26 @@ string getOS(){
         return "Windows 32 bit";
     #elif __linux__
         return "Linux";
-    #endif // DEBUG
+    #endif 
 }
+
+string dbRead(){
+    ifstream file("db");
+    string rd = "", temp = "";
+    while(std::getline(file, temp))
+        rd += temp + "\n";
+    return rd;
+};
+
+void dbWrite(){
+    string write = "", ret = dbRead();
+    ofstream file("db");
+    write += ret;
+    write += "test1\nbreh\n";
+    file << write;
+    file.close();
+}
+
 
 void notify(){
     using namespace std::chrono_literals;

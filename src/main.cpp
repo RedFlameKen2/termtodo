@@ -23,5 +23,6 @@ void initThread() {
 int main(){
     cout << getOS() << "\n";
     initThread();
+    /*dbWrite();*/
     return 0;
 }
