@@ -14,9 +14,18 @@ private:
     int id;
     string title, desc;
 public:
-    Note(){
+    Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
     void test(){
+    }
+    int getID(){
+        return id;
+    }
+    string getTitle(){
+        return title;
+    }
+    string getDesc(){
+        return desc;
     }
 };
 
