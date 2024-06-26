@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <thread>
 #include <cstdlib>
 
@@ -16,6 +17,8 @@ private:
 public:
     Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
+    Note() : id(0), title(0), desc(0){
+    }
     int getID(){
         return id;
     }
@@ -25,5 +28,14 @@ public:
     string getDesc(){
         return desc;
     }
+    string getDBFormat(){
+        string write;
+        write += "{id:" + std::to_string(id);
+        write += ",title:" + title;
+        write += ",desc:" + desc;
+        write += "},\n";
+        return write; 
+    }
 };
+
 
