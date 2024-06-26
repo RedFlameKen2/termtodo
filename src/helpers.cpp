@@ -39,6 +39,12 @@ void dbWrite(){
     file.close();
 }
 
+void clearTerm(){
+    if(getOS() == "Linux")
+        system("clear");
+    else if (getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit")
+        system("cls");
+}
 
 void notify(){
     using namespace std::chrono_literals;
