@@ -16,8 +16,6 @@ private:
 public:
     Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
-    void test(){
-    }
     int getID(){
         return id;
     }

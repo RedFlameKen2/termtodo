@@ -43,7 +43,10 @@ void dbWrite(){
 void notify(){
     using namespace std::chrono_literals;
     while(true){
-        system("notify-send -u normal 'hey, attention'");
+        if(getOS() == "Linux")
+            system("notify-send -u normal 'hey, attention'");
+        else if(getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit") 
+            system("msg %user% /server:%computername% /time:300 'hey, attention'");
         sleep_for(10s);
     }
 }
