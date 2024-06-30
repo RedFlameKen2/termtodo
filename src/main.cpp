@@ -1,7 +1,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <thread>
-#include "helpers.cpp"
+#include "helpers.h"
+#include "notes.h"
+#include "constants.h"
+
 
 using std::cout;
 using std::cin;
@@ -22,7 +25,8 @@ void initThread() {
 
 int main(){
     cout << getOS() << "\n";
+    dbWrite();
+    getNoteFromDB();
     initThread();
-    /*dbWrite();*/
     return 0;
 }

@@ -2,7 +2,9 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <regex>
 #include <thread>
+#include "helpers.h"
 
 using std::cout;
 using std::cin;
@@ -11,6 +13,7 @@ using std::endl;
 using std::this_thread::sleep_for;
 using std::ofstream;
 using std::ifstream;
+using std::regex;
 
 string getOS(){
     #ifdef _WIN64
@@ -27,6 +30,7 @@ string dbRead(){
     string rd = "", temp = "";
     while(std::getline(file, temp))
         rd += temp + "\n";
+    file.close();
     return rd;
 };
 
@@ -34,7 +38,7 @@ void dbWrite(){
     string write = "", ret = dbRead();
     ofstream file("db");
     write += ret;
-    write += "test1\nbreh\n";
+    write += "id:1234,title:fuck this shit i\'m out,desc:ok fine,\n";
     file << write;
     file.close();
 }
