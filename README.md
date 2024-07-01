@@ -9,6 +9,6 @@ This Program will make use of the different Object Oriented Principles and follo
 Group Members: <br>
 Kenneth Lacaba 8) <br> 
 Jonas David Celos XD <br>
-Josiah Aldeah :p <br> 
+Josiah Aldea :p <br> 
 Catherine Inocencio :D <br>
 Laurence Axle Flores ;) <br> 
