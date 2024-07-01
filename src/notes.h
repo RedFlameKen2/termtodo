@@ -60,6 +60,8 @@ private:
 public:
     Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
+    Note(vector<string> noteData){
+    }
     Note(string * data) {
         this->id = std::stoi(data[0]);
         this->title = data[1];
