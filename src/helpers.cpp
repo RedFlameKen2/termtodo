@@ -14,6 +14,7 @@ using std::this_thread::sleep_for;
 using std::ofstream;
 using std::ifstream;
 using std::regex;
+using std::to_string;
 
 string getOS(){
     #ifdef _WIN64
@@ -33,16 +34,6 @@ string dbRead(){
     file.close();
     return rd;
 };
-
-void dbWrite(){
-    string write = "", ret = dbRead();
-    ofstream file("db");
-    write += ret;
-    write += "id:1234,title:fuck this shit i\'m out,desc:ok fine,\n";
-    file << write;
-    file.close();
-}
-
 void clearTerm(){
     if(getOS() == "Linux")
         system("clear");
@@ -66,6 +57,17 @@ int id_Randomizer(){
 	int random = (rand() % 100000);
 	return random;
 }
+
+void dbWrite(){
+    string write = "", ret = dbRead();
+    ofstream file("db");
+    write += ret;
+    write += "id:" + to_string(id_Randomizer());
+    write += ",title:fuck this shit i\'m out,desc:ok fine,\n";
+    file << write;
+    file.close();
+}
+
 
 void printSomething(){
     cout << "Enter anything: ";
