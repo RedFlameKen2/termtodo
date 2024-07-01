@@ -8,3 +8,4 @@ void dbWrite();
 void clearTerm();
 void notify();
 void printSomething();
+int id_Randomizer();

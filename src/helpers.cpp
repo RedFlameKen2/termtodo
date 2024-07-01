@@ -61,6 +61,12 @@ void notify(){
     }
 }
 
+int id_Randomizer(){
+	srand((unsigned) time(NULL));
+	int random = (rand() % 100000);
+	return random;
+}
+
 void printSomething(){
     cout << "Enter anything: ";
     string input; 
