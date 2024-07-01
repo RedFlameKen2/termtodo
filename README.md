@@ -11,4 +11,4 @@ Kenneth Lacaba 8) <br>
 Jonas David Celos XD <br>
 Josiah Aldeah :p <br> 
 Catherine Inocencio :D <br>
-Laurence Flores Sy ;) <br> 
+Laurence Axle Flores ;) <br> 
