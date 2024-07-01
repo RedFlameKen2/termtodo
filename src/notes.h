@@ -22,8 +22,8 @@ private:
         CheckItem(string title, bool checked) : title(title), checked(checked){
         }
     };
-    vector<CheckItem> checkItems;
 public:
+    vector<CheckItem> checkItems;
     void add(string title, bool checked){
         checkItems.push_back(CheckItem(title, checked));
     }
@@ -33,12 +33,30 @@ public:
     string getTitle(int index){
         return checkItems[index].title;
     }
+    string getDBWrite(){
+        string write;
+        write += "{";
+        for(CheckItem checkItem : checkItems){
+            write+= "[";
+            write+= "title:";
+            write+= checkItem.title;
+            write+= ",checked:";
+            if(checkItem.checked)
+                write+= "true";
+            else
+                write+= "false";
+            write+= "]";
+        }
+        write += "}";
+        return write;
+    }
 };
 
 class Note {
 private:
     int id;
     string title, desc;
+    CheckList checkList;
 public:
     Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
@@ -63,7 +81,9 @@ public:
         write += "id:" + std::to_string(id);
         write += ", title: \"" + title;
         write += "\", desc: \"" + desc;
-        write += "\"\n";
+        write += "\"";
+        write += checkList.getDBWrite();
+        write += "\n";
         return write; 
     }
 };
