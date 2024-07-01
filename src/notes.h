@@ -27,6 +27,12 @@ public:
     void add(string title, bool checked){
         checkItems.push_back(CheckItem(title, checked));
     }
+    bool isChecked(int index){
+        return checkItems[index].checked;
+    }
+    string getTitle(int index){
+        return checkItems[index].title;
+    }
 };
 
 class Note {
