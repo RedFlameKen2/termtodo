@@ -3,6 +3,7 @@
 #include <string>
 #include <thread>
 #include <cstdlib>
+#include <vector>
 
 using std::cout;
 using std::cin;
@@ -11,6 +12,22 @@ using std::string;
 using std::this_thread::sleep_for;
 using std::system;
 using std::stoi;
+using std::vector;
+
+class CheckList {
+private:
+    struct CheckItem {
+        string title;
+        bool checked;
+        CheckItem(string title, bool checked) : title(title), checked(checked){
+        }
+    };
+    vector<CheckItem> checkItems;
+public:
+    void add(string title, bool checked){
+        checkItems.push_back(CheckItem(title, checked));
+    }
+};
 
 class Note {
 private:
