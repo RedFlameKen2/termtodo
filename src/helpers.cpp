@@ -57,7 +57,7 @@ void notify(){
         if(getOS() == "Linux")
             system("notify-send -u normal 'hey, attention'");
         else if(getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit") 
-            system("msg %user% /server:%computername% /time:300 'hey, attention'");
+            system("msg %username% /server:%computername% /time:300 'hey, attention'");
         sleep_for(10s);
     }
 }
