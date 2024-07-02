@@ -4,6 +4,8 @@
 #include <thread>
 #include <cstdlib>
 #include <vector>
+#include <fstream>
+#include "helpers.h"
 
 using std::cout;
 using std::cin;
@@ -13,6 +15,10 @@ using std::this_thread::sleep_for;
 using std::system;
 using std::stoi;
 using std::vector;
+using std::ofstream;
+using std::ifstream;
+using std::fstream;
+using std::to_string;
 
 struct CheckItem {
     string title;
@@ -59,6 +65,16 @@ private:
     int id;
     string title, desc;
     CheckList checkList;
+
+    string getDBFormat(){
+        string write;
+        write += "id:" + std::to_string(id);
+        write += ", title: \"" + title;
+        write += "\", desc: \"" + desc;
+        write += "\"";
+        write += checkList.getDBWrite();
+        return write; 
+    }
 public:
     Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
@@ -79,15 +95,6 @@ public:
     string getDesc(){
         return desc;
     }
-    string getDBFormat(){
-        string write;
-        write += "id:" + std::to_string(id);
-        write += ", title: \"" + title;
-        write += "\", desc: \"" + desc;
-        write += "\"";
-        write += checkList.getDBWrite();
-        return write; 
-    }
     void printData(){
         cout << "For note ID " << id << ": \n";
         cout << "title: " << title << ": \n";
@@ -95,6 +102,15 @@ public:
         cout << "CheckList: \n";
         checkList.printCheckList();
         cout << endl << endl;
+    }
+    void writeDataToDb(){
+        string write = getDBFormat(), ret = dbRead();
+        std::ofstream file("db");
+        write += ret;
+        write += "" + to_string(id_Randomizer());
+        write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";
+        file << write;
+        file.close();
     }
 };
 

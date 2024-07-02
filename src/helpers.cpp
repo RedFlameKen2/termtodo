@@ -33,7 +33,17 @@ string dbRead(){
         rd += temp + "\n";
     file.close();
     return rd;
-};
+}
+void dbWrite(){
+    string write = "", ret = dbRead();
+    ofstream file("db");
+    write += ret;
+    write += "" + to_string(id_Randomizer());
+    write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";
+    file << write;
+    file.close();
+}
+
 void clearTerm(){
     if(getOS() == "Linux")
         system("clear");
@@ -57,17 +67,6 @@ int id_Randomizer(){
 	int random = (rand() % 100000);
 	return random;
 }
-
-void dbWrite(){
-    string write = "", ret = dbRead();
-    ofstream file("db");
-    write += ret;
-    write += "" + to_string(id_Randomizer());
-    write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";
-    file << write;
-    file.close();
-}
-
 
 void printSomething(){
     cout << "Enter anything: ";
