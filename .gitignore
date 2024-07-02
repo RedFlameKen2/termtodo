@@ -1,3 +1,5 @@
 db
 *.dev
 *.layout
+src/obj/
+*.o
