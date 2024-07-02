@@ -10,30 +10,51 @@ using std::ifstream;
 using std::vector;
 
 bool isFormatSeparator(char c){
-    if(c == ',' && c == '\n' && c == '[' && c == ']' && c == '{' && c == '}')
+    if(c == ',' && c == '\n')
         return true;
     return false;
 }
-vector<string> getDataArray(string data){
-    vector <string> sections;
+
+string getSection(string data, int &focus){
+    string section;
+    while(data[++focus] != ',')
+        section += data[focus];
+    return section;
+}
+
+string * getDataArray(string data){
+    string * sections = new string[DATA_SIZE];
     int focus = 0;
     for(int i = 0; i < DATA_SIZE; i++){
-        while(isFormatSeparator(data[focus])){
-            if(data[focus] == '{'){
-                while(data[++focus] != '[');
-                while(data[++focus] != ']'){
-                    while(data[++focus] != ','){
-                        sections[i] += data[focus];
-                    }
-                }
-            }
-            sections[i] += data[focus];
-            focus++;
-        }
+        sections[i] = getSection(data, focus);
     }
     return sections;
 }
 
+vector<CheckItem> getChecklistData(string data){
+    vector<CheckItem> checkItems;
+    int focus = 0;
+    while(data[focus++] != '{');
+    while(data[focus] != '}'){
+        while(data[focus] != '['){
+            focus++;
+        }
+        string title;
+        bool checked = false;
+        while(data[++focus] != ',')
+            title += data[focus];
+        if(data[++focus] == 't')
+            checked = true;
+        while(data[++focus] != ']');
+        checkItems.push_back(CheckItem(title, checked));
+        focus++;
+    }
+    for(CheckItem checkItem : checkItems){
+        cout << "Title: " << checkItem.title;
+        cout << "\nChecked: " << (checkItem.checked ? "[x]" : "[ ]") << "\n";
+    }
+    return checkItems;
+}
 Note getNoteFromDB(){
     /*Note * notes = new Note[DATA_SIZE];*/
     /*for(int i = 0; i < DATA_SIZE; i++){*/
@@ -44,7 +65,7 @@ Note getNoteFromDB(){
     ifstream file("db");
     int count = 0;
     std::getline(file, rd);
-    Note note(getDataArray(rd));
+    Note note(getDataArray(rd), getChecklistData(rd));
     file.close();
     return note;
 };

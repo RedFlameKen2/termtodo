@@ -14,14 +14,13 @@ using std::system;
 using std::stoi;
 using std::vector;
 
+struct CheckItem {
+    string title;
+    bool checked;
+    CheckItem(string title, bool checked) : title(title), checked(checked){
+    }
+};
 class CheckList {
-private:
-    struct CheckItem {
-        string title;
-        bool checked;
-        CheckItem(string title, bool checked) : title(title), checked(checked){
-        }
-    };
 public:
     vector<CheckItem> checkItems;
     void add(string title, bool checked){
@@ -49,6 +48,10 @@ public:
         write += "}";
         return write;
     }
+    void printCheckList(){
+        for(CheckItem checkItem : checkItems)
+            cout << "[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
+    }
 };
 
 class Note {
@@ -59,12 +62,11 @@ private:
 public:
     Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
-    Note(vector<string> noteData){
-    }
-    Note(string * data) {
+    Note(string * data, vector<CheckItem> checkItems) {
         this->id = std::stoi(data[0]);
         this->title = data[1];
         this->desc = data[2];
+        this->checkList.checkItems = checkItems;
     }
     Note() : id(0), title(0), desc(0){
     }
@@ -84,8 +86,15 @@ public:
         write += "\", desc: \"" + desc;
         write += "\"";
         write += checkList.getDBWrite();
-        write += "\n";
         return write; 
+    }
+    void printData(){
+        cout << "For note ID " << id << ": \n";
+        cout << "title: " << title << ": \n";
+        cout << "description: " << desc << ": \n";
+        cout << "CheckList: \n";
+        checkList.printCheckList();
+        cout << endl << endl;
     }
 };
 

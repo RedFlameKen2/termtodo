@@ -63,7 +63,7 @@ void dbWrite(){
     ofstream file("db");
     write += ret;
     write += "" + to_string(id_Randomizer());
-    write += ",fuck this shit i\'m out,ok fine,\n";
+    write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";
     file << write;
     file.close();
 }

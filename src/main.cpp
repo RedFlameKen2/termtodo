@@ -26,7 +26,8 @@ void initThread() {
 int main(){
     cout << getOS() << "\n";
     dbWrite();
-    getNoteFromDB();
+    Note note = getNoteFromDB();
+    note.printData();
     initThread();
     return 0;
 }
