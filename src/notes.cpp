@@ -52,10 +52,6 @@ vector<CheckItem> getChecklistData(string data){
     return checkItems;
 }
 Note getNoteFromDB(){
-    /*Note * notes = new Note[DATA_SIZE];*/
-    /*for(int i = 0; i < DATA_SIZE; i++){*/
-    /*    notes[i] = Note(0, "", "");*/
-    /*}*/
     string rd;
 
     ifstream file("db");

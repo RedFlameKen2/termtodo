@@ -73,5 +73,6 @@ void printSomething(){
     cout << "Enter anything: ";
     string input; 
     getline(cin, input);
+    clearTerm();
     cout << "output:\n" << input << endl;
 }
