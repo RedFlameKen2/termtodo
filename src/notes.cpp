@@ -49,10 +49,6 @@ vector<CheckItem> getChecklistData(string data){
         checkItems.push_back(CheckItem(title, checked));
         focus++;
     }
-    for(CheckItem checkItem : checkItems){
-        cout << "Title: " << checkItem.title;
-        cout << "\nChecked: " << (checkItem.checked ? "[x]" : "[ ]") << "\n";
-    }
     return checkItems;
 }
 Note getNoteFromDB(){
