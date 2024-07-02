@@ -18,12 +18,10 @@ vector<string> getDataArray(string data){
     vector <string> sections;
     int focus = 0;
     for(int i = 0; i < DATA_SIZE; i++){
-        while(data[focus++] != ':');
         while(isFormatSeparator(data[focus])){
             if(data[focus] == '{'){
                 while(data[++focus] != '[');
                 while(data[++focus] != ']'){
-                    while(data[++focus] != ':');
                     while(data[++focus] != ','){
                         sections[i] += data[focus];
                     }

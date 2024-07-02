@@ -38,9 +38,8 @@ public:
         write += "{";
         for(CheckItem checkItem : checkItems){
             write+= "[";
-            write+= "title:";
             write+= checkItem.title;
-            write+= ",checked:";
+            write+= ",";
             if(checkItem.checked)
                 write+= "true";
             else

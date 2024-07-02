@@ -62,8 +62,8 @@ void dbWrite(){
     string write = "", ret = dbRead();
     ofstream file("db");
     write += ret;
-    write += "id:" + to_string(id_Randomizer());
-    write += ",title:fuck this shit i\'m out,desc:ok fine,\n";
+    write += "" + to_string(id_Randomizer());
+    write += ",fuck this shit i\'m out,ok fine,\n";
     file << write;
     file.close();
 }
