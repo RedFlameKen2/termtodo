@@ -1,10 +1,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <thread>
+#include <vector>
 #include "helpers.h"
-#include "notes.h"
 #include "constants.h"
-
+#include "menu.h"
 
 using std::cout;
 using std::cin;
@@ -14,20 +14,12 @@ using std::thread;
 
 void initThread() {
     thread t1(notify);
-    thread t2([](){
-            while(true){
-            printSomething();
-            }
-            });
+    thread t2(menu);
     t1.join();
     t2.join();
 }
 
 int main(){
-    cout << getOS() << "\n";
-    dbWrite();
-    Note note = getNoteFromDB();
-    note.printData();
     initThread();
     return 0;
 }

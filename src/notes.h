@@ -62,8 +62,6 @@ public:
 
 class Note {
 private:
-    int id;
-    string title, desc;
     CheckList checkList;
 
     string getDBFormat(){
@@ -76,6 +74,8 @@ private:
         return write; 
     }
 public:
+    int id;
+    string title, desc;
     Note(int id, string title, string desc) : id(id), title(title), desc(desc){
     }
     Note(string * data, vector<CheckItem> checkItems) {
@@ -86,15 +86,15 @@ public:
     }
     Note() : id(0), title(0), desc(0){
     }
-    int getID(){
-        return id;
-    }
-    string getTitle(){
-        return title;
-    }
-    string getDesc(){
-        return desc;
-    }
+    /*int getID(){*/
+    /*    return id;*/
+    /*}*/
+    /*string getTitle(){*/
+    /*    return title;*/
+    /*}*/
+    /*string getDesc(){*/
+    /*    return desc;*/
+    /*}*/
     void printData(){
         cout << "For note ID " << id << ": \n";
         cout << "title: " << title << ": \n";
@@ -107,8 +107,6 @@ public:
         string write = getDBFormat(), ret = dbRead();
         std::ofstream file("db");
         write += ret;
-        write += "" + to_string(id_Randomizer());
-        write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";
         file << write;
         file.close();
     }
