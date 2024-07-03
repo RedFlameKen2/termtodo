@@ -1,14 +1,9 @@
 #include <cstdlib>
-#include <iostream>
 #include <thread>
-#include <vector>
 #include "helpers.h"
 #include "constants.h"
 #include "menu.h"
 
-using std::cout;
-using std::cin;
-using std::endl;
 using std::string;
 using std::thread;
 

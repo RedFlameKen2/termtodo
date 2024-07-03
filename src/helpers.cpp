@@ -1,3 +1,4 @@
+#include <cctype>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -10,6 +11,7 @@ using std::cout;
 using std::cin;
 using std::string;
 using std::endl;
+using std::isdigit;
 using std::this_thread::sleep_for;
 using std::ofstream;
 using std::ifstream;
@@ -68,6 +70,29 @@ int id_Randomizer(){
 	return random;
 }
 
+string promptString(string prompt){
+    string input;
+    cout << prompt;
+    getline(cin, input);
+    return input;
+}
+bool strIsDigit(string str){
+    for(char c : str)
+        if(!isdigit(c))
+            return false;
+    return true;
+}
+int promptInt(string prompt){
+    string input = "";
+    while(true){
+        cout << prompt;
+        cin >> input;
+        if(strIsDigit(input))
+            break;
+        cout << "Invalid Input, try again!\n";
+    }
+    return stoi(input);
+}
 void printSomething(){
     cout << "Enter anything: ";
     string input; 

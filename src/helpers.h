@@ -9,3 +9,5 @@ void clearTerm();
 void notify();
 void printSomething();
 int id_Randomizer();
+string promptString(string prompt);
+int promptInt(string prompt);
