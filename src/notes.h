@@ -84,7 +84,7 @@ public:
         this->desc = data[2];
         this->checkList.checkItems = checkItems;
     }
-    Note() : id(0), title(0), desc(0){
+    Note() : id(0), title(""), desc(""){
     }
     /*int getID(){*/
     /*    return id;*/
@@ -95,6 +95,15 @@ public:
     /*string getDesc(){*/
     /*    return desc;*/
     /*}*/
+    void setID(int id){
+        this->id = id;
+    }
+    void setTitle(string title){
+        this->title = title;
+    }
+    void setDesc(string desc){
+        this->desc = desc;
+    }
     void printData(){
         cout << "For note ID " << id << ": \n";
         cout << "title: " << title << ": \n";

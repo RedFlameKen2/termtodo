@@ -1,30 +1,12 @@
+#include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <ncurses.h>
 #include "menu.h"
 #include "helpers.h"
 
 using std::cout;
 using std::cin;
-
-bool addMenu(int option, Note note, vector<Note> &noteList){
-    switch (option) {
-        case 1:
-            cout << "\nEnter Title of the Note: ";
-            cin >> note.title;
-            break;
-        case 2:
-            cout << "\nEnter Description of the Note: ";
-            cin >> note.desc;
-            break;
-        case 3:
-            note.id = id_Randomizer();
-            noteList.push_back(note);
-            return true;
-        case 4:
-            return true;
-    }
-    return false;
-}
 
 void printHelp(){
     cout << "List of options: \n";
@@ -51,28 +33,57 @@ bool addOptionValid(int option){
         return true;
     return false;
 }
+bool addOptions(int option, Note &note, vector<Note> &noteList){
+    cin.get();
+    switch (option) {
+        case 1:
+            cout << "\nEnter Title of the Note: ";
+            getline(cin, note.title);
+            break;
+        case 2:
+            cout << "\nEnter Description of the Note: ";
+            getline(cin, note.desc);
+            break;
+        case 3:
+            note.id = id_Randomizer();
+            noteList.push_back(note);
+            return true;
+        case 4:
+            return true;
+    }
+    return false;
+}
+void addMenu(vector<Note> &noteList){
+    Note note;
+    while(true){
+        printAddHelp();
+        int option;
+        while(true){
+            cout << "Enter option: ";
+            cin >> option;
+            if(addOptionValid(option))
+                break;
+            cout << "Invalid Option! Try Again!\n";
+        }
+        if(addOptions(option, note, noteList))
+            break;
+    }
+}
+void listMenu(vector<Note> &noteList){
+    for(Note note : noteList){
+        note.printData();
+    }
+}
+
 void mainMenu(int option, vector<Note> &noteList){
     switch(option){
         case 1:
-            printAddHelp();
-            while(true){
-                Note note;
-                int option;
-                while(true){
-                    cout << "Enter option: ";
-                    cin >> option;
-                    clearTerm();
-                    if(addOptionValid(option))
-                        break;
-                    cout << "Invalid Option! Try Again!\n";
-                }
-                if(addMenu(option, note, noteList))
-                    break;
-            }
+            addMenu(noteList);
             break;
         case 2:
             break;
         case 3:
+            listMenu(noteList);
             break;
         case 4:
             printHelp();
@@ -86,6 +97,7 @@ void mainMenu(int option, vector<Note> &noteList){
 
 void menu(){
     vector<Note> noteList;
+    clearTerm();
     printHelp();
     while(true){
         int option;
