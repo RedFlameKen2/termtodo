@@ -6,6 +6,13 @@ This Program will make use of the different Object Oriented Principles and follo
 - [ ] Read the contents of a local File
 - [ ] Process Data from a local File
 
+ToDo:
+- [ ] Lists
+- [x] Notes
+- [x] CheckLists
+- [ ] CheckList Progress Bar
+- [ ] Optional: Workspaces (enables you to have multiple sets of lists)
+
 Group Members: <br>
 Kenneth Lacaba 8) <br> 
 Jonas David Celos XD <br>
