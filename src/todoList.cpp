@@ -17,7 +17,7 @@ void printMgrHelp(){
 void changeCurList(int &curList, int listSize){
     int input;
     while(true){
-        input = promptInt("\nEnter an Option: ");
+        input = promptInt("\nSelect a list number: ");
         clearTerm();
         if(input <= listSize || input > 0)
             break;
