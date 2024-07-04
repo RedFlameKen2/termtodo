@@ -27,6 +27,10 @@ public:
         return title;
     }
     void printNotes(){
+        if(notes.empty()){
+            cout << "The list is empty!";
+            return;
+        }
         cout << "Notes of the List " << title << ": \n";
         for(Note note : notes){
             note.printData();
@@ -44,4 +48,5 @@ public:
 };
 
 void listManager(vector<ToDoList> todoLists, int &curList);
+vector<ToDoList> recoverList();
 

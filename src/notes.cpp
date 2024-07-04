@@ -103,6 +103,7 @@ void addMenu(vector<Note> & notes){
         while(true){
             cout << "Enter option: ";
             cin >> option;
+            clearTerm();
             if(addOptionValid(option))
                 break;
             cout << "Invalid Option! Try Again!\n";
