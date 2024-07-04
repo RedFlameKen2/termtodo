@@ -66,11 +66,12 @@ private:
 
     string getDBFormat(){
         string write;
-        write += "id:" + std::to_string(id);
-        write += ", title: \"" + title;
-        write += "\", desc: \"" + desc;
-        write += "\"";
+        write += std::to_string(id);
+        write += "," + title;
+        write += "," + desc;
+        write += ",";
         write += checkList.getDBWrite();
+        write += "\n";
         return write; 
     }
 public:
@@ -127,5 +128,5 @@ Note getNoteFromDB();
 
 bool addOptionValid(int option);
 bool addOptions(int option, Note &note, vector<Note> &notes);
-void addMenu(vector<Note> notes);
+void addMenu(vector<Note> & notes);
 void printAddHelp();

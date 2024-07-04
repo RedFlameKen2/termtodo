@@ -95,7 +95,7 @@ bool addOptions(int option, Note &note, vector<Note> &notes){
     }
     return false;
 }
-void addMenu(vector<Note> notes){
+void addMenu(vector<Note> & notes){
     Note note;
     while(true){
         printAddHelp();

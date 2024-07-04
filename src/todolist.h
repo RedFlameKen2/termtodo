@@ -14,6 +14,7 @@ public:
         initNotes();
     }
     ToDoList(string title){
+        this->title = title;
         initNotes();
     }
     void addNote(Note note){
@@ -22,6 +23,9 @@ public:
     void removeNote(int index){
         notes.erase(std::next(notes.begin(), index));
     }
+    string getTitle(){
+        return title;
+    }
     void printNotes(){
         cout << "Notes of the List " << title << ": \n";
         for(Note note : notes){
@@ -29,8 +33,13 @@ public:
             cout << "\n\n";
         }
     }
-    vector<Note> getNotes(){
+    vector<Note>& getNotes(){
         return notes;
+    }
+    void moveNote(ToDoList todoList, int index){
+        Note note = notes[index];
+        removeNote(index);
+        todoList.addNote(note);
     }
 };
 

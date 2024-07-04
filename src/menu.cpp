@@ -25,12 +25,22 @@ void listMenu(vector<Note> notes){
     }
 }
 
-void mainMenu(int option, vector<ToDoList> todoLists, int &curList){
+void displayLists(vector<ToDoList> todoLists){
+    int i = 1;
+    for(ToDoList todoList : todoLists){
+        cout << "List #" << i << ": " << todoList.getTitle() << "\n";
+        i++;
+    }
+}
+
+
+void mainMenu(int option, vector<ToDoList> &todoLists, int &curList){
     switch(option){
         case 1:
             listManager(todoLists, curList);
             break;
         case 2:
+            displayLists(todoLists);
             break;
         case 3:
             break;
@@ -44,16 +54,21 @@ void mainMenu(int option, vector<ToDoList> todoLists, int &curList){
     }
 }
 
+void initLists(vector<ToDoList> &todoLists){
+    todoLists.push_back(ToDoList("ToDo"));
+    todoLists.push_back(ToDoList("Doing"));
+    todoLists.push_back(ToDoList("Done"));
+}
 void menu(){
     vector<ToDoList> todoLists;
+    initLists(todoLists);
     int curList = 1;
     clearTerm();
     printHelp();
     while(true){
         int option;
         while(true){
-            cout << "Enter option: ";
-            cin >> option;
+            option = promptInt("Enter option: ");
             clearTerm();
             if(mainOptionValid(option))
                 break;
