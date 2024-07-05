@@ -14,14 +14,12 @@ bool isFormatSeparator(char c){
         return true;
     return false;
 }
-
 string getSection(string data, int &focus){
     string section;
     while(data[++focus] != ',')
         section += data[focus];
     return section;
 }
-
 string * getDataArray(string data){
     string * sections = new string[DATA_SIZE];
     int focus = 0;
@@ -30,7 +28,6 @@ string * getDataArray(string data){
     }
     return sections;
 }
-
 vector<CheckItem> getChecklistData(string data){
     vector<CheckItem> checkItems;
     int focus = 0;
@@ -74,7 +71,7 @@ bool addOptionValid(int option){
         return true;
     return false;
 }
-bool addOptions(int option, Note &note, vector<Note> &notes){
+bool addOptions(int option, Note &note, vector<Note> * notes){
     cin.get();
     switch (option) {
         case 1:
@@ -87,7 +84,7 @@ bool addOptions(int option, Note &note, vector<Note> &notes){
             break;
         case 3:
             note.id = id_Randomizer();
-            notes.push_back(note);
+            notes->push_back(note);
             note.writeDataToDb();
             return true;
         case 4:
@@ -95,7 +92,7 @@ bool addOptions(int option, Note &note, vector<Note> &notes){
     }
     return false;
 }
-void addMenu(vector<Note> & notes){
+void addMenu(vector<Note> * notes){
     Note note;
     while(true){
         printAddHelp();

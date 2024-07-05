@@ -28,7 +28,7 @@ public:
     }
     void printNotes(){
         if(notes.empty()){
-            cout << "The list is empty!";
+            cout << "The list is empty!\n";
             return;
         }
         cout << "Notes of the List " << title << ": \n";
@@ -37,8 +37,8 @@ public:
             cout << "\n\n";
         }
     }
-    vector<Note>& getNotes(){
-        return notes;
+    vector<Note> * getNotes(){
+        return &notes;
     }
     void moveNote(ToDoList todoList, int index){
         Note note = notes[index];
@@ -46,7 +46,5 @@ public:
         todoList.addNote(note);
     }
 };
-
 void listManager(vector<ToDoList> todoLists, int &curList);
 vector<ToDoList> recoverList();
-

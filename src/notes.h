@@ -87,15 +87,6 @@ public:
     }
     Note() : id(0), title(""), desc(""){
     }
-    /*int getID(){*/
-    /*    return id;*/
-    /*}*/
-    /*string getTitle(){*/
-    /*    return title;*/
-    /*}*/
-    /*string getDesc(){*/
-    /*    return desc;*/
-    /*}*/
     void setID(int id){
         this->id = id;
     }
@@ -106,9 +97,9 @@ public:
         this->desc = desc;
     }
     void printData(){
-        cout << "For note ID " << id << ": \n";
-        cout << "title: " << title << ": \n";
-        cout << "description: " << desc << ": \n";
+        cout << "For note ID " << id << "\n";
+        cout << "title: " << title << "\n";
+        cout << "description: " << desc << "\n";
         cout << "CheckList: \n";
         checkList.printCheckList();
         cout << endl << endl;
@@ -128,5 +119,5 @@ Note getNoteFromDB();
 
 bool addOptionValid(int option);
 bool addOptions(int option, Note &note, vector<Note> &notes);
-void addMenu(vector<Note> & notes);
+void addMenu(vector<Note> * notes);
 void printAddHelp();

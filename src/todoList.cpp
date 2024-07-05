@@ -47,6 +47,7 @@ bool listMgrOpts(int option, vector<ToDoList> todoLists, int &curList){
         case 7:
             return true;
         case 8:
+            cout << "Program Terminating, Goodbye!";
             exit(1);
             break;
     }

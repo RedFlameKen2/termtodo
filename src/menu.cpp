@@ -11,8 +11,9 @@ void printHelp(){
     cout << "List of options: \n";
     cout << "1) Manage lists\n";
     cout << "2) List ToDoLists\n";
-    cout << "3) Show this menu\n";
-    cout << "4) Exit Program\n";
+    cout << "3) ???????\n";
+    cout << "4) Show this menu\n";
+    cout << "5) Exit Program\n";
 }
 bool mainOptionValid(int option){
     if(option <= 5 || option > 1)
@@ -32,8 +33,6 @@ void displayLists(vector<ToDoList> todoLists){
         i++;
     }
 }
-
-
 void mainMenu(int option, vector<ToDoList> &todoLists, int &curList){
     switch(option){
         case 1:
@@ -43,6 +42,7 @@ void mainMenu(int option, vector<ToDoList> &todoLists, int &curList){
             displayLists(todoLists);
             break;
         case 3:
+            cout << "HOOOHOOO BOOO\n";
             break;
         case 4:
             printHelp();
