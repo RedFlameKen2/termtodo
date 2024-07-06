@@ -1,10 +1,8 @@
 #include <fstream>
-#include <iostream>
 #include <vector>
 #include "notes.h"
 #include "../constants.h"
 
-using std::cout;
 using std::ifstream;
 using std::vector;
 
@@ -22,9 +20,8 @@ string getSection(string data, int &focus){
 string * getDataArray(string data){
     string * sections = new string[DATA_SIZE];
     int focus = 0;
-    for(int i = 0; i < DATA_SIZE; i++){
+    for(int i = 0; i < DATA_SIZE; i++)
         sections[i] = getSection(data, focus);
-    }
     return sections;
 }
 vector<CheckItem> getChecklistData(string data){
@@ -32,9 +29,8 @@ vector<CheckItem> getChecklistData(string data){
     int focus = 0;
     while(data[focus++] != '{');
     while(data[focus] != '}'){
-        while(data[focus] != '['){
+        while(data[focus] != '[')
             focus++;
-        }
         string title;
         bool checked = false;
         while(data[++focus] != ',')

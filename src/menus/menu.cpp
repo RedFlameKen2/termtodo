@@ -5,7 +5,6 @@
 #include "../list/todolist.h"
 
 using std::cout;
-using std::cin;
 
 void printHelp(){
     cout << "List of options: \n";
@@ -15,8 +14,8 @@ void printHelp(){
     cout << "4) Show this menu\n";
     cout << "5) Exit Program\n";
 }
-bool mainOptionValid(int option){
-    if(option <= 5 || option > 1)
+bool optionValid(int option, int max){
+    if(option <= max || option > 1)
         return true;
     return false;
 }
@@ -70,7 +69,7 @@ void menu(){
         while(true){
             option = promptInt("Enter option: ");
             clearTerm();
-            if(mainOptionValid(option))
+            if(optionValid(option, 5))
                 break;
             cout << "Invalid Option, Try Again!\n";
         }

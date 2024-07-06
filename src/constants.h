@@ -1,3 +1,3 @@
 #include <iostream>
 
-const int DATA_SIZE = 3;
+const int DATA_SIZE = 4;

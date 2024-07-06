@@ -1,11 +1,13 @@
 #include "addmenu.h"
+#include "../../helpers.h"
 
 void printAddHelp(){
     cout << "List of options for adding a note: \n";
     cout << "1) Set Title:\n";
     cout << "2) Set Description\n";
-    cout << "3) Finish\n";
-    cout << "4) Cancel\n";
+    cout << "3) Manage Checklist\n";
+    cout << "4) Finish\n";
+    cout << "5) Cancel\n";
 }
 Note getNoteFromDB(){
     string rd;
@@ -17,13 +19,7 @@ Note getNoteFromDB(){
     file.close();
     return note;
 };
-
-bool addOptionValid(int option){
-    if(option <= 4 || option > 1)
-        return true;
-    return false;
-}
-bool addOptions(int option, Note &note, vector<Note> * notes){
+bool addOptions(int option, Note &note, ToDoList &todoList){
     cin.get();
     switch (option) {
         case 1:
@@ -35,16 +31,20 @@ bool addOptions(int option, Note &note, vector<Note> * notes){
             getline(cin, note.desc);
             break;
         case 3:
+            break;
+        case 4:
             note.id = id_Randomizer();
-            notes->push_back(note);
+            note.listName = todoList.getTitle();
+            note.printData();
+            todoList.addNote(note);
             note.writeDataToDb();
             return true;
-        case 4:
+        case 5:
             return true;
     }
     return false;
 }
-void addMenu(vector<Note> * notes){
+void addMenu(ToDoList &todoList){
     Note note;
     while(true){
         printAddHelp();
@@ -53,11 +53,11 @@ void addMenu(vector<Note> * notes){
             cout << "Enter option: ";
             cin >> option;
             clearTerm();
-            if(addOptionValid(option))
+            if(optionValid(option, 5))
                 break;
             cout << "Invalid Option! Try Again!\n";
         }
-        if(addOptions(option, note, notes))
+        if(addOptions(option, note, todoList))
             break;
     }
 }

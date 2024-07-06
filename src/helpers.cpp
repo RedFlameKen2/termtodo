@@ -93,10 +93,8 @@ int promptInt(string prompt){
     }
     return stoi(input);
 }
-void printSomething(){
-    cout << "Enter anything: ";
-    string input; 
-    getline(cin, input);
-    clearTerm();
-    cout << "output:\n" << input << endl;
+bool optionValid(int option, int max){
+    if(option <= max || option > 1)
+        return true;
+    return false;
 }

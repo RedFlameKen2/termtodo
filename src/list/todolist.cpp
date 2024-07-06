@@ -1,7 +1,6 @@
 #include <iostream>
-#include "todolist.h"
 #include "../helpers.h"
-#include "../menus/addmenu.h"
+#include "../menus/note/addmenu.h"
 
 void printMgrHelp(){
     cout << "Here is a list of options for managing your lists: \n";
@@ -28,7 +27,7 @@ void changeCurList(int &curList, int listSize){
     cout << "List Successfully Changed!";
 }
 
-bool listMgrOpts(int option, vector<ToDoList> todoLists, int &curList){
+bool listMgrOpts(int option, vector<ToDoList> &todoLists, int &curList){
     switch(option){
         case 1:
             changeCurList(curList, todoLists.size());
@@ -37,7 +36,7 @@ bool listMgrOpts(int option, vector<ToDoList> todoLists, int &curList){
             todoLists[curList-1].printNotes();
             break;
         case 3:
-            addMenu(todoLists[curList-1].getNotes());
+            addMenu(todoLists[curList-1]);
             break;
         case 4:
             break;
@@ -54,8 +53,7 @@ bool listMgrOpts(int option, vector<ToDoList> todoLists, int &curList){
     }
     return false;
 }
-
-void listManager(vector<ToDoList> todoLists, int &curList){
+void listManager(vector<ToDoList> &todoLists, int &curList){
     int option = 0;
     while(true){
         printMgrHelp();
