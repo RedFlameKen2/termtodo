@@ -12,4 +12,3 @@ void notify();
 int id_Randomizer();
 int promptInt(string prompt);
 
-bool optionValid(int option, int max);

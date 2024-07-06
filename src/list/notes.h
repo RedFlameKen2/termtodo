@@ -115,3 +115,4 @@ public:
 Note getNoteFromDB();
 string * getDataArray(string data);
 vector<CheckItem> getChecklistData(string data);
+Note getNoteFromDB();

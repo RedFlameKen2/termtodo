@@ -46,5 +46,6 @@ public:
         todoList.addNote(note);
     }
 };
-void listManager(vector<ToDoList> &todoLists, int &curList);
+/*void listManager(vector<ToDoList> &todoLists, int &curList);*/
+/*void updateDB(vector<ToDoList> todoLists);*/
 vector<ToDoList> recoverList();

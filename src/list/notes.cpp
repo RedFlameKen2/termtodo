@@ -43,3 +43,13 @@ vector<CheckItem> getChecklistData(string data){
     }
     return checkItems;
 }
+Note getNoteFromDB(){
+    string rd;
+
+    ifstream file("db");
+    int count = 0;
+    std::getline(file, rd);
+    Note note(getDataArray(rd), getChecklistData(rd));
+    file.close();
+    return note;
+};
