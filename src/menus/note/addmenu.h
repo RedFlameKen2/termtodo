@@ -8,7 +8,7 @@ public:
         maxOpts = 5;
         menu();
     }
-    AddNoteMenu(vector<ToDoList> todoLists, int * curList) {
+    AddNoteMenu(vector<ToDoList> * todoLists, int * curList) {
         maxOpts = 5;
         this->curList = curList;
         this->todoLists = todoLists;
@@ -35,8 +35,8 @@ public:
                 break;
             case 4:
                 note.id = id_Randomizer();
-                note.listName = todoLists[*curList-1].getTitle();
-                todoLists[*curList-1].addNote(note);
+                note.listName = (*todoLists)[*curList-1].getTitle();
+                (*todoLists)[*curList-1].addNote(note);
                 note.writeDataToDb();
                 return true;
             case 5:

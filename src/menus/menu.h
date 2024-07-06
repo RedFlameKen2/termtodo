@@ -1,17 +1,18 @@
 #include <cstdlib>
 #include <iostream>
 #include <cstdio>
+#include <vector>
 #include "../list/todolist.h"
 
 class Menu {
 protected:
-    vector<ToDoList> todoLists;
+    vector<ToDoList> * todoLists = new vector<ToDoList>;
     int maxOpts;
     int * curList = new int;
 public:
     Menu(){
     }
-    Menu(vector<ToDoList> todoLists, int * curList) : todoLists(todoLists) {
+    Menu(vector<ToDoList> * todoLists, int * curList) : todoLists(todoLists) {
         this->curList = curList;
     }
     bool optionValid(int option){
@@ -30,7 +31,8 @@ public:
                     break;
                 cout << "Invalid Option, Try Again!\n";
             }
-            options(option);
+            if(options(option))
+                break;
         }
     }
     virtual void printHelp(){

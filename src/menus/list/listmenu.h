@@ -7,7 +7,7 @@ private:
         while(true){
             input = promptInt("\nSelect a list number: ");
             clearTerm();
-            if(input < todoLists.size() || input > 0)
+            if(input < todoLists->size() || input > 0)
                 break;
             cout << "Not an existing list, Try Again!\n";
         }
@@ -19,7 +19,7 @@ public:
         maxOpts = 8;
         menu();
     }
-    ListMenu(vector<ToDoList> todoLists, int * curList){
+    ListMenu(vector<ToDoList> * todoLists, int * curList){
         this->todoLists = todoLists;
         this->curList = curList;
         maxOpts = 8;
@@ -42,7 +42,7 @@ public:
                 changeCurList();
                 break;
             case 2:
-                todoLists[*curList-1].printNotes();
+                (*todoLists)[*curList-1].printNotes();
                 break;
             case 3:
                 {

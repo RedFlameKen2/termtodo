@@ -17,9 +17,9 @@ public:
         menu();
     }
     void initLists(){
-        todoLists.push_back(ToDoList("ToDo"));
-        todoLists.push_back(ToDoList("Doing"));
-        todoLists.push_back(ToDoList("Done"));
+        todoLists->push_back(ToDoList("ToDo"));
+        todoLists->push_back(ToDoList("Doing"));
+        todoLists->push_back(ToDoList("Done"));
     }
     void printHelp(){
         cout << "List of options: \n";
@@ -37,7 +37,7 @@ public:
                 }
                 break;
             case 2:
-                displayLists(todoLists);
+                displayLists(*todoLists);
                 break;
             case 3:
                 cout << "HOOOHOOO BOOO\n";
