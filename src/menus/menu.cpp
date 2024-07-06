@@ -1,8 +1,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <cstdio>
-#include "helpers.h"
-#include "todolist.h"
+#include "../helpers.h"
+#include "../list/todolist.h"
 
 using std::cout;
 using std::cin;
