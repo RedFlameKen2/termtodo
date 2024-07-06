@@ -2,7 +2,7 @@
 #include <thread>
 #include "helpers.h"
 #include "constants.h"
-#include "menu.h"
+#include "menus/menu.h"
 
 using std::string;
 using std::thread;

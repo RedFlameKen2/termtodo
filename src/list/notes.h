@@ -5,7 +5,7 @@
 #include <thread>
 #include <vector>
 #include <fstream>
-#include "helpers.h"
+#include "../helpers.h"
 
 using std::cout;
 using std::cin;
@@ -116,8 +116,5 @@ public:
 //Functions
 /*string * getDataArray(string data);*/
 Note getNoteFromDB();
-
-bool addOptionValid(int option);
-bool addOptions(int option, Note &note, vector<Note> &notes);
-void addMenu(vector<Note> * notes);
-void printAddHelp();
+string * getDataArray(string data);
+vector<CheckItem> getChecklistData(string data);

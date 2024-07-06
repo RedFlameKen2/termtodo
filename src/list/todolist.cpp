@@ -1,6 +1,7 @@
 #include <iostream>
 #include "todolist.h"
-#include "helpers.h"
+#include "../helpers.h"
+#include "../menus/addmenu.h"
 
 void printMgrHelp(){
     cout << "Here is a list of options for managing your lists: \n";
