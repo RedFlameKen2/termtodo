@@ -24,7 +24,7 @@ struct CheckItem {
     bool checked;
     CheckItem(string title, bool checked) : title(title), checked(checked){
     }
-    CheckItem();
+    CheckItem(){};
 };
 class CheckList {
 public:
@@ -65,11 +65,14 @@ public:
 
 class DueDate {
 private:
+    bool on = false;
     tm time;
 public:
     DueDate(){
     }
     string getDBFormat(){
+        if(!on)
+            return "off";
         string write;
         write+=time.tm_mon;
         write+=" ";
@@ -124,10 +127,10 @@ private:
         write += "," + desc;
         write += "," + listName;
         write += ",";
-        write += checkList.getDBFormat();
-        write += ",";
         dueDate.getDBFormat();
         write += ",";
+        write += checkList.getDBFormat();
+        write += "\n";
         return write; 
     }
 public:

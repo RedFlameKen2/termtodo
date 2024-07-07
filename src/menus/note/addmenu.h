@@ -1,4 +1,4 @@
-#include "../menu.h"
+#include "../checklist/checklistmenu.h"
 
 class AddNoteMenu : public Menu {
 private:
@@ -32,6 +32,9 @@ public:
                 note.desc = promptString("\nEnter Description of the Note: ");
                 break;
             case 3:
+                {
+                    ChecklistMenu checklistMenu(note);
+                }
                 break;
             case 4:
                 note.id = id_Randomizer();
