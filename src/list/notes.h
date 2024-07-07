@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <cstddef>
 #include <string>
@@ -40,7 +41,7 @@ public:
     string getTitle(int index){
         return checkItems[index].title;
     }
-    string getDBWrite(){
+    string getDBFormat(){
         string write;
         write += "{";
         for(CheckItem checkItem : checkItems){
@@ -62,6 +63,57 @@ public:
     }
 };
 
+class DueDate {
+private:
+    tm time;
+public:
+    DueDate(){
+    }
+    string getDBFormat(){
+        string write;
+        write+=time.tm_mon;
+        write+=" ";
+        write+=time.tm_mday;
+        write+=" ";
+        write+=time.tm_year;
+        write+=" ";
+        write+=time.tm_hour;
+        write+=" ";
+        write+=time.tm_min;
+        return write;
+    }
+    int getMonth(){
+        return time.tm_mon;
+    }
+    int getDay(){
+        return time.tm_mday;
+    }
+    int getYear(){
+        return time.tm_year;
+    }
+    int getHour(){
+        return time.tm_hour;
+    }
+    int getMin(){
+        return time.tm_min;
+    }
+    void setMonth(int month){
+        time.tm_mday = month;
+    }
+    void setDay(int day){
+        time.tm_mon = day;
+    }
+    void setYear(int year){
+        time.tm_year = year;
+    }
+    void setHour(int hour){
+        time.tm_hour = hour;
+    }
+    void setMin(int min){
+        time.tm_min = min;
+    }
+};
+
 class Note {
 private:
     CheckList checkList;
@@ -72,13 +124,16 @@ private:
         write += "," + desc;
         write += "," + listName;
         write += ",";
-        write += checkList.getDBWrite();
-        write += "\n";
+        write += checkList.getDBFormat();
+        write += ",";
+        dueDate.getDBFormat();
+        write += ",";
         return write; 
     }
 public:
     int id;
     string title, desc, listName;
+    DueDate dueDate;
     Note(int id, string title, string desc, string listName) : id(id), title(title), desc(desc), listName(listName){
     }
     Note(string * data, vector<CheckItem> checkItems) {
@@ -96,7 +151,6 @@ public:
         cout << "description: " << desc << "\n";
         cout << "CheckList: \n";
         checkList.printCheckList();
-        cout << endl << endl;
     }
     void writeDataToDb(){
         string write = getDBFormat(), ret = dbRead();
