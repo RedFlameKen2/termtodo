@@ -9,7 +9,7 @@ private:
             printBar();
             input = promptInt("\nSelect a list number: ");
             clearTerm();
-            if(input < todoLists->size() || input > 0)
+            if(input <= todoLists->size() && input > 0)
                 break;
             cout << "Not an existing list, Try Again!\n";
         }
