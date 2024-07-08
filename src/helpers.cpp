@@ -27,25 +27,6 @@ string getOS(){
         return "Linux";
     #endif 
 }
-
-string dbRead(){
-    ifstream file("db");
-    string rd = "", temp = "";
-    while(std::getline(file, temp))
-        rd += temp + "\n";
-    file.close();
-    return rd;
-}
-void dbWrite(){
-    string write = "", ret = dbRead();
-    ofstream file("db");
-    write += ret;
-    write += "" + to_string(id_Randomizer());
-    write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";
-    file << write;
-    file.close();
-}
-
 void clearTerm(){
     if(getOS() == "Linux")
         system("clear");
@@ -62,19 +43,6 @@ void notify(){
             system("msg %username% /server:%computername% /time:300 'hey, attention'");
         sleep_for(10s);
     }
-}
-
-int id_Randomizer(){
-	srand((unsigned) time(NULL));
-	int random = (rand() % 100000);
-	return random;
-}
-
-string promptString(string prompt){
-    string input;
-    cout << prompt;
-    getline(cin, input);
-    return input;
 }
 bool strIsDigit(string str){
     for(char c : str)
@@ -98,10 +66,66 @@ bool optionValid(int option, int max){
         return true;
     return false;
 }
+int id_Randomizer(){
+	srand((unsigned) time(NULL));
+	int random = (rand() % 100000);
+	return random;
+}
+
+string promptString(string prompt){
+    string input;
+    cout << prompt;
+    getline(cin, input);
+    return input;
+}
+string dbRead(){
+    ifstream file("db");
+    string rd = "", temp = "";
+    while(std::getline(file, temp))
+        rd += temp + "\n";
+    file.close();
+    return rd;
+}
+int getIDSection(string dataline){
+    string id;
+    int i = 0;
+    while(dataline[i] != ',')
+        id+=dataline[i++];
+    return stoi(id);
+}
+/*void dbWrite(){*/
+/*    string write = "", ret = dbRead();*/
+/*    ofstream file("db");*/
+/*    write += ret;*/
+/*    write += "" + to_string(id_Randomizer());*/
+/*    write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";*/
+/*    file << write;*/
+/*    file.close();*/
+/*}*/
 void writeDataToDb(string data){
     string write = data, ret = dbRead();
-    std::ofstream file("db");
+    ofstream file("db");
     write += ret;
     file << write;
     file.close();
+}
+void updateDB(string data, int id){
+    ifstream file("db");
+    string rd = "", temp = "";
+    while(getline(file, temp))
+        if(getIDSection(temp) == id)
+            rd += data;
+        else
+            rd += temp;
+    writeDataToDb(rd);
+}
+void deleteInDB(int id){
+    ifstream file("db");
+    string rd = "", temp = "";
+    while(getline(file, temp)){
+        if(getIDSection(temp) == id)
+            continue;
+        temp += rd;
+    }
+    writeDataToDb(rd);
 }

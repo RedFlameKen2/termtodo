@@ -2,13 +2,16 @@
 
 using std::string;
 
+/*void dbWrite();*/
+void clearTerm();
+void notify();
+void writeDataToDb(string data);
+void updateDB(string data, int id);
+void deleteInDB(int id);
+
 string getOS();
 string dbRead();
 string promptString(string prompt);
 
-void dbWrite();
-void clearTerm();
-void notify();
 int id_Randomizer();
 int promptInt(string prompt);
-void writeDataToDb(string data);
