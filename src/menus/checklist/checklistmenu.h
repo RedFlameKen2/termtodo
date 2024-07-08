@@ -2,7 +2,7 @@
 
 class ChecklistMenu : public Menu{
 private:
-    Note *note;
+    Note *note = new Note;
 public:
     ChecklistMenu(){
         maxOpts = 4;
@@ -19,6 +19,8 @@ public:
         cout << "2) Add Checklist Item\n";
         cout << "3) Remove Checklist Item\n";
         cout << "4) Back\n";
+    }
+    void printTargetInfo() override {
     }
     bool options(int option) override{
         cin.get();

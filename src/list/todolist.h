@@ -40,6 +40,9 @@ public:
     vector<Note> * getNotes(){
         return &notes;
     }
+    Note * getNote(int index){
+        return &notes[index];
+    }
     void moveNote(ToDoList todoList, int index){
         Note note = notes[index];
         removeNote(index);

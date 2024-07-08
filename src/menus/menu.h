@@ -70,7 +70,7 @@ public:
             int option;
             while(true){
                 printBar();
-                cout << "Current List: "<< *curList << ") " << (*todoLists)[*curList-1].getTitle() << "\n";
+                printTargetInfo();
                 option = promptInt("Enter option: ");
                 clearTerm();
                 if(optionValid(option))
@@ -81,11 +81,14 @@ public:
                 break;
         }
     }
+    virtual void printTargetInfo(){
+        cout << "Current List: "<< *curList << ") " << (*todoLists)[*curList-1].getTitle() << "\n";
+    }
     virtual void printInfo(){
-    };
+    }
     virtual void printHelp(){
-    };
+    }
     virtual bool options(int option){
         return false;
-    };
+    }
 };

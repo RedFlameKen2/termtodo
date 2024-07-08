@@ -9,8 +9,7 @@ public:
         maxOpts = 4;
         menu();
     }
-    AddCheckMenu(Note * note) {
-        this->note = note;
+    AddCheckMenu(Note * note) : note(note){
         maxOpts = 4;
         menu();
     }
@@ -20,6 +19,8 @@ public:
         cout << "2) Toggle Checked (Default: False)\n";
         cout << "3) Finish\n";
         cout << "4) Cancel\n";
+    }
+    void printTargetInfo() override {
     }
     bool options(int option) override{
         cin.get();
@@ -40,4 +41,3 @@ public:
 
     }
 };
-/*void addCheckMenu(Note note);*/

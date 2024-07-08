@@ -42,6 +42,9 @@ public:
     string getTitle(int index){
         return checkItems[index].title;
     }
+    int size(){
+        return checkItems.size();
+    }
     string getDBFormat(){
         string write;
         write += "{";
@@ -106,9 +109,15 @@ public:
         write += "\n";
         return write; 
     }
-    
     CheckList * getChecklist(){
         return &checkList;
+    }
+    void fullUpdate(Note note){
+        this->id = note.id;
+        this->title = note.title;
+        this->desc = note.desc;
+        this->checkList = note.checkList;
+        this->dueDate = note.dueDate;
     }
 };
 
