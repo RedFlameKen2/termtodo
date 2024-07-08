@@ -1,0 +1,46 @@
+#include "../menu.h"
+
+class ManageDueMenu : public Menu {
+private:
+    Note * note = new Note;
+    DueDate dueDate;
+public:
+    ManageDueMenu(Note * note) : note(note){
+        dueDate = note->dueDate;
+        maxOpts = 7;
+        menu();
+    }
+    void printHelp() override{
+        cout << "List of options for managing due dates: \n";
+        cout << "1) Set Day:\n";
+        cout << "2) Set Month\n";
+        cout << "3) Set Year\n";
+        cout << "4) Set Hour\n";
+        cout << "5) Set Minute\n";
+        cout << "6) Save\n";
+        cout << "7) Cancel\n";
+    }
+    void printInfo() override{
+    }
+    void printTargetInfo() override{
+    }
+    bool options(int option) override{
+        switch(option){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                return true;
+            case 7:
+                return true;
+        }
+        return false;
+    }
+};
