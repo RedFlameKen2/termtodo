@@ -5,6 +5,8 @@ private:
     void changeCurList(){
         int input;
         while(true){
+            displayLists();
+            printBar();
             input = promptInt("\nSelect a list number: ");
             clearTerm();
             if(input < todoLists->size() || input > 0)
@@ -25,7 +27,7 @@ public:
         maxOpts = 8;
         menu();
     }
-    void printHelp(){
+    void printHelp() override{
         cout << "Here is a list of options for managing your lists: \n";
         cout << "1) Change current list\n";
         cout << "2) Display Notes in this list\n"; 
@@ -36,7 +38,7 @@ public:
         cout << "7) Back\n";
         cout << "8) Exit the program\n";
     }
-    bool options(int option){
+    bool options(int option) override{
         switch(option){
             case 1:
                 changeCurList();

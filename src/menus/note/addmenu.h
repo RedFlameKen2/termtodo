@@ -14,7 +14,7 @@ public:
         this->todoLists = todoLists;
         menu();
     }
-    void printHelp(){
+    void printHelp() override{
         cout << "List of options for adding a note: \n";
         cout << "1) Set Title:\n";
         cout << "2) Set Description\n";
@@ -23,14 +23,21 @@ public:
         cout << "5) Finish\n";
         cout << "6) Cancel\n";
     }
-    bool options(int option){
+    void printInfo() override {
+        note.printData();
+    }
+    bool options(int option) override{
         cin.get();
         switch (option) {
             case 1:
+                printBar();
                 note.title = promptString("\nEnter Title of the Note: ");
+                clearTerm();
                 break;
             case 2:
+                printBar();
                 note.desc = promptString("\nEnter Description of the Note: ");
+                clearTerm();
                 break;
             case 3:
                 {

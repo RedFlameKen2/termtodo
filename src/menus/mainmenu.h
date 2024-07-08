@@ -2,13 +2,6 @@
 
 class MainMenu : public Menu {
 private:
-    void displayLists(vector<ToDoList> todoLists){
-        int i = 1;
-        for(ToDoList todoList : todoLists){
-            cout << "List #" << i << ": " << todoList.getTitle() << "\n";
-            i++;
-        }
-    }
 public:
     MainMenu(){
         *curList = 1;
@@ -21,7 +14,7 @@ public:
         todoLists->push_back(ToDoList("Doing"));
         todoLists->push_back(ToDoList("Done"));
     }
-    void printHelp(){
+    void printHelp() override{
         cout << "List of options: \n";
         cout << "1) Manage lists\n";
         cout << "2) List ToDoLists\n";
@@ -29,7 +22,7 @@ public:
         cout << "4) Show this menu\n";
         cout << "5) Exit Program\n";
     }
-    bool options(int option){
+    bool options(int option) override{
         switch(option){
             case 1:
                 {
@@ -37,7 +30,7 @@ public:
                 }
                 break;
             case 2:
-                displayLists(*todoLists);
+                displayLists();
                 break;
             case 3:
                 cout << "HOOOHOOO BOOO\n";

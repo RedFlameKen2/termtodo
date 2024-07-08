@@ -93,6 +93,9 @@ int getIDSection(string dataline){
         id+=dataline[i++];
     return stoi(id);
 }
+void printBar(){
+    cout << "\n=====================================================\n";
+}
 /*void dbWrite(){*/
 /*    string write = "", ret = dbRead();*/
 /*    ofstream file("db");*/

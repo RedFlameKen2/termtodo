@@ -40,6 +40,13 @@ protected:
     vector<ToDoList> * todoLists = new vector<ToDoList>;
     int maxOpts;
     int * curList = new int;
+    void displayLists(){
+        int i = 1;
+        for(ToDoList todoList : *todoLists){
+            cout << "List #" << i << ": " << todoList.getTitle() << "\n";
+            i++;
+        }
+    }
 public:
     Menu(){
     }
@@ -55,11 +62,16 @@ public:
             return true;
         return false;
     }
+    virtual void printInfo();
     void menu(){
         while(true){
+            printInfo();
+            printBar();
             printHelp();
             int option;
             while(true){
+                printBar();
+                cout << "Current List: "<< *curList << ") " << (*todoLists)[*curList-1].getTitle() << "\n";
                 option = promptInt("Enter option: ");
                 clearTerm();
                 if(optionValid(option))

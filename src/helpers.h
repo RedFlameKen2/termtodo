@@ -8,6 +8,7 @@ void notify();
 void writeDataToDb(string data);
 void updateDB(string data, int id);
 void deleteInDB(int id);
+void printBar();
 
 string getOS();
 string dbRead();

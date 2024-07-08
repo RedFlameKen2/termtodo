@@ -14,14 +14,14 @@ public:
         maxOpts = 4;
         menu();
     }
-    void printHelp(){
+    void printHelp() override{
         cout << "Here are the options for adding a checklist Item: \n";
         cout << "1) Set the Title\n";
         cout << "2) Toggle Checked (Default: False)\n";
         cout << "3) Finish\n";
         cout << "4) Cancel\n";
     }
-    bool options(int option){
+    bool options(int option) override{
         cin.get();
         switch(option){
             case 1:
