@@ -33,7 +33,7 @@ public:
                 break;
             case 3:
                 {
-                    ChecklistMenu checklistMenu(note);
+                    ChecklistMenu checklistMenu(&note);
                 }
                 break;
             case 4:

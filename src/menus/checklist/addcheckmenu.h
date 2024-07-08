@@ -3,13 +3,14 @@
 class AddCheckMenu : public Menu {
 private:
     CheckItem checkItem;
-    Note note;
+    Note * note;
 public:
     AddCheckMenu(){
         maxOpts = 4;
         menu();
     }
-    AddCheckMenu(Note note) : note(note){
+    AddCheckMenu(Note * note) {
+        this->note = note;
         maxOpts = 4;
         menu();
     }
@@ -30,7 +31,7 @@ public:
                 checkItem.checked = !checkItem.checked;
                 break;
             case 3:
-                note.getChecklist().add(checkItem);
+                note->getChecklist()->add(checkItem);
                 return true;
             case 4:
                 return true;

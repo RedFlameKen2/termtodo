@@ -21,7 +21,7 @@ using std::to_string;
 
 struct CheckItem {
     string title;
-    bool checked;
+    bool checked = false;
     CheckItem(string title, bool checked) : title(title), checked(checked){
     }
     CheckItem(){};
@@ -58,6 +58,11 @@ public:
         return write;
     }
     void printCheckList(){
+        if(checkItems.empty()){
+            cout << "There is no CheckList!\n";
+            return;
+        }
+        cout << "CheckList: \n";
         for(CheckItem checkItem : checkItems)
             cout << "[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
     }
@@ -152,7 +157,6 @@ public:
         cout << "For note ID " << id << "\n";
         cout << "title: " << title << "\n";
         cout << "description: " << desc << "\n";
-        cout << "CheckList: \n";
         checkList.printCheckList();
     }
     void writeDataToDb(){
@@ -162,8 +166,8 @@ public:
         file << write;
         file.close();
     }
-    CheckList getChecklist(){
-        return checkList;
+    CheckList * getChecklist(){
+        return &checkList;
     }
 };
 

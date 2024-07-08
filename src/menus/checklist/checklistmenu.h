@@ -2,13 +2,14 @@
 
 class ChecklistMenu : public Menu{
 private:
-    Note note;
+    Note *note;
 public:
     ChecklistMenu(){
         maxOpts = 4;
         menu();
     }
-    ChecklistMenu(Note note) : note(note){
+    ChecklistMenu(Note * note) {
+        this->note = note;
         maxOpts = 4;
         menu();
     }
@@ -23,7 +24,7 @@ public:
         cin.get();
         switch(option){
             case 1:
-                note.getChecklist().printCheckList();
+                note->getChecklist()->printCheckList();
                 break;
             case 2:
                 {
