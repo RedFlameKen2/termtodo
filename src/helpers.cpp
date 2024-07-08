@@ -61,6 +61,25 @@ int promptInt(string prompt){
     }
     return stoi(input);
 }
+string stolower(string &chars){
+    string out;
+    for(char c : chars)
+        out += tolower(c);
+    return out;
+}
+bool promptConfirm(string prompt){
+    string input;
+    while(true){
+        cout << prompt << "(y)es/(n)o\nEnter Answer: ";
+        cin >> input;
+        stolower(input);
+        if(input == "y" || input == "n" || input == "yes" || input == "no")
+            break;
+    }
+    if(input[0] == 'y')
+        return true;
+    return false;
+}
 bool optionValid(int option, int max){
     if(option <= max || option > 1)
         return true;

@@ -16,3 +16,5 @@ string promptString(string prompt);
 
 int id_Randomizer();
 int promptInt(string prompt);
+
+bool promptConfirm(string prompt);

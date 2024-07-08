@@ -80,6 +80,7 @@ public:
                 *((*todoLists)[*curList-1].getNote(curNote-1)) = *note;
                 return true;
             case 7:
+                promptConfirm("Are you sure you want to cancel?\nProgress will be lost:");
                 return true;
         }
         return false;
