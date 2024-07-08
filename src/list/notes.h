@@ -6,7 +6,7 @@
 #include <thread>
 #include <vector>
 #include <fstream>
-#include "../helpers.h"
+#include "../util/helpers.h"
 #include "duedate.h"
 
 using std::cout;

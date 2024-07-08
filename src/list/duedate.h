@@ -1,6 +1,7 @@
 #include <ctime>
 #include <iostream>
-#include "../helpers.h"
+#include "../util/helpers.h"
+#include "../util/monthday.h"
 
 using std::string;
 using std::cout;
@@ -20,9 +21,9 @@ public:
             printBar();
             month = promptInt("Enter the Month: ");
             clearTerm();
-            if(month <= 12 && month > 0)
+            if(month < 12 && month >= 0)
                 break;
-            cout << "Invalid Month, Try Again!";
+            cout << "Invalid Month, Try Again!\n";
         }
         time.tm_mday = month;
     }
@@ -32,19 +33,46 @@ public:
             printBar();
             day = promptInt("Enter the Day: ");
             clearTerm();
-            if(day <= time.tm_mday && day > 0)
+            if(day <= TimeUtil::getMaxMonthDay(time.tm_mon, time.tm_year) && day > 0)
                 break;
-            cout << "Invalid Month, Try Again!";
+            cout << "Invalid Day, Try Again!\n";
         }
         time.tm_mon = day;
     }
-    void setYear(int year){
+    void setYear(){
+        int year;
+        while(true){
+            printBar();
+            year = promptInt("Enter the Year: ");
+            clearTerm();
+            if(year >= 2000)
+                break;
+            cout << "The Past is in the past, buddy. Try Again!\n";
+        }
         time.tm_year = year;
     }
-    void setHour(int hour){
-        time.tm_hour = hour;
+    void setHour(){
+        int hour;
+        while(true){
+            printBar();
+            hour = promptInt("Enter the Hour: ");
+            clearTerm();
+            if(hour <= 24 && hour > 0)
+                break;
+            cout << "Invalid Hour, Try Again!\n";
+        }
+        time.tm_hour = hour-1;
     }
-    void setMin(int min){
+    void setMin(){
+        int min;
+        while(true){
+            printBar();
+            min = promptInt("Enter the Minute: ");
+            clearTerm();
+            if(min < 60 && min >= 0)
+                break;
+            cout << "Invalid Minute, Try Again!\n";
+        }
         time.tm_min = min;
     }
     int getMonth(){
