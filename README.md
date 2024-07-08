@@ -10,6 +10,7 @@ ToDo:
 - [ ] Lists
 - [x] Notes
 - [x] CheckLists
+- [ ] DueDates
 - [ ] CheckList Progress Bar
 - [ ] Optional: Workspaces (enables you to have multiple sets of lists)
 
