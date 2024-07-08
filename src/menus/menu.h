@@ -62,7 +62,6 @@ public:
             return true;
         return false;
     }
-    virtual void printInfo();
     void menu(){
         while(true){
             printInfo();
@@ -82,6 +81,8 @@ public:
                 break;
         }
     }
+    virtual void printInfo(){
+    };
     virtual void printHelp(){
     };
     virtual bool options(int option){

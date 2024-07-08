@@ -6,12 +6,14 @@ private:
 public:
     AddNoteMenu(){
         maxOpts = 6;
+        note.id = id_Randomizer();
         menu();
     }
     AddNoteMenu(vector<ToDoList> * todoLists, int * curList) {
         maxOpts = 6;
         this->curList = curList;
         this->todoLists = todoLists;
+        note.id = id_Randomizer();
         menu();
     }
     void printHelp() override{
@@ -47,7 +49,6 @@ public:
             case 4:
                 break;
             case 5:
-                note.id = id_Randomizer();
                 note.listName = (*todoLists)[*curList-1].getTitle();
                 (*todoLists)[*curList-1].addNote(note);
                 writeDataToDb(note.getDBFormat());
