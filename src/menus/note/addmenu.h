@@ -1,4 +1,4 @@
-#include "../checklist/checklistmenu.h"
+#include "../note/managenotemenu.h"
 
 class AddNoteMenu : public Menu {
 private:

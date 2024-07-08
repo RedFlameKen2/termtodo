@@ -33,7 +33,7 @@ public:
         cout << "2) Display Notes in this list\n"; 
         cout << "3) Add a note to List\n";
         cout << "4) Remove a note from list\n";
-        cout << "5) Manage a note in the list\n";
+        cout << "5) Manage notes in the list\n";
         cout << "6) Display notes in all lists\n";
         cout << "7) Back\n";
         cout << "8) Exit the program\n";
@@ -54,6 +54,14 @@ public:
             case 4:
                 break;
             case 5:
+                {
+                    if(((*todoLists)[*curList-1]).getNotes()->empty()){
+                        cout << "There are no notes in this list!";
+                        break;
+                    }
+
+                    ManageNoteMenu ManageNoteMenu(todoLists, curList);
+                }
                 break;
             case 6:
                 break;

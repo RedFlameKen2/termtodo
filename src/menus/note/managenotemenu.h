@@ -2,17 +2,16 @@
 
 class ManageNoteMenu : public Menu {
 private:
-    Note * note;
+    Note * note = new Note;
     int curNote = 1;
     void changeCurNote(){
         int input;
         while(true){
-            displayLists();
             printBar();
             printTargetInfo();
             input = promptInt("\nSelect a Note number: ");
             clearTerm();
-            if(input < (*note).getChecklist()->size() || input > 0)
+            if(input < (*todoLists)[*curList-1].getNotes()->size() || input > 0)
                 break;
             cout << "Not an existing Note, Try Again!\n";
         }
@@ -28,7 +27,7 @@ public:
         this->todoLists = todoLists;
         this->curList = curList;
         maxOpts = 7;
-        updateNote();
+        note = &*((*todoLists)[*curList-1].getNote(curNote-1));
         menu();
     }
     ManageNoteMenu(Note * note) : note(note){
