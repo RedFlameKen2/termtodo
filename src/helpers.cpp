@@ -98,3 +98,10 @@ bool optionValid(int option, int max){
         return true;
     return false;
 }
+void writeDataToDb(string data){
+    string write = data, ret = dbRead();
+    std::ofstream file("db");
+    write += ret;
+    file << write;
+    file.close();
+}

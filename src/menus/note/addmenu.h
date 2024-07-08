@@ -5,11 +5,11 @@ private:
     Note note;
 public:
     AddNoteMenu(){
-        maxOpts = 5;
+        maxOpts = 6;
         menu();
     }
     AddNoteMenu(vector<ToDoList> * todoLists, int * curList) {
-        maxOpts = 5;
+        maxOpts = 6;
         this->curList = curList;
         this->todoLists = todoLists;
         menu();
@@ -19,8 +19,9 @@ public:
         cout << "1) Set Title:\n";
         cout << "2) Set Description\n";
         cout << "3) Manage Checklist\n";
-        cout << "4) Finish\n";
-        cout << "5) Cancel\n";
+        cout << "4) Add due date\n";
+        cout << "5) Finish\n";
+        cout << "6) Cancel\n";
     }
     bool options(int option){
         cin.get();
@@ -37,18 +38,16 @@ public:
                 }
                 break;
             case 4:
+                break;
+            case 5:
                 note.id = id_Randomizer();
                 note.listName = (*todoLists)[*curList-1].getTitle();
                 (*todoLists)[*curList-1].addNote(note);
-                note.writeDataToDb();
+                writeDataToDb(note.getDBFormat());
                 return true;
-            case 5:
+            case 6:
                 return true;
         }
         return false;
     }
 };
-
-/*bool addOptions(int option, Note &note, vector<Note> &notes);*/
-/*void addMenu(ToDoList &todoList);*/
-/*void printAddHelp();*/
