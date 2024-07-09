@@ -27,14 +27,19 @@ public:
     bool options(int option) override{
         switch(option){
             case 1:
+                dueDate.setDay();
                 break;
             case 2:
+                dueDate.setMonth();
                 break;
             case 3:
+                dueDate.setYear();
                 break;
             case 4:
+                dueDate.setHour();
                 break;
             case 5:
+                dueDate.setMin();
                 break;
             case 6:
                 return true;
