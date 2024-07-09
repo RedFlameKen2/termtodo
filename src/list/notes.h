@@ -109,6 +109,9 @@ public:
         write += "\n";
         return write; 
     }
+    void removeCheckItem(int index){
+        checkList.checkItems.erase(std::next(checkList.checkItems.begin(), index));
+    }
     CheckList * getChecklist(){
         return &checkList;
     }

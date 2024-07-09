@@ -1,7 +1,6 @@
 #include <fstream>
 #include <vector>
 #include "notes.h"
-#include "../util/constants.h"
 
 using std::ifstream;
 using std::vector;

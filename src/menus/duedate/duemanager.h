@@ -44,6 +44,8 @@ public:
                 dueDate.setMin();
                 break;
             case 6:
+                note->dueDate = dueDate;
+                cout << "Due date set successfully!\n";
                 return true;
             case 7:
                 return true;

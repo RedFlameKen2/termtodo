@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <thread>
 #include "util/helpers.h"
-#include "util/constants.h"
 #include "menus/mainmenu.h"
 
 using std::string;

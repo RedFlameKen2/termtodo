@@ -34,7 +34,7 @@ public:
         cout << "Notes of the List " << title << ": \n";
         for(Note note : notes){
             note.printData();
-            cout << "\n\n";
+            cout << "\n";
         }
     }
     vector<Note> * getNotes(){
