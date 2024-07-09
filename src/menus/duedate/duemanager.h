@@ -6,6 +6,7 @@ private:
     DueDate dueDate;
 public:
     ManageDueMenu(Note * note) : note(note){
+        Menu(todoLists, curList);
         dueDate = note->dueDate;
         maxOpts = 7;
         menu();
@@ -21,6 +22,7 @@ public:
         cout << "7) Cancel\n";
     }
     void printInfo() override{
+        dueDate.printDueDate();
     }
     void printTargetInfo() override{
     }

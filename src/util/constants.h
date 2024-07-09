@@ -1,5 +1,7 @@
 #include <iostream>
 
+using std::string;
+
 const int DATA_SIZE = 4;
 
 
@@ -32,5 +34,20 @@ const int MONTH_MAX_DAYS[12] =
     OCT_DAYS,
     NOV_DAYS,
     DEC_DAYS
+};
+
+const string MONTH_NAMES[12] = {
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
 };
 

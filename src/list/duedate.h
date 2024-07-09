@@ -105,4 +105,7 @@ public:
         write+=time.tm_min;
         return write;
     }
+    void printDueDate(){
+        cout << "DueDate: " << MONTH_NAMES[time.tm_mon] << " " << time.tm_mday << ", " << time.tm_year << " " << time.tm_hour << ":" << time.tm_min << "\n";
+    }
 };
