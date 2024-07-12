@@ -52,7 +52,6 @@ public:
     }
     /*
      * Please use this for those menus that require the todoList's vector!
-     *
     */
     Menu(vector<ToDoList> * todoLists, int * curList) : todoLists(todoLists) {
         this->curList = curList;
@@ -63,8 +62,8 @@ public:
         return false;
     }
     void menu(){
+        cout << "\n";
         while(true){
-            cout << "\n";
             printInfo();
             printBar();
             printHelp();
@@ -74,6 +73,7 @@ public:
                 printTargetInfo();
                 option = promptInt("Enter option: ");
                 clearTerm();
+                cout << "\n";
                 if(optionValid(option))
                     break;
                 cout << "Invalid Option, Try Again!\n";
