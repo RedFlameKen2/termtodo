@@ -3,8 +3,9 @@
 class MainMenu : public Menu {
 private:
 public:
-    MainMenu(){
-        *curList = 1;
+    MainMenu(vector<ToDoList> * todoLists, int * curList){
+        this->todoLists = todoLists;
+        this->curList = curList;
         maxOpts = 5;
         initLists();
         menu();

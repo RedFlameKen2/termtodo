@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <thread>
+#include <vector>
 #include "util/helpers.h"
 #include "menus/mainmenu.h"
 
@@ -11,9 +12,9 @@ using std::thread;
  * The entire menu system starts there
  * See src/menus/menu.h and src/menus/mainmenu.h
 */
-void initMenuSystem(){
+void initMenuSystem(std::vector<ToDoList> *todoLists, int * curList){
     clearTerm();
-    MainMenu mainMenu;
+    MainMenu mainMenu(todoLists, curList);
 }
 
 /*
@@ -23,8 +24,12 @@ void initMenuSystem(){
  * thread.join() basically tells when then threads will stop (no need to worry about that)
 */
 void initThread() {
-    thread t1(notify);
-    thread t2(initMenuSystem);
+    vector<ToDoList> todoLists;
+    int curList = 1;
+    
+    thread t1([](vector<ToDoList> * todoLists){
+    }, &todoLists);
+    thread t2(initMenuSystem, &todoLists, &curList);
     t1.join();
     t2.join();
 }

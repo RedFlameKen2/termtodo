@@ -64,6 +64,7 @@ public:
     }
     void menu(){
         while(true){
+            cout << "\n";
             printInfo();
             printBar();
             printHelp();
