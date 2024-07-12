@@ -1,4 +1,4 @@
-#include "../menu.h"
+#include "../checklist/checklistmenu.h"
 
 class ManageDueMenu : public Menu {
 private:
@@ -6,7 +6,6 @@ private:
     DueDate dueDate;
 public:
     ManageDueMenu(Note * note) : note(note){
-        Menu(todoLists, curList);
         dueDate = note->dueDate;
         maxOpts = 7;
         menu();

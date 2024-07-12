@@ -1,4 +1,4 @@
-#include "../checklist/checklistmenu.h"
+#include "../duedate/duemanager.h"
 
 class ManageNoteMenu : public Menu {
 private:
@@ -69,6 +69,9 @@ public:
                 clearTerm();
                 break;
             case 4:
+                {
+                    ManageDueMenu manageDueMenu(note);
+                }
                 break;
             case 5:
                 {

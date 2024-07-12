@@ -12,8 +12,11 @@ private:
     tm time;
 public:
     DueDate(){
+    }
+    tm getCurTime(){
         time_t t;
-        time = *localtime(&t);
+        tm time = *localtime(&t);
+        return time;
     }
     void setMonth(){
         int month;

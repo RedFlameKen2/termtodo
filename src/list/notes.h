@@ -95,6 +95,7 @@ public:
         cout << "title: " << title << "\n";
         cout << "description: " << desc << "\n";
         checkList.printCheckList();
+        dueDate.printDueDate();
     }
     string getDBFormat(){
         string write;
