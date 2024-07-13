@@ -15,6 +15,16 @@ private:
 public:
     DueDate(){
     }
+    DueDate(string * dueData){
+        if(dueData[0] == "Off")
+            return;
+        on = true;
+        time.tm_mon = (*dueData)[0];
+        time.tm_mday = (*dueData)[1];
+        time.tm_year = (*dueData)[2];
+        time.tm_hour = (*dueData)[3];
+        time.tm_min = (*dueData)[4];
+    }
     void initCurDay(){
         time = getCurTime();
         toggleOn();

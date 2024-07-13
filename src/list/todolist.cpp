@@ -78,6 +78,16 @@ void addList(vector<ToDoList> *todoLists, string listName){
     todoLists->push_back(ToDoList(listName));
 }
 
+ToDoList * getByTitle(vector<ToDoList> *todoLists, string title){
+    /*cout << (*todoLists)[0].getTitle();*/
+    for(ToDoList &x : *todoLists)
+        if(x.getTitle() == title){
+            cout << x.getTitle();
+            return &x;
+        }
+    return &(*todoLists)[0];
+}
+//TODO: Fix DueDate Retrieval
 void initLists(vector<ToDoList> *todoLists){
     std::ifstream file("db");
     if(!file){
@@ -85,17 +95,20 @@ void initLists(vector<ToDoList> *todoLists){
         return;
     }
     vector<string> listNames;
-    string curLine;
-    int i = 0;
+    string curLine = "";
     while(getline(file, curLine)){
         string listName = getListName(curLine);
         if(!listExists(*todoLists, listName))
-            listNames[i] = listName;
-        retrieveNote(&(*todoLists)[i], curLine);
-        i++;
+            listNames.push_back(listName);
     }
     file.close();
     for(string x : listNames){
         addList(todoLists, x);
+    }
+    file = ifstream("db");
+    int i = 0;
+    while(getline(file, curLine)){
+        retrieveNote(getByTitle(todoLists, curLine), curLine);
+        i++;
     }
 }

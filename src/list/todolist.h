@@ -51,4 +51,5 @@ public:
 };
 /*void updateDB(vector<ToDoList> todoLists);*/
 vector<ToDoList> recoverList();
-void initLists(vector<ToDoList> * todoLists);
+ToDoList getByTitle(vector<ToDoList> todoLists);
+void initLists(vector<ToDoList> *todoLists);

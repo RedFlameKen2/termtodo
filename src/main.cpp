@@ -26,7 +26,7 @@ void initMenuSystem(vector<ToDoList> *todoLists, int * curList){
 void initThread() {
     vector<ToDoList> todoLists;
     int curList = 1;
-    
+    initLists(&todoLists);
     thread t1([](vector<ToDoList> * todoLists){
     }, &todoLists);
     thread t2(initMenuSystem, &todoLists, &curList);
@@ -36,5 +36,7 @@ void initThread() {
 
 int main(){
     initThread();
+    /*vector<ToDoList> todoLists;*/
+    /*initLists(&todoLists);*/
     return 0;
 }
