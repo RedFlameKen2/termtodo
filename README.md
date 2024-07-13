@@ -7,10 +7,10 @@ This Program will make use of the different Object Oriented Principles and follo
 - [ ] Process Data from a local File
 
 ToDo:
-- [ ] Lists
+- [x] Lists
 - [x] Notes
 - [x] CheckLists
-- [ ] DueDates
+- [x] DueDates
 - [ ] CheckList Progress Bar
 - [ ] Optional: Workspaces (enables you to have multiple sets of lists)
 
