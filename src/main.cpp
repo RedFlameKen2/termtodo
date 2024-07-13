@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include <thread>
-#include <vector>
 #include "util/helpers.h"
 #include "menus/mainmenu.h"
 
@@ -23,6 +22,7 @@ void initMenuSystem(vector<ToDoList> *todoLists, int * curList){
  * t2 will run the initMenuSystem() function above
  * thread.join() basically tells when then threads will stop (no need to worry about that)
 */
+
 void initThread() {
     vector<ToDoList> todoLists;
     int curList = 1;
