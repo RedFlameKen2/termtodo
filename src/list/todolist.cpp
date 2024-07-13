@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <fstream>
-#include <string>
 #include "todolist.h"
 
 string getListName(string curLine){
@@ -18,6 +17,13 @@ string getListName(string curLine){
         break;
     }
     return listName;
+}
+
+bool listExists(vector<ToDoList> todoLists, string listName){
+    for(ToDoList todoList : todoLists)
+        if(todoList.getTitle() == listName)
+            return true;
+    return false;
 }
 
 void mkDefaultLists(vector<ToDoList> *todoLists){
@@ -40,7 +46,10 @@ void initLists(vector<ToDoList> *todoLists){
     string curLine;
     int i = 0;
     while(getline(file, curLine)){
-        listNames[i] = getListName(curLine);
+        string listName = getListName(curLine);
+        if(listExists(*todoLists, listName))
+            continue;
+        listNames[i] = listName;
         i++;
     }
     file.close();
