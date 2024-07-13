@@ -20,6 +20,9 @@ public:
         cout << "3) Finish\n";
         cout << "4) Cancel\n";
     }
+    void printInfo() override{
+        cout << "[" << (checkItem.checked ? "x" : " ") << "] Title: " << checkItem.title << "\n";
+    }
     void printTargetInfo() override {
     }
     bool options(int option) override{

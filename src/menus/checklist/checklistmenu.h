@@ -5,20 +5,22 @@ private:
     Note *note = new Note;
 public:
     ChecklistMenu(){
-        maxOpts = 4;
+        maxOpts = 3;
         menu();
     }
     ChecklistMenu(Note * note) {
         this->note = note;
-        maxOpts = 4;
+        maxOpts = 3;
         menu();
     }
     void printHelp() override{
         cout << "Here are the options for managing the checklist: \n";
-        cout << "1) List Checklist Items\n";
-        cout << "2) Add Checklist Item\n";
-        cout << "3) Remove Checklist Item\n";
-        cout << "4) Back\n";
+        cout << "1) Add Checklist Item\n";
+        cout << "2) Remove Checklist Item\n";
+        cout << "3) Back\n";
+    }
+    void printInfo() override{
+        note->getChecklist()->printCheckList();
     }
     void printTargetInfo() override {
     }
@@ -26,16 +28,13 @@ public:
         cin.get();
         switch(option){
             case 1:
-                note->getChecklist()->printCheckList();
-                break;
-            case 2:
                 {
                     AddCheckMenu check(note);
                 }
                 break;
-            case 3:
+            case 2:
                 break;
-            case 4:
+            case 3:
                 return true;
         }
         return false;
