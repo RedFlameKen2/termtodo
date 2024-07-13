@@ -13,10 +13,21 @@ private:
 public:
     DueDate(){
     }
+    void initCurDay(){
+        time = getCurTime();
+        toggleOn();
+    }
     tm getCurTime(){
-        time_t t;
+        time_t t = std::time(new time_t);
         tm time = *localtime(&t);
         return time;
+    }
+    void toggleOn(){
+        on = !on;
+        /*if(on)*/
+        /*    cout << "Due Date is enabled\n";*/
+        /*else*/
+        /*    cout << "Due Date is disabled\n";*/
     }
     void setMonth(){
         int month;
@@ -28,7 +39,7 @@ public:
                 break;
             cout << "Invalid Month, Try Again!\n";
         }
-        time.tm_mday = month;
+        time.tm_mon = month;
     }
     void setDay(){
         int day;
@@ -40,7 +51,7 @@ public:
                 break;
             cout << "Invalid Day, Try Again!\n";
         }
-        time.tm_mon = day;
+        time.tm_mday = day;
     }
     void setYear(){
         int year;
@@ -109,6 +120,11 @@ public:
         return write;
     }
     void printDueDate(){
-        cout << "DueDate: " << MONTH_NAMES[time.tm_mon] << " " << time.tm_mday << ", " << time.tm_year << " " << time.tm_hour << ":" << time.tm_min << "\n";
+        cout << "DueDate: ";
+        if(!on){
+            cout << "Off\n";
+            return;
+        }
+        cout << MONTH_NAMES[time.tm_mon] << " " << time.tm_mday << ", " << time.tm_year << " " << time.tm_hour << ":" << time.tm_min << "\n";
     }
 };

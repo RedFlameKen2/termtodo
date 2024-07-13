@@ -12,7 +12,7 @@ using std::thread;
  * The entire menu system starts there
  * See src/menus/menu.h and src/menus/mainmenu.h
 */
-void initMenuSystem(std::vector<ToDoList> *todoLists, int * curList){
+void initMenuSystem(vector<ToDoList> *todoLists, int * curList){
     clearTerm();
     MainMenu mainMenu(todoLists, curList);
 }

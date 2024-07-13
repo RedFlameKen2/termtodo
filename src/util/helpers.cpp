@@ -70,11 +70,15 @@ string stolower(string &chars){
 bool promptConfirm(string prompt){
     string input;
     while(true){
+        printBar();
         cout << prompt << "(y)es/(n)o\nEnter Answer: ";
         cin >> input;
+        clearTerm();
         stolower(input);
         if(input == "y" || input == "n" || input == "yes" || input == "no")
             break;
+        printBar();
+        cout << "Invalid input, Try Again!\n";
     }
     if(input[0] == 'y')
         return true;

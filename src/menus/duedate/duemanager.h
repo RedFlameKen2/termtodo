@@ -8,6 +8,7 @@ public:
     ManageDueMenu(Note * note) : note(note){
         dueDate = note->dueDate;
         maxOpts = 7;
+        dueDate.initCurDay();
         menu();
     }
     void printHelp() override{

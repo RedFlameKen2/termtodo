@@ -47,6 +47,11 @@ public:
                 }
                 break;
             case 4:
+                {
+                    if(!promptConfirm("Would you like to set a due date?"))
+                        break;
+                    ManageDueMenu manageDueMenu(&note);
+                }
                 break;
             case 5:
                 note.listName = (*todoLists)[*curList-1].getTitle();
