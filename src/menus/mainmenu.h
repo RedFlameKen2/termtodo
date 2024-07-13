@@ -7,13 +7,7 @@ public:
         this->todoLists = todoLists;
         this->curList = curList;
         maxOpts = 5;
-        initLists();
         menu();
-    }
-    void initLists(){
-        todoLists->push_back(ToDoList("ToDo"));
-        todoLists->push_back(ToDoList("Doing"));
-        todoLists->push_back(ToDoList("Done"));
     }
     void printHelp() override{
         cout << "List of options: \n";
