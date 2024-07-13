@@ -1,4 +1,4 @@
-#include "../note/addmenu.h"
+#include "../note/addnotemenu.h"
 
 class ListMenu : public Menu{
 private:
