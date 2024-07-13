@@ -1,4 +1,5 @@
 #include <ctime>
+#include <iomanip>
 #include <iostream>
 #include "../util/helpers.h"
 #include "../util/monthday.h"
@@ -126,6 +127,10 @@ public:
             cout << "Off\n";
             return;
         }
-        cout << MONTH_NAMES[time.tm_mon] << " " << time.tm_mday << ", " << 1900 + time.tm_year << " " << time.tm_hour << ":" << time.tm_min << "\n";
+        cout << MONTH_NAMES[time.tm_mon] << " ";
+        cout << time.tm_mday << ", ";
+        cout << 1900 + time.tm_year << " ";
+        cout << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
+        cout << std::setfill('0') << std::setw(2) << time.tm_min << "\n";
     }
 };
