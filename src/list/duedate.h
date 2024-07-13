@@ -72,11 +72,11 @@ public:
             printBar();
             hour = promptInt("Enter the Hour: ");
             clearTerm();
-            if(hour <= 24 && hour > 0)
+            if(hour < 24 && hour > 0)
                 break;
             cout << "Invalid Hour, Try Again!\n";
         }
-        time.tm_hour = hour-1;
+        time.tm_hour = hour;
     }
     void setMin(){
         int min;
