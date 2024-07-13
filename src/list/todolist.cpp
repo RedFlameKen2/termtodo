@@ -2,6 +2,48 @@
 #include <fstream>
 #include "todolist.h"
 
+bool isFormatSeparator(char c){
+    if(c == ',' && c == '\n')
+        return true;
+    return false;
+}
+string getSection(string data, int &focus){
+    string section;
+    while(data[++focus] != ',')
+        section += data[focus];
+    return section;
+}
+string * getDataArray(string data){
+    string * sections = new string[DATA_SIZE];
+    int focus = 0;
+    for(int i = 0; i < DATA_SIZE; i++)
+        sections[i] = getSection(data, focus);
+    return sections;
+}
+vector<CheckItem> getChecklistData(string data){
+    vector<CheckItem> checkItems;
+    int focus = 0;
+    while(data[focus++] != '{');
+    while(data[focus] != '}'){
+        while(data[focus] != '[')
+            focus++;
+        string title;
+        bool checked = false;
+        while(data[++focus] != ',')
+            title += data[focus];
+        if(data[++focus] == 't')
+            checked = true;
+        while(data[++focus] != ']');
+        checkItems.push_back(CheckItem(title, checked));
+        focus++;
+    }
+    return checkItems;
+}
+void retrieveNote(ToDoList *todoList, string curLine){
+    Note note(getDataArray(curLine), getChecklistData(curLine));
+    todoList->addNote(note);
+}
+
 string getListName(string curLine){
     int commas = 0;
     string listName;
@@ -47,9 +89,9 @@ void initLists(vector<ToDoList> *todoLists){
     int i = 0;
     while(getline(file, curLine)){
         string listName = getListName(curLine);
-        if(listExists(*todoLists, listName))
-            continue;
-        listNames[i] = listName;
+        if(!listExists(*todoLists, listName))
+            listNames[i] = listName;
+        retrieveNote(&(*todoLists)[i], curLine);
         i++;
     }
     file.close();
