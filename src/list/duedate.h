@@ -126,6 +126,6 @@ public:
             cout << "Off\n";
             return;
         }
-        cout << MONTH_NAMES[time.tm_mon] << " " << time.tm_mday << ", " << time.tm_year << " " << time.tm_hour << ":" << time.tm_min << "\n";
+        cout << MONTH_NAMES[time.tm_mon] << " " << time.tm_mday << ", " << 1900 + time.tm_year << " " << time.tm_hour << ":" << time.tm_min << "\n";
     }
 };
