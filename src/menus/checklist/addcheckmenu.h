@@ -29,6 +29,7 @@ public:
         cin.get();
         switch(option){
             case 1:
+                printBar();
                 checkItem.title = promptString("Enter Title of CheckItem: ");
                 break;
             case 2:
