@@ -5,6 +5,7 @@
 
 using std::string;
 using std::cout;
+using std::to_string;
 
 class DueDate {
 private:
@@ -108,15 +109,15 @@ public:
         if(!on)
             return "off";
         string write;
-        write+=time.tm_mon;
+        write+=to_string(time.tm_mon);
         write+=" ";
-        write+=time.tm_mday;
+        write+=to_string(time.tm_mday);
         write+=" ";
-        write+=time.tm_year;
+        write+=to_string(time.tm_year);
         write+=" ";
-        write+=time.tm_hour;
+        write+=to_string(time.tm_hour);
         write+=" ";
-        write+=time.tm_min;
+        write+=to_string(time.tm_min);
         return write;
     }
     void printDueDate(){
