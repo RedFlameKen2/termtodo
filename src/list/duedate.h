@@ -12,18 +12,32 @@ class DueDate {
 private:
     bool on = false;
     tm time;
+
+    string * readDBFormat(string data){
+        data += " ";
+        string * dueData = new string[5];
+        int j = 0;
+        for(int i = 0; i < 5; i++){
+            while(data[j] != ' '){
+                dueData[i] += data[j++];
+            }
+            j++;
+        }
+        return dueData;
+    }
 public:
     DueDate(){
     }
-    DueDate(string * dueData){
-        if(dueData[0] == "Off")
+    DueDate(string data){
+        if(data == "off")
             return;
         on = true;
-        time.tm_mon = (*dueData)[0];
-        time.tm_mday = (*dueData)[1];
-        time.tm_year = (*dueData)[2];
-        time.tm_hour = (*dueData)[3];
-        time.tm_min = (*dueData)[4];
+        string * dueData = readDBFormat(data);
+        time.tm_mon = stoi(dueData[0]);
+        time.tm_mday = stoi(dueData[1]);
+        time.tm_year = stoi(dueData[2]);
+        time.tm_hour = stoi(dueData[3]);
+        time.tm_min = stoi(dueData[4]);
     }
     void initCurDay(){
         time = getCurTime();
@@ -41,6 +55,7 @@ public:
         /*else*/
         /*    cout << "Due Date is disabled\n";*/
     }
+    //TODO: Make day change when the set month doesn't support the day
     void setMonth(){
         int month;
         while(true){

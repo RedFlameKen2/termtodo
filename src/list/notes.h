@@ -35,16 +35,18 @@ public:
         this->title = data[1];
         this->desc = data[2];
         this->listName = data[3];
+        dueDate = DueDate(data[4]);
         this->checkList.checkItems = checkItems;
     }
     Note() : id(0), title(""), desc(""), listName(""){
     }
     void printData(){
+        printBar();
         cout << "For note ID " << id << "\n";
         cout << "title: " << title << "\n";
         cout << "description: " << desc << "\n";
-        checkList.printCheckList();
         dueDate.printDueDate();
+        checkList.printCheckList();
     }
     string getDBFormat(){
         string write;

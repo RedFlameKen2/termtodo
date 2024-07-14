@@ -2,7 +2,7 @@
 
 using std::string;
 
-const int DATA_SIZE = 4;
+const int DATA_SIZE = 5;
 
 
 
