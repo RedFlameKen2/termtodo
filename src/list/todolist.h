@@ -23,8 +23,16 @@ public:
     void removeNote(int index){
         notes.erase(std::next(notes.begin(), index));
     }
+    void removeNoteByID(int id){
+        for(int i = 0; i < notes.size(); i++)
+            if(notes[i].id == id)
+                notes.erase(std::next(notes.begin(), i));
+    }
     string getTitle(){
         return title;
+    }
+    bool listEmpty(){
+        return notes.empty();
     }
     void printNotes(){
         if(notes.empty()){

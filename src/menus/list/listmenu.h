@@ -1,4 +1,4 @@
-#include "../note/addnotemenu.h"
+#include "../note/removenotemenu.h"
 
 class ListMenu : public Menu{
 private:
@@ -52,6 +52,9 @@ public:
                 }
                 break;
             case 4:
+                {
+                    RemoveNoteMenu removeNoteMenu(todoLists, curList);
+                }
                 break;
             case 5:
                 {

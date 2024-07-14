@@ -18,9 +18,8 @@ private:
         string * dueData = new string[5];
         int j = 0;
         for(int i = 0; i < 5; i++){
-            while(data[j] != ' '){
+            while(data[j] != ' ')
                 dueData[i] += data[j++];
-            }
             j++;
         }
         return dueData;

@@ -15,7 +15,7 @@ string getSection(string data, int &focus){
 }
 string * getDataArray(string data){
     string * sections = new string[DATA_SIZE];
-    int focus = 0;
+    int focus = -1;
     for(int i = 0; i < DATA_SIZE; i++)
         sections[i] = getSection(data, focus);
     return sections;
@@ -40,6 +40,8 @@ vector<CheckItem> getChecklistData(string data){
     return checkItems;
 }
 void retrieveNote(ToDoList *todoList, string curLine){
+    for(int i = 0; i < getDataArray(curLine)->size(); i++)
+        cout << *getDataArray(curLine);
     Note note(getDataArray(curLine), getChecklistData(curLine));
     todoList->addNote(note);
 }
@@ -80,12 +82,11 @@ void addList(vector<ToDoList> *todoLists, string listName){
 
 ToDoList * getByTitle(vector<ToDoList> *todoLists, string title){
     for(ToDoList &x : *todoLists)
-        if(x.getTitle() == title){
-            cout << x.getTitle();
+        if(x.getTitle() == title)
             return &x;
-        }
     return &(*todoLists)[0];
 }
+
 void initLists(vector<ToDoList> *todoLists){
     std::ifstream file("db");
     if(!file){

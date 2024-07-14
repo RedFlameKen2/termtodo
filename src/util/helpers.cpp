@@ -10,105 +10,14 @@
 using std::cout;
 using std::cin;
 using std::string;
-using std::endl;
 using std::isdigit;
 using std::this_thread::sleep_for;
 using std::ofstream;
 using std::ifstream;
 using std::regex;
-using std::to_string;
+using std::vector;
 
-string getOS(){
-    #ifdef _WIN64
-        return "Windows 64 bit";
-    #elif _WIN32
-        return "Windows 32 bit";
-    #elif __linux__
-        return "Linux";
-    #endif 
-}
-void clearTerm(){
-    if(getOS() == "Linux")
-        system("clear");
-    else if (getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit")
-        system("cls");
-}
 
-void notify(){
-    using namespace std::chrono_literals;
-    while(true){
-        if(getOS() == "Linux")
-            system("notify-send -u normal 'hey, attention'");
-        else if(getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit") 
-            system("msg %username% /server:%computername% /time:300 'hey, attention'");
-        sleep_for(10s);
-    }
-}
-bool strIsDigit(string str){
-    for(char c : str)
-        if(!isdigit(c))
-            return false;
-    return true;
-}
-int promptInt(string prompt){
-    string input = "";
-    while(true){
-        cout << prompt;
-        cin >> input;
-        if(strIsDigit(input))
-            break;
-        cout << "Invalid Input, try again!\n";
-    }
-    return stoi(input);
-}
-string stolower(string &chars){
-    string out;
-    for(char c : chars)
-        out += tolower(c);
-    return out;
-}
-bool promptConfirm(string prompt){
-    string input;
-    while(true){
-        printBar();
-        cout << prompt << "(y)es/(n)o\nEnter Answer: ";
-        cin >> input;
-        clearTerm();
-        stolower(input);
-        if(input == "y" || input == "n" || input == "yes" || input == "no")
-            break;
-        printBar();
-        cout << "Invalid input, Try Again!\n";
-    }
-    if(input[0] == 'y')
-        return true;
-    return false;
-}
-bool optionValid(int option, int max){
-    if(option <= max || option > 1)
-        return true;
-    return false;
-}
-int id_Randomizer(){
-	srand((unsigned) time(NULL));
-	int random = (rand() % 100000);
-	return random;
-}
-
-string promptString(string prompt){
-    string input;
-    cout << prompt;
-    getline(cin, input);
-    return input;
-}
-string dbRead(){
-    ifstream file("db");
-    string rd = "", temp = "";
-    while(std::getline(file, temp))
-        rd += temp + "\n";
-    file.close();
-    return rd;
-}
 int getIDSection(string dataline){
     string id;
     int i = 0;
@@ -116,8 +25,40 @@ int getIDSection(string dataline){
         id+=dataline[i++];
     return stoi(id);
 }
-void printBar(){
-    cout << "\n=====================================================\n";
+
+string stolower(string &chars){
+    string out;
+    for(char c : chars)
+        out += tolower(c);
+    return out;
+}
+
+bool strIsDigit(string str){
+    for(char c : str)
+        if(!isdigit(c))
+            return false;
+    return true;
+}
+bool optionValid(int option, int max){
+    if(option <= max || option > 1)
+        return true;
+    return false;
+}
+vector<string> getDBLines(){
+    ifstream file("db");
+    vector<string> rd;
+    string temp = "";
+    while(std::getline(file, temp))
+        rd.push_back(temp + "\n");
+    file.close();
+    return rd;
+}
+vector<int> getIDArray(){
+    vector<int> ids;
+    vector<string> dataLines = getDBLines();
+    for(string data : dataLines)
+        ids.push_back(getIDSection(data));
+    return ids;
 }
 /*void dbWrite(){*/
 /*    string write = "", ret = dbRead();*/
@@ -135,6 +76,30 @@ void writeDataToDb(string data){
     file << write;
     file.close();
 }
+void overwriteDataToDB(string data){
+    ofstream file("db");
+    file << data;
+    file.close();
+}
+
+void clearTerm(){
+    if(getOS() == "Linux")
+        system("clear");
+    else if (getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit")
+        system("cls");
+}
+
+void notify(){
+    using namespace std::chrono_literals;
+    while(true){
+        if(getOS() == "Linux")
+            system("notify-send -u normal 'hey, attention'");
+        else if(getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit") 
+            system("msg %username% /server:%computername% /time:300 'hey, attention'");
+        sleep_for(10s);
+    }
+}
+
 void updateDB(string data, int id){
     ifstream file("db");
     string rd = "", temp = "";
@@ -143,15 +108,85 @@ void updateDB(string data, int id){
             rd += data;
         else
             rd += temp;
-    writeDataToDb(rd);
+    overwriteDataToDB(rd);
 }
+
 void deleteInDB(int id){
     ifstream file("db");
     string rd = "", temp = "";
     while(getline(file, temp)){
-        if(getIDSection(temp) == id)
-            continue;
-        temp += rd;
+        if(getIDSection(temp) != id)
+            rd += temp + "\n";
     }
-    writeDataToDb(rd);
+    overwriteDataToDB(rd);
+}
+
+void printBar(){
+    cout << "\n=====================================================\n";
+}
+
+string promptString(string prompt){
+    string input;
+    cout << prompt;
+    getline(cin, input);
+    return input;
+}
+string dbRead(){
+    ifstream file("db");
+    string rd = "", temp = "";
+    while(std::getline(file, temp))
+        rd += temp + "\n";
+    file.close();
+    return rd;
+}
+string getOS(){
+    #ifdef _WIN64
+        return "Windows 64 bit";
+    #elif _WIN32
+        return "Windows 32 bit";
+    #elif __linux__
+        return "Linux";
+    #endif 
+}
+int id_Randomizer(){
+	srand((unsigned) time(NULL));
+	int random = (rand() % 100000);
+	return random;
+}
+
+int promptInt(string prompt){
+    string input = "";
+    while(true){
+        cout << prompt;
+        cin >> input;
+        if(strIsDigit(input))
+            break;
+        cout << "Invalid Input, try again!\n";
+    }
+    return stoi(input);
+}
+
+bool promptConfirm(string prompt){
+    string input;
+    while(true){
+        printBar();
+        cout << prompt << "(y)es/(n)o\nEnter Answer: ";
+        cin >> input;
+        clearTerm();
+        stolower(input);
+        if(input == "y" || input == "n" || input == "yes" || input == "no")
+            break;
+        printBar();
+        cout << "Invalid input, Try Again!\n";
+    }
+    if(input[0] == 'y')
+        return true;
+    return false;
+}
+bool idExists(int id){
+    vector<int> ids = getIDArray();
+    for(int x : ids)
+        if(x == id)
+            return true;
+    return false;
 }
