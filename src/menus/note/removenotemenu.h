@@ -3,7 +3,7 @@
 class RemoveNoteMenu : Menu {
 private:
     void removeByID(){
-        if((*todoLists)[*curList].listEmpty()){
+        if((*todoLists)[*curList-1].listEmpty()){
             cout << "The List is Empty!\n";
             return; 
         }
@@ -17,10 +17,10 @@ private:
             cout << "ID Doesn't Exist! Try Again!\n";
         }
         deleteInDB(id);
-        (*todoLists)[*curList].removeNoteByID(id);
+        (*todoLists)[*curList-1].removeNoteByID(id);
     }
     void removeByTitle(){
-        if((*todoLists)[*curList].listEmpty()){
+        if((*todoLists)[*curList-1].listEmpty()){
             cout << "The List is Empty!\n";
             return; 
         }
@@ -33,7 +33,7 @@ private:
             cout << "ID Doesn't Exist! Try Again!\n";
         }
         deleteInDB(id);
-        (*todoLists)[*curList].removeNoteByID(id);
+        (*todoLists)[*curList-1].removeNoteByID(id);
     }
 public:
     RemoveNoteMenu(vector<ToDoList> * todoLists, int * curList) {
@@ -49,7 +49,7 @@ public:
         cout << "3) Exit\n";
     }
     void printInfo() override {
-        (*todoLists)[*curList].printNotes();
+        (*todoLists)[*curList-1].printNotes();
     }
     /*void printTargetInfo() override {*/
     /*}*/

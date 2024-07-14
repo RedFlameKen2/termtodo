@@ -40,8 +40,6 @@ vector<CheckItem> getChecklistData(string data){
     return checkItems;
 }
 void retrieveNote(ToDoList *todoList, string curLine){
-    for(int i = 0; i < getDataArray(curLine)->size(); i++)
-        cout << *getDataArray(curLine);
     Note note(getDataArray(curLine), getChecklistData(curLine));
     todoList->addNote(note);
 }
