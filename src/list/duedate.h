@@ -49,10 +49,6 @@ public:
     }
     void toggleOn(){
         on = !on;
-        /*if(on)*/
-        /*    cout << "Due Date is enabled\n";*/
-        /*else*/
-        /*    cout << "Due Date is disabled\n";*/
     }
     //TODO: Make day change when the set month doesn't support the day
     void setMonth(){
@@ -89,7 +85,7 @@ public:
                 break;
             cout << "The Past is in the past, buddy. Try Again!\n";
         }
-        time.tm_year = year;
+        time.tm_year = year-1900;
     }
     void setHour(){
         int hour;

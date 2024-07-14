@@ -30,7 +30,7 @@ private:
             id = promptInt("Enter title to remove: ");
             if(idExists(id))
                 break;
-            cout << "ID Doesn't Exist! Try Again!\n";
+            cout << "Note Doesn't Exist! Try Again!\n";
         }
         deleteInDB(id);
         (*todoLists)[*curList-1].removeNoteByID(id);
