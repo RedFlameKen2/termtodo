@@ -4,3 +4,4 @@ db
 *.o
 src/obj/
 obj/
+.vscode/
