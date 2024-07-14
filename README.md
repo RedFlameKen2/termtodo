@@ -3,8 +3,8 @@ This is a cross-platform terminal-based ToDoList App. This App will greatly impr
 
 This Program will make use of the different Object Oriented Principles and follow the following goals:
 - [x] Write to a local File
-- [ ] Read the contents of a local File
-- [ ] Process Data from a local File
+- [x] Read the contents of a local File
+- [x] Process Data from a local File
 
 ToDo:
 - [x] Lists
