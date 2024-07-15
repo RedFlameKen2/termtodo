@@ -15,7 +15,7 @@ private:
 
     string * readDBFormat(string data){
         data += " ";
-        string * dueData = new string[5];
+        string * dueData = new string[5];//lols
         int j = 0;
         for(int i = 0; i < 5; i++){
             while(data[j] != ' ')
