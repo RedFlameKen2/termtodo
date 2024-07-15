@@ -23,7 +23,7 @@ private:
         return (progress/roof)*((float)10);
     }
 public:
-    vector<CheckItem> checkItems;
+    vector<CheckItem> checkItems; //wow nice one bitch
     void add(string title, bool checked){
         checkItems.push_back(CheckItem(title, checked));
     }
