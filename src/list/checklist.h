@@ -14,7 +14,7 @@ struct CheckItem {
 };
 class CheckList {
 public:
-    vector<CheckItem> checkItems;
+    vector<CheckItem> checkItems; //wow nice one bitch
     void add(string title, bool checked){
         checkItems.push_back(CheckItem(title, checked));
     }
