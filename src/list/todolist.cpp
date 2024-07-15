@@ -68,30 +68,41 @@ bool listExists(vector<ToDoList> todoLists, string listName){
     return false;
 }
 vector<string> getTitlesInSection(string titleLine){
+    cout << "step 3\n";
     vector<string> titles;
-    int i = 0, focus = -1;
-    while(i < titleLine.size()){
+    int focus = 0;
+    titleLine+='\n';
+    while(titleLine[focus] != '\n'){
+        cout << "iteration\n";
         string title = "";
-        while(titleLine[++focus] != ',')
-            title+=titleLine[focus];
+        while(titleLine[focus] != ',' && titleLine[focus] != '\n'){
+            title+=titleLine[focus++];
+        }
         titles.push_back(title);
-        i++;
+        focus++;
     }
     return titles;
 }
 vector<string> readTitlesDB(){
+    cout << "step 2\n";
     vector<string> titles;
-    ifstream file("db");
-    string rd;
-    getline(file, rd);
-    titles = getTitlesInSection(rd);
+    titles = getTitlesInSection(getTitleLine());
+    cout << "step 4\n";
     return titles;
 }
+//TODO: finish write
 void writeTitleDB(string title){
     string write = "", rd = dbRead();
-    for(string x : getTitlesInSection(getTitleLine()))
+    cout << "step 1\n";
+    for(string x : readTitlesDB())
         write += x + ",";
-    write += title + ",";
+    cout << "step 5\n";
+    write += title + "\n";
+    write += rd;
+    cout << write << "\n";
+    std::ofstream file("db");
+    file << write;
+    file.close();
 }
 
 void addList(vector<ToDoList> *todoLists, string listName){
