@@ -67,15 +67,43 @@ bool listExists(vector<ToDoList> todoLists, string listName){
             return true;
     return false;
 }
-
-void mkDefaultLists(vector<ToDoList> *todoLists){
-    todoLists->push_back(ToDoList("ToDo"));
-    todoLists->push_back(ToDoList("Doing"));
-    todoLists->push_back(ToDoList("Done"));
+vector<string> getTitlesInSection(string titleLine){
+    vector<string> titles;
+    int i = 0, focus = -1;
+    while(i < titleLine.size()){
+        string title = "";
+        while(titleLine[++focus] != ',')
+            title+=titleLine[focus];
+        titles.push_back(title);
+        i++;
+    }
+    return titles;
+}
+vector<string> readTitlesDB(){
+    vector<string> titles;
+    ifstream file("db");
+    string rd;
+    getline(file, rd);
+    titles = getTitlesInSection(rd);
+    return titles;
+}
+void writeTitleDB(string title){
+    string write = "", rd = dbRead();
+    for(string x : getTitlesInSection(getTitleLine()))
+        write += x + ",";
+    write += title + ",";
 }
 
 void addList(vector<ToDoList> *todoLists, string listName){
     todoLists->push_back(ToDoList(listName));
+    writeTitleDB(listName);
+}
+
+//TODO: init with the list names first
+void mkDefaultLists(vector<ToDoList> *todoLists){
+    addList(todoLists, "ToDo");
+    addList(todoLists, "Doing");
+    addList(todoLists, "Done");
 }
 
 ToDoList * getByTitle(vector<ToDoList> *todoLists, string title){
