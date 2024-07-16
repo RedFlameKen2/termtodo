@@ -61,3 +61,4 @@ public:
 vector<ToDoList> recoverList();
 ToDoList getByTitle(vector<ToDoList> todoLists);
 void initLists(vector<ToDoList> *todoLists);
+void addList(vector<ToDoList> *todoLists, string listName);

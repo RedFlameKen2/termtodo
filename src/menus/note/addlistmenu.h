@@ -1,9 +1,9 @@
-#include "addlistmenu.h"
+#include "listmenu.h"
 
-class RemoveListMenu : Menu
+class AddListMenu : Menu
 {
 public:
-    RemoveListMenu(vector<ToDoList> *todoLists, int *curList)
+    AddListMenu(vector<ToDoList> *todoLists, int *curList)
     {
         this->curList = curList;
         this->todoLists = todoLists;
