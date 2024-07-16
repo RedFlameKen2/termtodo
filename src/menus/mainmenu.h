@@ -2,6 +2,7 @@
 
 class MainMenu : public Menu {
 private:
+    //lmao comment
 public:
     MainMenu(vector<ToDoList> * todoLists, int * curList){
         this->todoLists = todoLists;
