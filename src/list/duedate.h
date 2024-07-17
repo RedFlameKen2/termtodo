@@ -61,6 +61,8 @@ public:
                 break;
             cout << "Invalid Month, Try Again!\n";
         }
+        if(time.tm_mday > MONTH_MAX_DAYS[month])
+            time.tm_mday = 1;
         time.tm_mon = month;
     }
     void setDay(){
