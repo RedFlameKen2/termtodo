@@ -68,40 +68,30 @@ bool listExists(vector<ToDoList> todoLists, string listName){
     return false;
 }
 vector<string> getTitlesInSection(string titleLine){
-    cout << "step 3\n";
     vector<string> titles;
     int focus = 0;
     titleLine+='\n';
-    cout << titleLine;
     while(titleLine[focus] != '\n' && titleLine[focus] != 0){
-        cout << "iteration\n";
         string title = "";
-        while(titleLine[focus] != ',' && titleLine[focus] != '\n'){
+        while(titleLine[focus] != ',' && titleLine[focus] != '\n')
             title+=titleLine[focus++];
-        }
         titles.push_back(title);
         focus++;
     }
     return titles;
 }
 vector<string> readTitlesDB(){
-    cout << "step 2\n";
     vector<string> titles;
     titles = getTitlesInSection(getTitleLine());
-    cout << "step 4\n";
     return titles;
 }
-//TODO: finish write
 void writeTitleDB(string title){
     string write = "", rd = dbRead();
-    cout << "step 1\n";
     for(string x : readTitlesDB())
         write += x + ",";
-    cout << "step 5\n";
     write += title + "\n";
     write += rd;
-    cout << write << "\n";
-    std::ofstream file("db");
+    ofstream file("db");
     file << write;
     file.close();
 }
@@ -126,26 +116,22 @@ ToDoList * getByTitle(vector<ToDoList> *todoLists, string title){
 }
 
 void initLists(vector<ToDoList> *todoLists){
-    std::ifstream file("db");
+    ifstream file("db");
     if(!file){
         mkDefaultLists(todoLists);
         return;
     }
-    vector<string> listNames;
-    string curLine = "";
-    while(getline(file, curLine)){
-        string listName = getListName(curLine);
-        if(!listExists(*todoLists, listName))
-            listNames.push_back(listName);
-    }
+
+    vector<string> listNames = getTitlesInSection(getTitleLine());
+    //TODO: correct the order
+    for(string listName : listNames)
+        addList(todoLists, listName);
     file.close();
-    for(string x : listNames){
-        addList(todoLists, x);
-    }
     file = ifstream("db");
-    int i = 0;
+    string curLine = "";
+    getline(file,curLine);
     while(getline(file, curLine)){
         retrieveNote(getByTitle(todoLists, getListName(curLine)), curLine);
-        i++;
     }
+    file.close();
 }
