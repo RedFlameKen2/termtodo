@@ -1,5 +1,5 @@
-#include "addlistmenu.h"
-#include <algorithm>
+#include "note/addlistmenu.h"
+
 class RemoveListMenu : Menu
 {
 public:
@@ -16,12 +16,16 @@ public:
 
     }
 
+    //I'm not sure why you're trying to use a vector of strings, if it's supposed to be for the list, then we already have
+    //a vector of ToDoLists called todoLists (it's a pointer btw). manage that instead, and refer to line 23 of todolist.h
+    //for an example of removing an item from a vector. the function is called removeNote()
 void RemoveItem(std::vector<std::string>& strings)
 {
     std::string ToRemove;
     cout << "Enter the task you want to remove: ";
     std::getline(std:: cin, ToRemove);
 
+    //wth
     auto it = std::find(strings.begin(),strings.end(),ToRemove);
 
     if (it != strings.end())

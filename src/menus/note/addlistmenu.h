@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "../menu.h"
 
 class AddListMenu : Menu
 {
@@ -27,7 +27,8 @@ public:
         string NewTask;
         cin >> NewTask;
 //idk what to put below here so i just put list
-        list.push_back(NewTask);
+        //RE: the vector of lists is called todoLists, also it's a pointer to the vector of Lists
+        todoLists->push_back(NewTask);
 
         cout << "Successfully Added New task";
         cin.clear();
