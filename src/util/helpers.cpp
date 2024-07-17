@@ -114,7 +114,6 @@ void notify(){
         sleep_for(10s);
     }
 }
-//TODO: make the first line in db the list of todolists instead
 void updateDB(string data, int id){
     ifstream file = getDBStream();
     string rd = "", temp = "";

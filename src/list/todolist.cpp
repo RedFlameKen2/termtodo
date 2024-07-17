@@ -121,11 +121,9 @@ void initLists(vector<ToDoList> *todoLists){
         mkDefaultLists(todoLists);
         return;
     }
-
     vector<string> listNames = getTitlesInSection(getTitleLine());
-    //TODO: correct the order
     for(string listName : listNames)
-        addList(todoLists, listName);
+        todoLists->push_back(ToDoList(listName));
     file.close();
     file = ifstream("db");
     string curLine = "";
