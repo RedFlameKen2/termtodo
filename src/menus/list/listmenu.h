@@ -7,7 +7,8 @@ private:
         while(true){
             displayLists();
             printBar();
-            input = promptInt("\nSelect a list number: ");
+            printTargetInfo();
+            input = promptInt("Select a list number: ");
             clearTerm();
             if(input <= todoLists->size() && input > 0)
                 break;
@@ -64,7 +65,6 @@ public:
                         cout << "There are no notes in this list!";
                         break;
                     }
-                    //TODO: list notes
                     ManageNoteMenu ManageNoteMenu(todoLists, curList);
                 }
                 break;
