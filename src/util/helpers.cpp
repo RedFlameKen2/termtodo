@@ -91,8 +91,8 @@ ifstream getDBStream(){
     return file;
 }
 void overwriteDataToDB(string allData){
-    ofstream file("db");
     string write = getTitleLine() + "\n";
+    ofstream file("db");
     write += allData;
     file << write;
     file.close();
@@ -121,7 +121,7 @@ void updateDB(string data, int id){
         if(getIDSection(temp) == id)
             rd += data;
         else
-            rd += temp;
+            rd += temp + "\n";
     overwriteDataToDB(rd);
 }
 

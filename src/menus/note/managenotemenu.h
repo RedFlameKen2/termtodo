@@ -22,6 +22,10 @@ private:
     void updateNote(){
         note->fullUpdate(*((*todoLists)[*curList-1].getNote(curNote-1)));
     }
+    void saveNote(){
+        *((*todoLists)[*curList-1].getNote(curNote-1)) = *note;
+        updateDB(note->getDBFormat(), note->id);
+    }
 public:
     ManageNoteMenu(vector<ToDoList> * todoLists, int * curList) {
         this->todoLists = todoLists;
@@ -79,7 +83,7 @@ public:
                 }
                 break;
             case 6:
-                *((*todoLists)[*curList-1].getNote(curNote-1)) = *note;
+                saveNote();
                 return true;
             case 7:
                 promptConfirm("Are you sure you want to cancel?\nProgress will be lost:");

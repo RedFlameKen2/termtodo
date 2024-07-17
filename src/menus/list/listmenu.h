@@ -38,9 +38,11 @@ public:
         cout << "7) Back\n";
         cout << "8) Exit the program\n";
     }
+    //TODO: fix visual bug, leave space on top
     bool options(int option) override{
         switch(option){
             case 1:
+                //TODO: leave space on the top
                 changeCurList();
                 break;
             case 2:
@@ -62,7 +64,7 @@ public:
                         cout << "There are no notes in this list!";
                         break;
                     }
-
+                    //TODO: list notes
                     ManageNoteMenu ManageNoteMenu(todoLists, curList);
                 }
                 break;

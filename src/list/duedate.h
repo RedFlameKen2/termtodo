@@ -26,6 +26,7 @@ private:
     }
 public:
     DueDate(){
+        initCurDay();
     }
     DueDate(string data){
         if(data == "off")
@@ -50,20 +51,19 @@ public:
     void toggleOn(){
         on = !on;
     }
-    //TODO: Make day change when the set month doesn't support the day
     void setMonth(){
         int month;
         while(true){
             printBar();
             month = promptInt("Enter the Month: ");
             clearTerm();
-            if(month < 12 && month >= 0)
+            if(month < 12 && month > 0)
                 break;
             cout << "Invalid Month, Try Again!\n";
         }
         if(time.tm_mday > MONTH_MAX_DAYS[month])
             time.tm_mday = 1;
-        time.tm_mon = month;
+        time.tm_mon = month-1;
     }
     void setDay(){
         int day;
