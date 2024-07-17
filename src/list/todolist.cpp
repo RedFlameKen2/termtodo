@@ -72,7 +72,8 @@ vector<string> getTitlesInSection(string titleLine){
     vector<string> titles;
     int focus = 0;
     titleLine+='\n';
-    while(titleLine[focus] != '\n'){
+    cout << titleLine;
+    while(titleLine[focus] != '\n' && titleLine[focus] != 0){
         cout << "iteration\n";
         string title = "";
         while(titleLine[focus] != ',' && titleLine[focus] != '\n'){
