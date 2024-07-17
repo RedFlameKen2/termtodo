@@ -1,6 +1,8 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "../util/helpers.h"
 #include "../util/monthday.h"
 
@@ -149,6 +151,20 @@ public:
         cout << 1900 + time.tm_year << " ";
         cout << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
         cout << std::setfill('0') << std::setw(2) << time.tm_min << "\n";
+    }
+    string getDueDateData(){
+        string out;
+        if(!on){
+            return "Off";
+        }
+        out += MONTH_NAMES[time.tm_mon] + " ";
+        out += to_string(time.tm_mday) + ", ";
+        out += to_string(1900 + time.tm_year)+ " ";
+        std::stringstream ss;
+        ss << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
+        ss << std::setfill('0') << std::setw(2) << time.tm_min;
+        out += string(ss.str());
+        return out;
     }
     bool sameTime(tm time){
         if  (
