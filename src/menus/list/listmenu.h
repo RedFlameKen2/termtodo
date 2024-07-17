@@ -5,6 +5,7 @@ private:
     void changeCurList(){
         int input;
         while(true){
+            cout << "\n";
             displayLists();
             printBar();
             printTargetInfo();
@@ -15,7 +16,7 @@ private:
             cout << "Not an existing list, Try Again!\n";
         }
         *curList = input;
-        cout << "List Successfully Changed!";
+        cout << "\nList Successfully Changed!";
     }
 public:
     ListMenu(){
@@ -39,11 +40,9 @@ public:
         cout << "7) Back\n";
         cout << "8) Exit the program\n";
     }
-    //TODO: fix visual bug, leave space on top
     bool options(int option) override{
         switch(option){
             case 1:
-                //TODO: leave space on the top
                 changeCurList();
                 break;
             case 2:
