@@ -13,6 +13,15 @@ struct CheckItem {
     CheckItem(){};
 };
 class CheckList {
+private:
+    int getProgress(){
+        float roof = checkItems.size();
+        float progress;
+        for(CheckItem checkItem : checkItems)
+            if(checkItem.checked)
+                progress++;
+        return (progress/roof)*((float)10);
+    }
 public:
     vector<CheckItem> checkItems;
     void add(string title, bool checked){
@@ -51,9 +60,22 @@ public:
             cout << "There is no CheckList!\n";
             return;
         }
-        cout << "CheckList: \n";
+        cout << "CheckList: "<< getProgBar() << "\n";
         for(CheckItem checkItem : checkItems)
             cout << "[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
+    }
+    string getProgBar(){
+        string bar = "[";
+        int i = 0, progress = getProgress();
+        while(i< 10){
+            if(i < progress)
+                bar+="#";
+            else
+                bar+="-";
+            i++;
+        }
+        bar += "]";
+        return bar;
     }
 };
 

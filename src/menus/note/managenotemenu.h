@@ -78,6 +78,7 @@ public:
                 }
                 break;
             case 5:
+                //TODO: make a check list manager
                 {
                     AddCheckMenu addCheckMenu(note);
                 }
