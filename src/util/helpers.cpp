@@ -189,7 +189,12 @@ bool promptConfirm(string prompt){
         cin >> input;
         clearTerm();
         stolower(input);
-        if(input == "y" || input == "n" || input == "yes" || input == "no")
+        if  (
+                stolower(input) == "y" || 
+                stolower(input) == "n" || 
+                stolower(input) == "yes" || 
+                stolower(input) == "no"
+            )
             break;
         printBar();
         cout << "Invalid input, Try Again!\n";
