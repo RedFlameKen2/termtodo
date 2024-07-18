@@ -9,7 +9,7 @@ private:
     {
         cin.get();
         printBar();
-        cout << "*** Add New task ***\n";
+        cout << "*** Add New list ***\n";
 
         std::string title;
 
@@ -20,7 +20,21 @@ private:
 
         todoLists->push_back(newList);
 
-        cout << "Successfully Added New task";
+        cout << "\nSuccessfully Added New list";
+
+    }
+
+    void Removelistmenu()
+    {
+        cin.get();
+        printBar();
+        cout << "*** Remove a List ***\n";
+        
+        int Index = promptInt("Enter list number to remove: ");
+
+        todoLists->erase(std::next(todoLists->begin(), Index));
+
+        cout << "Successfully Removed list";
 
     }
 public:
