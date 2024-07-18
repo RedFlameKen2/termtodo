@@ -1,5 +1,4 @@
-#include <menu.h>
-#include <listmenu.h>
+#include "./list/listmenu.h"
 #include <algorithm>
 
 class RemoveListMenu : Menu

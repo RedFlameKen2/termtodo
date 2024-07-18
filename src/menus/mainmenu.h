@@ -7,8 +7,9 @@ private:
 
         void AddMenu()
     {
+        cin.get();
         printBar();
-        cout << "*** Add New task ***";
+        cout << "*** Add New task ***\n";
 
         std::string title;
 
@@ -20,7 +21,7 @@ private:
         todoLists->push_back(newList);
 
         cout << "Successfully Added New task";
-        cin.clear();
+
     }
 public:
     MainMenu(vector<ToDoList> *todoLists, int *curList)
@@ -35,7 +36,7 @@ public:
         cout << "List of options: \n";
         cout << "1) Manage lists\n";
         cout << "2) List ToDoLists\n";
-        cout << "3) Add list-\n";
+        cout << "3) Add list\n";
         cout << "4) Remove list\n";
         cout << "5) Exit Program\n";
     }
