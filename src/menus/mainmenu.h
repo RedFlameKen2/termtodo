@@ -73,7 +73,7 @@ public:
         break;
         case 4:
         {
-            RemoveListMenu listMenu(todoLists, curList);
+            Removelistmenu();
         }
         break;
         case 5:
