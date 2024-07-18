@@ -2,6 +2,9 @@
 #include <fstream>
 #include "todolist.h"
 
+ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList){
+    return &(*todoLists)[*curList-1];
+}
 bool isFormatSeparator(char c){
     if(c == ',' && c == '\n')
         return true;
@@ -101,7 +104,6 @@ void addList(vector<ToDoList> *todoLists, string listName){
     writeTitleDB(listName);
 }
 
-//TODO: init with the list names first
 void mkDefaultLists(vector<ToDoList> *todoLists){
     addList(todoLists, "ToDo");
     addList(todoLists, "Doing");

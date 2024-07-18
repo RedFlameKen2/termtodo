@@ -91,8 +91,8 @@ ifstream getDBStream(){
     return file;
 }
 void overwriteDataToDB(string allData){
-    ofstream file("db");
     string write = getTitleLine() + "\n";
+    ofstream file("db");
     write += allData;
     file << write;
     file.close();
@@ -121,7 +121,7 @@ void updateDB(string data, int id){
         if(getIDSection(temp) == id)
             rd += data;
         else
-            rd += temp;
+            rd += temp + "\n";
     overwriteDataToDB(rd);
 }
 
@@ -185,11 +185,15 @@ bool promptConfirm(string prompt){
     string input;
     while(true){
         printBar();
-        cout << prompt << "(y)es/(n)o\nEnter Answer: ";
-        cin >> input;
+        input = promptString(" (y)es/(n)o\nEnter Answer:");
         clearTerm();
         stolower(input);
-        if(input == "y" || input == "n" || input == "yes" || input == "no")
+        if  (
+                stolower(input) == "y" || 
+                stolower(input) == "n" || 
+                stolower(input) == "yes" || 
+                stolower(input) == "no"
+            )
             break;
         printBar();
         cout << "Invalid input, Try Again!\n";
@@ -204,4 +208,9 @@ bool idExists(int id){
         if(x == id)
             return true;
     return false;
+}
+tm getCurTime(){
+    time_t t = std::time(new time_t);
+    tm time = *localtime(&t);
+    return time;
 }

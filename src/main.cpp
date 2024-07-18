@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <thread>
 #include "util/helpers.h"
-#include "menus/mainmenu.h"
+#include "notif/notif.h"
 
 using std::string;
 using std::thread;
@@ -16,6 +16,10 @@ void initMenuSystem(vector<ToDoList> *todoLists, int * curList){
     MainMenu mainMenu(todoLists, curList);
 }
 
+void initNotifSystem(vector<ToDoList> *todoLists, int * curList){
+    Notification Notification(todoLists, curList);
+}
+
 /*
  * Threads allow Multiple Processes to run at the same time.
  * Here we have t1 for the notification system (WIP)
@@ -27,8 +31,7 @@ void initThread() {
     vector<ToDoList> todoLists;
     int curList = 1;
     initLists(&todoLists);
-    thread t1([](vector<ToDoList> * todoLists){
-    }, &todoLists);
+    thread t1(initNotifSystem, &todoLists, &curList);
     thread t2(initMenuSystem, &todoLists, &curList);
     t1.join();
     t2.join();
@@ -36,7 +39,5 @@ void initThread() {
 
 int main(){
     initThread();
-    /*vector<ToDoList> todoLists;*/
-    /*initLists(&todoLists);*/
     return 0;
 }

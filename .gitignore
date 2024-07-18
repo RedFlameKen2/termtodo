@@ -5,3 +5,5 @@ db
 src/obj/
 obj/
 .vscode/
+main
+*.exe

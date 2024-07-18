@@ -1,6 +1,8 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "../util/helpers.h"
 #include "../util/monthday.h"
 
@@ -26,6 +28,7 @@ private:
     }
 public:
     DueDate(){
+        initCurDay();
     }
     DueDate(string data){
         if(data == "off")
@@ -42,28 +45,22 @@ public:
         time = getCurTime();
         toggleOn();
     }
-    tm getCurTime(){
-        time_t t = std::time(new time_t);
-        tm time = *localtime(&t);
-        return time;
-    }
     void toggleOn(){
         on = !on;
     }
-    //TODO: Make day change when the set month doesn't support the day
     void setMonth(){
         int month;
         while(true){
             printBar();
             month = promptInt("Enter the Month: ");
             clearTerm();
-            if(month < 12 && month >= 0)
+            if(month < 12 && month > 0)
                 break;
             cout << "Invalid Month, Try Again!\n";
         }
         if(time.tm_mday > MONTH_MAX_DAYS[month])
             time.tm_mday = 1;
-        time.tm_mon = month;
+        time.tm_mon = month-1;
     }
     void setDay(){
         int day;
@@ -154,5 +151,30 @@ public:
         cout << 1900 + time.tm_year << " ";
         cout << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
         cout << std::setfill('0') << std::setw(2) << time.tm_min << "\n";
+    }
+    string getDueDateData(){
+        string out;
+        if(!on){
+            return "Off";
+        }
+        out += MONTH_NAMES[time.tm_mon] + " ";
+        out += to_string(time.tm_mday) + ", ";
+        out += to_string(1900 + time.tm_year)+ " ";
+        std::stringstream ss;
+        ss << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
+        ss << std::setfill('0') << std::setw(2) << time.tm_min;
+        out += string(ss.str());
+        return out;
+    }
+    bool sameTime(tm time){
+        if  (
+                this->time.tm_mon == time.tm_mon &&
+                this->time.tm_mday == time.tm_mday &&
+                this->time.tm_year == time.tm_year &&
+                this->time.tm_hour == time.tm_hour &&
+                this->time.tm_min == time.tm_min
+            )
+            return true;
+        return false;
     }
 };

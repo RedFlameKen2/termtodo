@@ -5,16 +5,18 @@ private:
     void changeCurList(){
         int input;
         while(true){
+            cout << "\n";
             displayLists();
             printBar();
-            input = promptInt("\nSelect a list number: ");
+            printTargetInfo();
+            input = promptInt("Select a list number: ");
             clearTerm();
             if(input <= todoLists->size() && input > 0)
                 break;
             cout << "Not an existing list, Try Again!\n";
         }
         *curList = input;
-        cout << "List Successfully Changed!";
+        cout << "\nList Successfully Changed!";
     }
 public:
     ListMenu(){
@@ -62,17 +64,22 @@ public:
                         cout << "There are no notes in this list!";
                         break;
                     }
-
                     ManageNoteMenu ManageNoteMenu(todoLists, curList);
                 }
                 break;
             case 6:
+                for(ToDoList todoList : *todoLists){
+                    printBar();
+                    todoList.printNotes();
+                }
                 break;
             case 7:
                 return true;
             case 8:
-                cout << "Program Terminating, Goodbye!";
-                exit(1);
+                if(promptConfirm("Are you sure you want to exit?")){
+                    cout << "Program Terminating, Goodbye!";
+                    exit(1);
+                }
                 break;
         }
         return false;

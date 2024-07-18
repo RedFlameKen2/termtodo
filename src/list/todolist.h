@@ -39,7 +39,7 @@ public:
             cout << "The list is empty!\n";
             return;
         }
-        cout << "Notes of the List " << title << ": \n";
+        cout << "[Notes of the List " << title << "]\n";
         for(Note note : notes){
             note.printData();
             cout << "\n";
@@ -62,3 +62,4 @@ vector<ToDoList> recoverList();
 ToDoList getByTitle(vector<ToDoList> todoLists);
 void initLists(vector<ToDoList> *todoLists);
 void addList(vector<ToDoList> *todoLists, string listName);
+ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList);
