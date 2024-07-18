@@ -3,13 +3,13 @@
 using std::string;
 using std::ifstream;
 
-/*void dbWrite();*/
 void clearTerm();
 void notify();
 void writeDB(string data);
 void updateDB(string data, int id);
 void deleteInDB(int id);
 void printBar();
+void writeTitleLine(string titleData);
 
 string getOS();
 string dbRead();

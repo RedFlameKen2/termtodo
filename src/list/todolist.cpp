@@ -70,7 +70,8 @@ bool listExists(vector<ToDoList> todoLists, string listName){
             return true;
     return false;
 }
-vector<string> getTitlesInSection(string titleLine){
+vector<string> readTitlesDB(){
+    string titleLine = getTitleLine();
     vector<string> titles;
     int focus = 0;
     titleLine+='\n';
@@ -81,11 +82,6 @@ vector<string> getTitlesInSection(string titleLine){
         titles.push_back(title);
         focus++;
     }
-    return titles;
-}
-vector<string> readTitlesDB(){
-    vector<string> titles;
-    titles = getTitlesInSection(getTitleLine());
     return titles;
 }
 void writeTitleDB(string title){
@@ -102,6 +98,28 @@ void writeTitleDB(string title){
 void addList(vector<ToDoList> *todoLists, string listName){
     todoLists->push_back(ToDoList(listName));
     writeTitleDB(listName);
+}
+
+//TODO: remove the notes included in the list too
+void deleteListInDB(string title){
+    vector<string> titles = readTitlesDB();
+    string data;
+    int i = 0;
+    for(string x : titles){
+        if(x == title)
+            break;
+        i++;
+    }
+    titles.erase(std::next(titles.begin(), i));
+    for(string x : titles)
+        data += x + ",";
+    data[data.size()-1] = '\n';
+    writeTitleLine(data);
+}
+
+void removeList(vector<ToDoList> *todoLists, int index){
+    deleteListInDB((*todoLists)[index].getTitle());
+    todoLists->erase(std::next(todoLists->begin(), index));
 }
 
 void mkDefaultLists(vector<ToDoList> *todoLists){
@@ -123,7 +141,7 @@ void initLists(vector<ToDoList> *todoLists){
         mkDefaultLists(todoLists);
         return;
     }
-    vector<string> listNames = getTitlesInSection(getTitleLine());
+    vector<string> listNames = readTitlesDB();
     for(string listName : listNames)
         todoLists->push_back(ToDoList(listName));
     file.close();

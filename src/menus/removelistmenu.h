@@ -39,4 +39,3 @@ void RemoveItem(std::vector<std::string>& strings)
 }
 
 };
-//TODO: Flores

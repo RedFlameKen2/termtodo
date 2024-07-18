@@ -3,39 +3,31 @@
 class MainMenu : public Menu
 {
 private:
-    //lmao comment
-
-        void AddMenu()
-    {
+    void addListMenu(){
         cin.get();
         printBar();
         cout << "*** Add New list ***\n";
-
-        std::string title;
-
+        string title;
         title = promptString("Enter New List: ");
-
         ToDoList newList(title);
-
-
-        todoLists->push_back(newList);
-
+        addList(todoLists, title);
         cout << "\nSuccessfully Added New list";
 
     }
-
-    void Removelistmenu()
-    {
+    void removeListMenu(){
         cin.get();
         printBar();
         cout << "*** Remove a List ***\n";
-        
-        int Index = promptInt("Enter list number to remove: ");
-
-        todoLists->erase(std::next(todoLists->begin(), Index));
-
+        int index = 0;
+        while(true){
+            index = promptInt("Enter list number to remove: ");
+            if(index <= todoLists->size() && index > 0)
+                break;
+            cout << "list doesn't exist, Try Again!\n";
+        }
+        /*todoLists->erase(std::next(todoLists->begin(), index-1));*/
+        removeList(todoLists, index-1);
         cout << "Successfully Removed list";
-
     }
 public:
     MainMenu(vector<ToDoList> *todoLists, int *curList)
@@ -68,12 +60,12 @@ public:
             break;
         case 3:
         {
-            AddMenu();
+            addListMenu();
         }
         break;
         case 4:
         {
-            Removelistmenu();
+            removeListMenu();
         }
         break;
         case 5:

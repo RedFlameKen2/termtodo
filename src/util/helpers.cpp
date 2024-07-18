@@ -76,6 +76,13 @@ string getTitleLine(){
     file.close();
     return titleLine;
 }
+void writeTitleLine(string titleData){
+    string data = titleData;
+    data += dbRead();
+    ofstream file("db");
+    file << data;
+    file.close();
+}
 void writeDB(string data){
     string write = getTitleLine() + "\n";
     write += dbRead();

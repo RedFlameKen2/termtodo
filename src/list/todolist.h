@@ -58,8 +58,8 @@ public:
     }
 };
 /*void updateDB(vector<ToDoList> todoLists);*/
-vector<ToDoList> recoverList();
 ToDoList getByTitle(vector<ToDoList> todoLists);
+ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList);
 void initLists(vector<ToDoList> *todoLists);
 void addList(vector<ToDoList> *todoLists, string listName);
-ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList);
+void removeList(vector<ToDoList> *todoLists, int index);
