@@ -16,7 +16,7 @@ class CheckList {
 private:
     int getProgress(){
         float roof = checkItems.size();
-        float progress;
+        float progress = 0;
         for(CheckItem checkItem : checkItems)
             if(checkItem.checked)
                 progress++;
