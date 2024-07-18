@@ -205,3 +205,8 @@ bool idExists(int id){
             return true;
     return false;
 }
+tm getCurTime(){
+    time_t t = std::time(new time_t);
+    tm time = *localtime(&t);
+    return time;
+}

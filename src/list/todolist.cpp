@@ -2,6 +2,9 @@
 #include <fstream>
 #include "todolist.h"
 
+ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList){
+    return &(*todoLists)[*curList-1];
+}
 bool isFormatSeparator(char c){
     if(c == ',' && c == '\n')
         return true;

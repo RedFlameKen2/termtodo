@@ -23,3 +23,4 @@ bool promptConfirm(string prompt);
 bool idExists(int id);
 
 ifstream getDBStream();
+tm getCurTime();

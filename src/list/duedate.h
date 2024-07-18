@@ -1,6 +1,8 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "../util/helpers.h"
 #include "../util/monthday.h"
 
@@ -42,11 +44,6 @@ public:
     void initCurDay(){
         time = getCurTime();
         toggleOn();
-    }
-    tm getCurTime(){
-        time_t t = std::time(new time_t);
-        tm time = *localtime(&t);
-        return time;
     }
     void toggleOn(){
         on = !on;
@@ -154,5 +151,30 @@ public:
         cout << 1900 + time.tm_year << " ";
         cout << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
         cout << std::setfill('0') << std::setw(2) << time.tm_min << "\n";
+    }
+    string getDueDateData(){
+        string out;
+        if(!on){
+            return "Off";
+        }
+        out += MONTH_NAMES[time.tm_mon] + " ";
+        out += to_string(time.tm_mday) + ", ";
+        out += to_string(1900 + time.tm_year)+ " ";
+        std::stringstream ss;
+        ss << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
+        ss << std::setfill('0') << std::setw(2) << time.tm_min;
+        out += string(ss.str());
+        return out;
+    }
+    bool sameTime(tm time){
+        if  (
+                this->time.tm_mon == time.tm_mon &&
+                this->time.tm_mday == time.tm_mday &&
+                this->time.tm_year == time.tm_year &&
+                this->time.tm_hour == time.tm_hour &&
+                this->time.tm_min == time.tm_min
+            )
+            return true;
+        return false;
     }
 };
