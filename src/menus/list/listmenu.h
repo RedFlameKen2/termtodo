@@ -67,8 +67,11 @@ public:
                     ManageNoteMenu ManageNoteMenu(todoLists, curList);
                 }
                 break;
-                //TODO: display notes in all lists
             case 6:
+                for(ToDoList todoList : *todoLists){
+                    printBar();
+                    todoList.printNotes();
+                }
                 break;
             case 7:
                 return true;

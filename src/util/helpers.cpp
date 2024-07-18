@@ -185,7 +185,7 @@ bool promptConfirm(string prompt){
     string input;
     while(true){
         printBar();
-        cout << prompt << "(y)es/(n)o\nEnter Answer: ";
+        cout << prompt << " (y)es/(n)o\nEnter Answer: ";
         cin >> input;
         clearTerm();
         stolower(input);
