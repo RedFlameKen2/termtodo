@@ -16,7 +16,6 @@ void initMenuSystem(vector<ToDoList> *todoLists, int * curList){
     MainMenu mainMenu(todoLists, curList);
 }
 
-//TODO: find way to make notifications not interfere with cursor position
 void initNotifSystem(vector<ToDoList> *todoLists, int * curList){
     Notification Notification(todoLists, curList);
 }
@@ -40,7 +39,5 @@ void initThread() {
 
 int main(){
     initThread();
-    /*vector<ToDoList> todoLists;*/
-    /*initLists(&todoLists);*/
     return 0;
 }

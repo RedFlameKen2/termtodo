@@ -67,13 +67,16 @@ public:
                     ManageNoteMenu ManageNoteMenu(todoLists, curList);
                 }
                 break;
+                //TODO: display notes in all lists
             case 6:
                 break;
             case 7:
                 return true;
             case 8:
-                cout << "Program Terminating, Goodbye!";
-                exit(1);
+                if(promptConfirm("Are you sure you want to exit?")){
+                    cout << "Program Terminating, Goodbye!";
+                    exit(1);
+                }
                 break;
         }
         return false;
