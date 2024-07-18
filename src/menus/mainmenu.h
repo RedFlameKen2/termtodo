@@ -4,6 +4,24 @@ class MainMenu : public Menu
 {
 private:
     //lmao comment
+
+        void AddMenu()
+    {
+        printBar();
+        cout << "*** Add New task ***";
+
+        std::string title;
+
+        title = promptString("Enter New List: ");
+
+        ToDoList newList(title);
+
+
+        todoLists->push_back(newList);
+
+        cout << "Successfully Added New task";
+        cin.clear();
+    }
 public:
     MainMenu(vector<ToDoList> *todoLists, int *curList)
     {
@@ -35,7 +53,7 @@ public:
             break;
         case 3:
         {
-            AddListMenu listMenu(todoLists, curList);
+            AddMenu();
         }
         break;
         case 4:
