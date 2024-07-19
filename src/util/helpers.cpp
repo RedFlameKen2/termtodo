@@ -17,6 +17,17 @@ using std::ifstream;
 using std::regex;
 using std::vector;
 
+string getListTitleSection(string dataLine){
+    string title;
+    int i = 0, focus = 0;
+    while(i < 3){
+        while(dataLine[focus++] != ',');
+        i++;
+    }
+    while(dataLine[focus] != ',')
+        title += dataLine[focus++];
+    return title;
+}
 
 int getIDSection(string dataline){
     string id;

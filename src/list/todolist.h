@@ -34,6 +34,7 @@ public:
     bool listEmpty(){
         return notes.empty();
     }
+    //TODO: add list title
     void printNotes(){
         if(notes.empty()){
             cout << "The list is empty!\n";

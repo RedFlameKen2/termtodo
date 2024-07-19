@@ -1,6 +1,6 @@
 #include <cstdio>
-#include <fstream>
 #include "todolist.h"
+#include "../util/helpers.h"
 
 ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList){
     return &(*todoLists)[*curList-1];
@@ -100,7 +100,17 @@ void addList(vector<ToDoList> *todoLists, string listName){
     writeTitleDB(listName);
 }
 
-//TODO: remove the notes included in the list too
+
+void deleteListNotesInDB(string title){
+    ifstream file = getDBStream();
+    string temp, write = "";
+    while(getline(file, temp)){
+        if(getListTitleSection(temp) != title)
+            write += temp + "\n";
+    }
+    overwriteDataToDB(write);
+}
+
 void deleteListInDB(string title){
     vector<string> titles = readTitlesDB();
     string data;
@@ -115,6 +125,7 @@ void deleteListInDB(string title){
         data += x + ",";
     data[data.size()-1] = '\n';
     writeTitleLine(data);
+    deleteListNotesInDB(title);
 }
 
 void removeList(vector<ToDoList> *todoLists, int index){

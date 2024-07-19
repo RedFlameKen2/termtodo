@@ -38,6 +38,7 @@ private:
                     return;
                 }
     }
+    //TODO: the notif is a minute early
     void checkDue(){
         for(ToDoList todoList : *todoLists)
             for(Note note : *(todoList.getNotes()))
