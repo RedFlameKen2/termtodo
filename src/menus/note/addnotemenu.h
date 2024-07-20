@@ -56,7 +56,7 @@ public:
             case 5:
                 note.listName = (*todoLists)[*curList-1].getTitle();
                 (*todoLists)[*curList-1].addNote(note);
-                writeDataToDb(note.getDBFormat());
+                writeDB(note.getDBFormat());
                 return true;
             case 6:
                 return true;

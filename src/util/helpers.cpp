@@ -48,7 +48,7 @@ vector<string> getDBLines(){
     ifstream file("db");
     vector<string> rd;
     string temp = "";
-    while(std::getline(file, temp))
+    while(getline(file, temp))
         rd.push_back(temp + "\n");
     file.close();
     return rd;
@@ -69,19 +69,34 @@ vector<int> getIDArray(){
 /*    file << write;*/
 /*    file.close();*/
 /*}*/
-void writeDataToDb(string data){
-    string write = data, ret = dbRead();
+string getTitleLine(){
+    ifstream file("db");
+    string titleLine;
+    getline(file, titleLine);
+    file.close();
+    return titleLine;
+}
+void writeDB(string data){
+    string write = getTitleLine() + "\n";
+    write += dbRead();
     ofstream file("db");
-    write += ret;
+    write += data;
     file << write;
     file.close();
 }
-void overwriteDataToDB(string data){
+ifstream getDBStream(){
+    ifstream file("db");
+    string x;
+    getline(file, x);
+    return file;
+}
+void overwriteDataToDB(string allData){
     ofstream file("db");
-    file << data;
+    string write = getTitleLine() + "\n";
+    write += allData;
+    file << write;
     file.close();
 }
-
 void clearTerm(){
     if(getOS() == "Linux")
         system("clear");
@@ -99,9 +114,8 @@ void notify(){
         sleep_for(10s);
     }
 }
-
 void updateDB(string data, int id){
-    ifstream file("db");
+    ifstream file = getDBStream();
     string rd = "", temp = "";
     while(getline(file, temp))
         if(getIDSection(temp) == id)
@@ -112,7 +126,7 @@ void updateDB(string data, int id){
 }
 
 void deleteInDB(int id){
-    ifstream file("db");
+    ifstream file = getDBStream();
     string rd = "", temp = "";
     while(getline(file, temp)){
         if(getIDSection(temp) != id)
@@ -134,7 +148,8 @@ string promptString(string prompt){
 string dbRead(){
     ifstream file("db");
     string rd = "", temp = "";
-    while(std::getline(file, temp))
+    getline(file,temp);
+    while(getline(file, temp))
         rd += temp + "\n";
     file.close();
     return rd;
