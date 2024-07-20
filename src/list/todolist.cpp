@@ -104,6 +104,10 @@ void addList(vector<ToDoList> *todoLists, string listName){
     writeTitleDB(listName);
 }
 
+<<<<<<< HEAD
+=======
+//TODO: init with the list names first
+>>>>>>> f825f5a (Lolz)
 void mkDefaultLists(vector<ToDoList> *todoLists){
     addList(todoLists, "ToDo");
     addList(todoLists, "Doing");
