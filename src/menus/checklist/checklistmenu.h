@@ -1,4 +1,4 @@
-#include "../checklist/addcheckmenu.h"
+#include "../checklist/removecheckmenu.h"
 
 class ChecklistMenu : public Menu{
 private:
@@ -34,6 +34,8 @@ public:
                 break;
             case 2:
                 {
+                    //TODO: don't save to db immediately
+                    RemoveCheckMenu removeCheckMenu(note);
                 }
                 break;
             case 3:

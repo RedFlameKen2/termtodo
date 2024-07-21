@@ -91,13 +91,8 @@ ifstream getDBStream(){
     return file;
 }
 void overwriteDataToDB(string allData){
-<<<<<<< HEAD
     string write = getTitleLine() + "\n";
     ofstream file("db");
-=======
-    ofstream file("db");
-    string write = getTitleLine() + "\n";
->>>>>>> f825f5a (Lolz)
     write += allData;
     file << write;
     file.close();

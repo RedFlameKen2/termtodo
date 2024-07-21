@@ -1,4 +1,4 @@
-#include "../duedate/duemanager.h"
+#include "addcheckmenu.h"
 
 //TODO: remove in db too
 class RemoveCheckMenu : public Menu {
