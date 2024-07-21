@@ -48,6 +48,9 @@ public:
         dueDate.printDueDate();
         checkList.printCheckList();
     }
+    void printDataMin(){
+        cout << "Title: " << title;
+    }
     string getDBFormat(){
         string write;
         write += std::to_string(id);

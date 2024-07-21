@@ -1,52 +1,7 @@
-#include "../note/removenotemenu.h"
+#include "../note/movenotemenu.h"
 
 class ListMenu : public Menu{
 private:
-    void changeCurList(){
-        int input;
-        while(true){
-            displayLists();
-            printBar();
-            input = promptInt("\nSelect a list number: ");
-            clearTerm();
-            if(input <= todoLists->size() && input > 0)
-                break;
-            cout << "Not an existing list, Try Again!\n";
-        }
-        *curList = input;
-        cout << "List Successfully Changed!";
-    }
-
-
-    void moveNote(){
-        int noteIndex, targetListIndex;
-        if ((*todoLists)[*curList-1].getNotes()->empty()) {
-            cout << "There are no notes in this list!";
-            return;
-        }
-
-        (*todoLists)[*curList-1].printNotes();
-        noteIndex = promptInt ("Enter the number of the note to be moved: ") - 1;
-
-        if (noteIndex < 0 || noteIndex >= (*todoLists)[*curList - 1].getNotes()->size()){
-            cout << "Invalid note number!";
-            return;
-        }
-
-        displayLists();
-        targetListIndex = promptInt("Enter the number of the target list: ") - 1;
-        
-        if (targetListIndex < 0 || targetListIndex >= todoLists->size()){
-            cout << "Invalid list number!"; 
-            return;
-        }
-
-        Note note = (*todoLists)[*curList-1].getNotes()->at(noteIndex);
-        (*todoLists)[*curList-1].removeNote(noteIndex);
-        (*todoLists)[*curList-1].addNote(note);
-
-        cout << "Note successfully moved!";
-    }
 public:
     ListMenu(){
         maxOpts = 9;
@@ -84,7 +39,9 @@ public:
             }
             break;
         case 4:
-            moveNote();
+            {
+                MoveNoteMenu MoveNoteMenu(todoLists, curList);
+            }
             break;
         case 5:
             {
