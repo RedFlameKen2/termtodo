@@ -1,4 +1,4 @@
-#include "../note/removenotemenu.h"
+#include "../note/movenotemenu.h"
 
 class ListMenu : public Menu{
 private:
@@ -86,7 +86,9 @@ public:
             }
             break;
         case 4:
-            moveNote();
+            {
+                MoveNoteMenu MoveNoteMenu(todoLists, curList);
+            }
             break;
         case 5:
             {

@@ -140,6 +140,7 @@ public:
         write+=to_string(time.tm_min);
         return write;
     }
+    //TODO: create a function for getting format as string
     void printDueDate(){
         cout << "DueDate: ";
         if(!on){

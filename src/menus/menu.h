@@ -47,6 +47,21 @@ protected:
             i++;
         }
     }
+    void changeCurList(){
+        int input;
+        while(true){
+            displayLists();
+            printBar();
+            printTargetInfo();
+            input = promptInt("\nSelect a list number: ");
+            clearTerm();
+            if(input <= todoLists->size() && input > 0)
+                break;
+            cout << "Not an existing list, Try Again!\n";
+        }
+        *curList = input;
+        cout << "List Successfully Changed!";
+    }
 public:
     Menu(){
     }
