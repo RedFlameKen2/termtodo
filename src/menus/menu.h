@@ -52,7 +52,7 @@ protected:
         while(true){
             displayLists();
             printBar();
-            printTargetInfo();
+            cout << "Current List: "<< *curList << ") " << (*todoLists)[*curList-1].getTitle() << "\n";
             input = promptInt("\nSelect a list number: ");
             clearTerm();
             if(input <= todoLists->size() && input > 0)
