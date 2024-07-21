@@ -118,6 +118,8 @@ public:
                 cout << "Program Terminating, Goodbye!";
                 exit(1);
             }
+            cout << "Program Terminating, Goodbye!";
+            exit(1);
             break;
     }
     return false;
