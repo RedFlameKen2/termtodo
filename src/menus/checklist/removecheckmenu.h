@@ -1,69 +1,62 @@
-#include "../checklist/removecheckmenu.h"
+#include "../duedate/duemanager.h"
 
+//TODO: remove in db too
 class RemoveCheckMenu : public Menu {
     private:
-    int index;
-    Note * note;
+        int index;
+        Note * note;
+        CheckList checkList;
+        void removeCheckItem(){
+            printInfo();
+            printBar();
+            int index;
+            while(true){
+                index = promptInt("Enter Item number to remove: ");
+                clearTerm();
+                if(index <= checkList.size() && index > 0)
+                    break;
+                cout << "Invalid number, Try Again!\n";
+            }
+            checkList.remove(index-1);
+        }
+        void saveChecklist(){
+            *(note->getChecklist()) = checkList;
+        }
     public:
-    RemoveCheckMenu();
-    maxOpts = 3;
-    menu();
-}
-RemoveCheckMenu(Note * note) : note(note){
-    maxOpts = 3;
-    menu();
-}
-void printHelp() override{
-    cout << "Here are the options for removing a checklist Item: \n";
-    cout << "1) Select the Item to remove\n";
-    cout << "2) Finish\n";
-    cout << "3) Cancel\n";
-}
-void printInfo() override{
-    if (note->getChecklist()->size()> 0) {
-        cout << "Current Checklist Items:\n";
-        for (int i = 0; i < note->getChecklist()->size(); i++){
-            auto item = note->getChecklist()->get(i);
-            cout << i << ")[" << (item.checked ? "x": " ") << "] Title: " << item.title << "\n";
+        RemoveCheckMenu(){
+            maxOpts = 3;
+            menu();
         }
-    }
-}
-else
-{
-    cout << "No items in the checklist.\n";
-}
-void printTargetInfo() override {
-}
-bool options(int option) override{
-    cin.get();
-    switch (option){
-        case 1:
-        printBar();
-        if(note->getChecklist()->size()>0){
-            index = promptInt("Enter the index of the item to remove: ") = 1;
-            if (index >= 0 && index < note -> getChecklist()->size()){
-                note ->getChecklist()->remove(index);
-            }
-            else{
-                cout << "Invalid index. \n";
-            }
-            else{
-                cout << "No items to remove. \n";
-            }
-            break;
-            case 2;
-            return true;
-            case 3:
-            return true;
+        RemoveCheckMenu(Note * note) : note(note){
+            this->checkList = *note->getChecklist();
+            maxOpts = 3;
+            menu();
         }
-    }
-    return false;
+        void printHelp() override{
+            cout << "Here are the options for removing a checklist Item: \n";
+            cout << "1) Select the Item to remove\n";
+            cout << "2) Finish\n";
+            cout << "3) Cancel\n";
+        }
+        void printInfo() override{
+            checkList.printCheckListIndexed();
+        }
+        void printTargetInfo() override {
+        }
+        bool options(int option) override{
+            cin.get();
+            switch (option){
+                case 1:
+                    removeCheckItem();
+                    break;
+                case 2:
+                    saveChecklist();
+                    return true;
+                case 3:
+                    if(promptConfirm("Are you sure you want to cancel?\nprogress will be lost"))
+                        return true;
+                    break;
+            }
+            return false;
+        }
 };
-
-#include "removecheckmenu.h"
-
-int main(){
-    Note note;
-    RemoveCheckMenu menu(&note);
-    return 0;
-}
