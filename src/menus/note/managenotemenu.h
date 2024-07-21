@@ -80,7 +80,11 @@ public:
                 break;
             case 5:
                 {
+<<<<<<< HEAD
                     ChecklistMenu checklistMenu(note);
+=======
+                    RemoveCheckMenu removeCheckMenu(note);
+>>>>>>> 98fe62115ad85619173c09b797fc4f9df803874c
                 }
                 break;
             case 6:
