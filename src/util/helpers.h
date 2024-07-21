@@ -17,6 +17,7 @@ string promptString(string prompt);
 string getTitleLine();
 
 int id_Randomizer();
+int id_Regenerator(int random, int id);
 int promptInt(string prompt);
 
 bool promptConfirm(string prompt);

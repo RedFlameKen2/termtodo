@@ -169,6 +169,15 @@ int id_Randomizer(){
 	return random;
 }
 
+int id_Regenerator(int random, int id){
+
+    if (random = id){
+        srand((unsigned) time(NULL));
+	    random = (rand() % 100000);
+    }
+    return random;
+}
+
 int promptInt(string prompt){
     string input = "";
     while(true){
