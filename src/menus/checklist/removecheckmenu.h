@@ -21,6 +21,7 @@ class RemoveCheckMenu : public Menu {
         }
         void saveChecklist(){
             *(note->getChecklist()) = checkList;
+            updateDB(note->getDBFormat(), note->id);
         }
     public:
         RemoveCheckMenu(){
