@@ -1,4 +1,4 @@
-#include "../duedate/duemanager.h"
+#include "../checklist/removecheckmenu.h"
 
 class ManageNoteMenu : public Menu {
 private:
@@ -75,7 +75,7 @@ public:
                 break;
             case 5:
                 {
-                    AddCheckMenu addCheckMenu(note);
+                    RemoveCheckMenu removeCheckMenu(note);
                 }
                 break;
             case 6:

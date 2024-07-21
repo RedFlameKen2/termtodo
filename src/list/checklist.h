@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iterator>
 #include <vector>
 
 using std::string;
@@ -20,6 +21,9 @@ public:
     }
     void add(CheckItem checkItem){
         checkItems.push_back(checkItem);
+    }
+    void remove(int index){
+        checkItems.erase(std::next(checkItems.begin(), index));
     }
     bool isChecked(int index){
         return checkItems[index].checked;
@@ -54,6 +58,16 @@ public:
         cout << "CheckList: \n";
         for(CheckItem checkItem : checkItems)
             cout << "[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
+    }
+    void printCheckListIndexed(){
+        if(checkItems.empty()){
+            cout << "There is no CheckList!\n";
+            return;
+        }
+        cout << "CheckList: \n";
+        int i = 1;
+        for(CheckItem checkItem : checkItems)
+            cout << i++ << ") [" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
     }
 };
 
