@@ -32,7 +32,8 @@ public:
         this->todoLists = todoLists;
         this->curList = curList;
         maxOpts = 7;
-        note = &*((*todoLists)[*curList-1].getNote(curNote-1));
+        /*note = *((*todoLists)[*curList-1].getNote(curNote-1));*/
+        note->fullUpdate(*((*todoLists)[*curList-1].getNote(curNote-1)));
         menu();
     }
     ManageNoteMenu(Note * note) : note(note){

@@ -70,6 +70,6 @@ public:
         this->notifString = notifString;
     }
     void printNotif(){
-        cout << "\033[1;1H" << notifString;
+        cout << "\033[s\033[1;1H" << notifString << "\033[u";
     }
 };
