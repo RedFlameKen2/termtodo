@@ -1,6 +1,5 @@
 #include "../note/removenotemenu.h"
 
-//TODO: Actually move in db
 class MoveNoteMenu : Menu {
 private:
     int targetList = 2;
@@ -67,6 +66,7 @@ public:
         cout << "4) Move\n";
         cout << "5) Cancel";
     }
+    //TODO: have only one show up, min or default
     void printInfo() override{
         (*todoLists)[*curList-1].printNotes();
     }

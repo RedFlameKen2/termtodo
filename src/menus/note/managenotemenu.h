@@ -7,6 +7,7 @@ private:
     void changeCurNote(){
         int input;
         while(true){
+            (*todoLists)[*curList-1].printNotesMin();
             printBar();
             printTargetInfo();
             input = promptInt("\nSelect a Note number: ");
@@ -17,7 +18,7 @@ private:
         }
         curNote = input;
         updateNote();
-        cout << "List Successfully Changed!\n";
+        cout << "\nList Successfully Changed!\n";
     }
     void updateNote(){
         note->fullUpdate(*((*todoLists)[*curList-1].getNote(curNote-1)));
@@ -57,7 +58,6 @@ public:
     bool options(int option) override{
         cin.get();
         switch(option){
-            //TODO: display notes when changing
             case 1:
                 changeCurNote();
                 break;
