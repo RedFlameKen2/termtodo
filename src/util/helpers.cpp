@@ -205,9 +205,14 @@ string getOS(){
         return "Linux";
     #endif 
 }
+
 int id_Randomizer(){
 	srand((unsigned) time(NULL));
-	int random = (rand() % 100000);
+	int random;
+    do {
+        random = (rand() % 100000);
+    } while(idExists(random));
+
 	return random;
 }
 
