@@ -65,9 +65,9 @@ public:
         cout << "1) Change current list\n";
         cout << "2) Display Notes in this list\n"; 
         cout << "3) Add a note to List\n";
-        cout << "4) Move a note to another list\n";
-        cout << "5) Remove a note from list\n";
-        cout << "6) Manage notes in the list\n";
+        cout << "4) Remove a note from list\n";
+        cout << "5) Manage notes in the list\n";
+        cout << "6) Move a note to another list\n";
         cout << "7) Display notes in all lists\n";
         cout << "8) Back\n";
         cout << "9) Exit the program\n";
@@ -87,18 +87,10 @@ public:
             break;
         case 4:
             {
-                if((*todoLists)[*curList].listEmpty())
-                    cout << "Please make sure the current list has a note first!\n";
-                else
-                    MoveNoteMenu moveNoteMenu(todoLists, curList);
-            }
-            break;
-        case 5:
-            {
                 RemoveNoteMenu removeNoteMenu(todoLists, curList);
             }
             break;
-        case 6:
+        case 5:
             {
                 if(((*todoLists)[*curList-1]).getNotes()->empty()) {
                     cout << "There are no notes in this list!";
@@ -106,6 +98,14 @@ public:
                 }
 
                 ManageNoteMenu manageNoteMenu(todoLists, curList);
+            }
+            break;
+        case 6:
+            {
+                if((*todoLists)[*curList].listEmpty())
+                    cout << "Please make sure the current list has a note first!\n";
+                else
+                    MoveNoteMenu moveNoteMenu(todoLists, curList);
             }
             break;
         case 7:
