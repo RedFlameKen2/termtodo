@@ -12,13 +12,14 @@ private:
             printTargetInfo();
             input = promptInt("\nSelect a Note number: ");
             clearTerm();
+            cout << "\n";
             if(input <= (*todoLists)[*curList-1].getNotes()->size() && input > 0)
                 break;
             cout << "Not an existing Note, Try Again!\n";
         }
         curNote = input;
         updateNote();
-        cout << "\nList Successfully Changed!\n";
+        cout << "\nList Successfully Changed!";
     }
     void updateNote(){
         note->fullUpdate(*((*todoLists)[*curList-1].getNote(curNote-1)));
@@ -79,7 +80,6 @@ public:
                 }
                 break;
             case 5:
-                //TODO: don't enter when there's no checklist
                 {
                     ChecklistMenu checklistMenu(note);
                 }

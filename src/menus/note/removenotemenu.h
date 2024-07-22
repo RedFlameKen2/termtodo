@@ -44,24 +44,27 @@ public:
     }
     void printHelp() override {
         cout << "List of options for Removing a note: \n";
-        cout << "1) Remove by ID\n";
-        cout << "2) Remove by Title\n";
-        cout << "3) Exit\n";
+        cout << "1) Change current list\n";
+        cout << "2) Remove by ID\n";
+        cout << "3) Remove by Title\n";
+        cout << "4) Exit\n";
     }
     void printInfo() override {
         (*todoLists)[*curList-1].printNotes();
     }
     /*void printTargetInfo() override {*/
     /*}*/
-    //TODO: add option for changing list
     bool options(int option) override {
         switch(option){
             case 1:
-                removeByID();
+                changeCurList();
                 break;
             case 2:
+                removeByID();
                 break;
             case 3:
+                break;
+            case 4:
                 return true;
         }
         return false;
