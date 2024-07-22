@@ -14,9 +14,10 @@ private:
             clearTerm();
             if(index <= note->getChecklist()->size() && index > 0)
                 break;
-            cout << "Invalid number, Try Again!\n";
+            cout << "\nInvalid number, Try Again!";
         }
         curCheck = index;
+        cout << "\n";
     }
 public:
     ChecklistMenu(){
@@ -40,8 +41,8 @@ public:
         note->getChecklist()->printCheckListIndexed(curCheck);
     }
     void printTargetInfo() override {
-        cout << "selected: ";
-        note->getChecklist()->printCheckItem(curCheck-1);
+        /*cout << "selected: ";*/
+        /*note->getChecklist()->printCheckItem(curCheck-1);*/
     }
     bool options(int option) override{
         cin.get();
