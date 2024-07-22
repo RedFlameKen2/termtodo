@@ -40,7 +40,6 @@ class RemoveCheckMenu : public Menu {
         void printTargetInfo() override {
         }
         bool options(int option) override{
-            cin.get();
             switch (option){
                 case 1:
                     removeCheckItem();

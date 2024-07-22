@@ -44,7 +44,6 @@ public:
         /*note->getChecklist()->printCheckItem(curCheck-1);*/
     }
     bool options(int option) override{
-        cin.get();
         switch(option){
             case 1:
                 if(note->getChecklist()->checkItems.empty())

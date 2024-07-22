@@ -84,15 +84,6 @@ vector<int> getIDArray(){
         ids.push_back(getIDSection(data));
     return ids;
 }
-/*void dbWrite(){*/
-/*    string write = "", ret = dbRead();*/
-/*    ofstream file("db");*/
-/*    write += ret;*/
-/*    write += "" + to_string(id_Randomizer());*/
-/*    write += ",fuck this shit i\'m out,ok fine,{[git add .,true][git push,false]}\n";*/
-/*    file << write;*/
-/*    file.close();*/
-/*}*/
 string getTitleLine(){
     ifstream file("db");
     string titleLine;
@@ -220,7 +211,7 @@ int promptInt(string prompt){
     string input = "";
     while(true){
         cout << prompt;
-        cin >> input;
+        getline(cin, input);
         if(strIsDigit(input))
             break;
         cout << "Invalid Input, try again!\n";

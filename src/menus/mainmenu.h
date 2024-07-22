@@ -4,7 +4,6 @@ class MainMenu : public Menu
 {
 private:
     void addListMenu(){
-        cin.get();
         string title;
         while(true){
             printBar();
@@ -22,7 +21,6 @@ private:
 
     }
     void removeListMenu(){
-        cin.get();
         int index = 0;
         while(true){
             printBar();
@@ -60,28 +58,30 @@ public:
     {
         switch (option)
         {
-        case 1:
-        {
-            ListMenu listMenu(todoLists, curList);
-        }
-        break;
-        case 2:
-            displayLists();
-            break;
-        case 3:
-        {
-            addListMenu();
-        }
-        break;
-        case 4:
-        {
-            removeListMenu();
-        }
-        break;
-        case 5:
-            cout << "Program Terminating, Goodbye!";
-            exit(1);
-            break;
+            case 1:
+                {
+                    ListMenu listMenu(todoLists, curList);
+                }
+                break;
+            case 2:
+                displayLists();
+                break;
+            case 3:
+                {
+                    addListMenu();
+                }
+                break;
+            case 4:
+                {
+                    removeListMenu();
+                }
+                break;
+            case 5:
+                if(promptConfirm("Are you sure you want to exit?")){
+                    cout << "Program Terminating, Goodbye!";
+                    exit(1);
+                }
+                break;
         }
         return false;
     }

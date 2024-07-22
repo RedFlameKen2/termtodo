@@ -29,7 +29,6 @@ public:
         note.printData();
     }
     bool options(int option) override{
-        cin.get();
         switch (option) {
             case 1:
                 printBar();

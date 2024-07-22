@@ -21,7 +21,6 @@ private:
         (*todoLists)[*curList-1].removeNoteByID(id);
     }
     void removeByTitle(){
-        cin.get();
         if((*todoLists)[*curList-1].listEmpty()){
             cout << "The List is Empty!\n";
             return; 

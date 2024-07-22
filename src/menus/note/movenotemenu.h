@@ -108,7 +108,6 @@ public:
                 moveNote();
                 return true;
             case 5:
-                cin.get();
                 if(promptConfirm("Are you sure you want to cancel?\nProgress will be lost"))
                     return true;
                 break;
