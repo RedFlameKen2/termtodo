@@ -71,10 +71,11 @@ public:
         (*todoLists)[*curList-1].printNotes();
     }
     void printTargetInfo() override{
-            cout << "Moving from: " << *curList << ") " << (*todoLists)[*curList-1].getTitle();
-            cout << "\nMoving to: " << targetList << ") " << (*todoLists)[targetList-1].getTitle();
-            Note note = *(*todoLists)[*curList-1].getNote(curNote-1);
-            cout << "\nMoving: #"<< curNote << "\nID:" << note.id << " " << note.title << "\n";
+        //TODO: make this prettier
+        cout << "Moving from: " << *curList << ") " << (*todoLists)[*curList-1].getTitle();
+        cout << "\nMoving to: " << targetList << ") " << (*todoLists)[targetList-1].getTitle();
+        Note note = *(*todoLists)[*curList-1].getNote(curNote-1);
+        cout << "\nMoving: #"<< curNote << "\nID:" << note.id << " " << note.title << "\n";
     }
     bool options(int option) override{
         if(todoLists->size() < 2){
@@ -108,6 +109,7 @@ public:
                 moveNote();
                 return true;
             case 5:
+                cin.get();
                 if(promptConfirm("Are you sure you want to cancel?\nProgress will be lost"))
                     return true;
                 break;

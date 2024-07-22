@@ -40,6 +40,9 @@ public:
         time.tm_hour = stoi(dueData[3]);
         time.tm_min = stoi(dueData[4]);
     }
+    bool isOn(){
+        return on;
+    }
     void initCurDay(){
         time = getCurTime();
         toggle();

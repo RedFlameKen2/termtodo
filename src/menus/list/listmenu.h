@@ -59,6 +59,7 @@ public:
         maxOpts = 9;
         menu();
     }
+    //TODO: change the order of the cases into something more comfortable
     void printHelp() override{
         cout << "Here is a list of options for managing your lists: \n";
         cout << "1) Change current list\n";
@@ -86,7 +87,7 @@ public:
             break;
         case 4:
             {
-                if(!(*todoLists)[*curList].listEmpty())
+                if((*todoLists)[*curList].listEmpty())
                     cout << "Please make sure the current list has a note first!\n";
                 else
                     MoveNoteMenu moveNoteMenu(todoLists, curList);

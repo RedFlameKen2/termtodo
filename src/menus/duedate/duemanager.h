@@ -7,7 +7,10 @@ private:
 public:
     ManageDueMenu(Note * note) : note(note){
         /*dueDate = &(note->dueDate);*/
-        dueDate->initCurDay();
+        if(note->dueDate.isOn())
+            dueDate = &note->dueDate;
+        else
+            dueDate->initCurDay();
         maxOpts = 7;
         menu();
     }
@@ -48,7 +51,10 @@ public:
                 cout << "Due date set successfully!\n";
                 return true;
             case 7:
-                return true;
+                if(promptConfirm("Are you sure you want to exit?\nProgress will be lost"))
+                    return true;
+                break;
+
         }
         return false;
     }

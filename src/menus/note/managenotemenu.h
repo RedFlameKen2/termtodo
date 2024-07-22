@@ -75,6 +75,7 @@ public:
                 break;
             case 4:
                 {
+                    //TODO: when editing, make make the duedate the same
                     ManageDueMenu manageDueMenu(note);
                 }
                 break;
