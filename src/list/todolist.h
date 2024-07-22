@@ -28,13 +28,17 @@ public:
             if(notes[i].id == id)
                 notes.erase(std::next(notes.begin(), i));
     }
+    void removeNoteByTitle(string title){
+        for(int i = 0; i < notes.size(); i++)
+            if(notes[i].title == title)
+                notes.erase(std::next(notes.begin(), i));
+    }
     string getTitle(){
         return title;
     }
     bool listEmpty(){
         return notes.empty();
     }
-    //TODO: add list title
     void printNotes(){
         if(notes.empty()){
             cout << "The list is empty!\n";

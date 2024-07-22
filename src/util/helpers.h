@@ -8,6 +8,7 @@ void notify();
 void writeDB(string data);
 void updateDB(string data, int id);
 void deleteInDB(int id);
+void deleteInDB(string title);
 void printBar();
 void writeTitleLine(string titleData);
 void overwriteDataToDB(string allData);

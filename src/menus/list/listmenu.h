@@ -86,7 +86,10 @@ public:
             break;
         case 4:
             {
-                MoveNoteMenu MoveNoteMenu(todoLists, curList);
+                if(!(*todoLists)[*curList].listEmpty())
+                    cout << "Please make sure the current list has a note first!\n";
+                else
+                    MoveNoteMenu moveNoteMenu(todoLists, curList);
             }
             break;
         case 5:

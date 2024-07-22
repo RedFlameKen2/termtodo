@@ -85,8 +85,7 @@ public:
     }
     void printCheckListIndexed(){
         if(checkItems.empty()){
-            cout << "There is no CheckList!\n";
-            return;
+            cout << "There is no CheckList!\n"; return;
         }
         cout << "CheckList: \n";
         int i = 1;

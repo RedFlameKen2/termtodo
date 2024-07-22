@@ -17,6 +17,18 @@ using std::ifstream;
 using std::regex;
 using std::vector;
 
+
+string getNoteTitleSection(string dataLine){
+    string title;
+    int i = 0, focus = 0;
+    while(i < 1){
+        while(dataLine[focus++] != ',');
+        i++;
+    }
+    while(dataLine[focus] != ',')
+        title += dataLine[focus++];
+    return title;
+}
 string getListTitleSection(string dataLine){
     string title;
     int i = 0, focus = 0;
@@ -59,6 +71,7 @@ vector<string> getDBLines(){
     ifstream file("db");
     vector<string> rd;
     string temp = "";
+    getline(file, temp);
     while(getline(file, temp))
         rd.push_back(temp + "\n");
     file.close();
@@ -149,6 +162,16 @@ void deleteInDB(int id){
     string rd = "", temp = "";
     while(getline(file, temp)){
         if(getIDSection(temp) != id)
+            rd += temp + "\n";
+    }
+    overwriteDataToDB(rd);
+}
+
+void deleteInDB(string title){
+    ifstream file = getDBStream();
+    string rd = "", temp = "";
+    while(getline(file, temp)){
+        if(getNoteTitleSection(temp) != title)
             rd += temp + "\n";
     }
     overwriteDataToDB(rd);

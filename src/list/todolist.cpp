@@ -4,7 +4,8 @@
 
 bool listExists(vector<ToDoList> *todoLists, string title){
     for(ToDoList x : *todoLists)
-        if(x.getTitle() == title)
+        for(Note note : *x.getNotes())
+            if(note.title == title)
             return true;
     return false;
 }
