@@ -75,5 +75,6 @@ public:
         this->desc = note.desc;
         this->checkList = note.checkList;
         this->dueDate = note.dueDate;
+        this->listName = note.listName;
     }
 };

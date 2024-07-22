@@ -80,7 +80,7 @@ public:
                 cout << ">>>>\t";
             else
                 cout << "\t";
-            cout << i++ << ") [" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
+            cout << i++ << ") \t[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
         }
     }
     void printCheckListIndexed(){
@@ -97,9 +97,9 @@ public:
         int i = 0, progress = getProgress();
         while(i< 10){
             if(i < progress)
-                bar+="#";
+                bar+="##";
             else
-                bar+="-";
+                bar+="--";
             i++;
         }
         bar += "]";

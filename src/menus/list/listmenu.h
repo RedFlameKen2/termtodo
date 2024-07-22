@@ -70,7 +70,7 @@ public:
             break;
         case 6:
             {
-                if((*todoLists)[*curList].listEmpty())
+                if((*todoLists)[*curList-1].listEmpty())
                     cout << "Please make sure the current list has a note first!\n";
                 else
                     MoveNoteMenu moveNoteMenu(todoLists, curList);
