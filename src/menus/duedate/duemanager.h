@@ -6,7 +6,8 @@ private:
     DueDate * dueDate;
 public:
     ManageDueMenu(Note * note) : note(note){
-        dueDate = &(note->dueDate);
+        /*dueDate = &(note->dueDate);*/
+        dueDate->initCurDay();
         maxOpts = 7;
         menu();
     }

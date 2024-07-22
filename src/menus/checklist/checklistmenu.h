@@ -48,9 +48,13 @@ public:
         cin.get();
         switch(option){
             case 1:
+                if(note->getChecklist()->checkItems.empty())
+                    break;
                 changeCheckitem();
                 break;
             case 2:
+                if(note->getChecklist()->checkItems.empty())
+                    break;
                 note->getChecklist()->toggleCheck(curCheck-1);
                 break;
             case 3:

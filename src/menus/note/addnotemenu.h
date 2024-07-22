@@ -35,11 +35,13 @@ public:
                 printBar();
                 note.title = promptString("\nEnter Title of the Note: ");
                 clearTerm();
+                cout << "\n";
                 break;
             case 2:
                 printBar();
                 note.desc = promptString("\nEnter Description of the Note: ");
                 clearTerm();
+                cout << "\n";
                 break;
             case 3:
                 {

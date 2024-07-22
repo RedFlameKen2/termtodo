@@ -28,7 +28,6 @@ private:
     }
 public:
     DueDate(){
-        initCurDay();
     }
     //TODO: Doesn't turn off by default
     DueDate(string data){
