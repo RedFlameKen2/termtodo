@@ -64,9 +64,9 @@ public:
             cout << "There is no CheckList!\n";
             return;
         }
-        cout << "CheckList: "<< getProgBar() << "\n";
+        cout << "\tCHECKLIST: "<< getProgBar() << "\n";
         for(CheckItem checkItem : checkItems)
-            cout << "[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
+            cout << "\t[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
     }
     void printCheckListIndexed(int current){
         if(checkItems.empty()){

@@ -42,8 +42,8 @@ public:
     }
     void printData(){
         cout << "\n<For note ID " << id << ">\n";
-        cout << "title: " << title << "\n";
-        cout << "description: " << desc << "\n";
+        cout << "\tTITLE: " << title << "\n";
+        cout << "\tDESCRIPTION: " << desc << "\n";
         dueDate.printDueDate();
         checkList.printCheckList();
     }

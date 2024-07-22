@@ -143,7 +143,7 @@ public:
         return write;
     }
     void printDueDate(){
-        cout << "DueDate: ";
+        cout << "\tDUEDATE: ";
         if(!on){
             cout << "Off\n";
             return;
