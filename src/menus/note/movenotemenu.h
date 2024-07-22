@@ -12,7 +12,7 @@ private:
             index = promptInt ("Enter the number of the note to be moved: ");
             if(index > 0 && index <= (*todoLists)[*curList - 1].getNotes()->size())
                 break;
-            cout << "Invalid note number!";
+            cout << "\nInvalid note number!\n";
         }
         curNote = index;
     }
@@ -22,11 +22,11 @@ private:
         (*todoLists)[*curList-1].removeNote(curNote-1);
         (*todoLists)[targetList-1].addNote(note);
         updateDB(note.getDBFormat(), note.id);
-        cout << "Note successfully moved!";
+        cout << "\nNote successfully moved!\n";
     }
     void changeTargetList(){
         if(todoLists->size() < 3){
-            cout << "There aren't any other lists to move to!";
+            cout << "\nThere aren't any other lists to move to!\n";
             return;
         }
         int input;
@@ -38,10 +38,10 @@ private:
             clearTerm();
             if(input <= todoLists->size() && input > 0)
                 break;
-            cout << "Not an existing list, Try Again!\n";
+            cout << "\nNot an existing list, Try Again!\n";
         }
         targetList = input;
-        cout << "List Successfully Changed!";
+        cout << "\nList Successfully Changed!\n";
     }
     void listSwitch(int prev, int mode){
         if(*curList == targetList){

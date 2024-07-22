@@ -53,6 +53,7 @@ public:
     }
     /*void printTargetInfo() override {*/
     /*}*/
+    //TODO: add option for changing list
     bool options(int option) override {
         switch(option){
             case 1:

@@ -2,6 +2,12 @@
 #include "todolist.h"
 #include "../util/helpers.h"
 
+bool listExists(vector<ToDoList> *todoLists, string title){
+    for(ToDoList x : *todoLists)
+        if(x.getTitle() == title)
+            return true;
+    return false;
+}
 ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList){
     return &(*todoLists)[*curList-1];
 }

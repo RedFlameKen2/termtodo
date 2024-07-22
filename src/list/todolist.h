@@ -75,3 +75,4 @@ ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList);
 void initLists(vector<ToDoList> *todoLists);
 void addList(vector<ToDoList> *todoLists, string listName);
 void removeList(vector<ToDoList> *todoLists, int index);
+bool listExists(vector<ToDoList> *todoLists, string title);

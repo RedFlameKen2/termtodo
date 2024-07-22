@@ -5,29 +5,39 @@ class MainMenu : public Menu
 private:
     void addListMenu(){
         cin.get();
-        printBar();
-        cout << "*** Add New list ***\n";
         string title;
-        title = promptString("Enter New List: ");
-        ToDoList newList(title);
+        while(true){
+            printBar();
+            cout << "*** Add New list ***\nExisting Lists:\n";
+            displayLists();
+            printBar();
+            title = promptString("Enter New List Title: ");
+            clearTerm();
+            if(!listExists(todoLists, title))
+                break;
+            cout << "\na list with that name already exists, Try Again!";
+        }
         addList(todoLists, title);
         cout << "\nSuccessfully Added New list";
 
     }
     void removeListMenu(){
         cin.get();
-        printBar();
-        cout << "*** Remove a List ***\n";
         int index = 0;
         while(true){
+            printBar();
+            cout << "*** Remove a List ***\nExisting Lists:\n";
+            displayLists();
+            printBar();
             index = promptInt("Enter list number to remove: ");
+            clearTerm();
             if(index <= todoLists->size() && index > 0)
                 break;
-            cout << "list doesn't exist, Try Again!\n";
+            cout << "\nlist doesn't exist, Try Again!";
         }
         /*todoLists->erase(std::next(todoLists->begin(), index-1));*/
         removeList(todoLists, index-1);
-        cout << "Successfully Removed list";
+        cout << "\nSuccessfully Removed list";
     }
 public:
     MainMenu(vector<ToDoList> *todoLists, int *curList)
