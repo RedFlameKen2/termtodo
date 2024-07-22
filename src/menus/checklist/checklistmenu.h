@@ -3,42 +3,61 @@
 class ChecklistMenu : public Menu{
 private:
     Note *note = new Note;
+    int curCheck = 1;
+    void changeCheckitem(){
+        int index;
+        while(true){
+            printBar();
+            printInfo();
+            printBar();
+            index = promptInt("Enter the checklist number: ");
+        }
+        curCheck = index;
+    }
 public:
     ChecklistMenu(){
-        maxOpts = 3;
+        maxOpts = 5;
         menu();
     }
     ChecklistMenu(Note * note) {
         this->note = note;
-        maxOpts = 3;
+        maxOpts = 5;
         menu();
     }
     void printHelp() override{
         cout << "Here are the options for managing the checklist: \n";
-        cout << "1) Add Checklist Item\n";
-        cout << "2) Remove Checklist Item\n";
-        cout << "3) Back\n";
+        cout << "1) Change selected Checklist Item\n";
+        cout << "2) Toggle Check\n";
+        cout << "3) Add Checklist Item\n";
+        cout << "4) Remove Checklist Item\n";
+        cout << "5) Back\n";
     }
     void printInfo() override{
-        note->getChecklist()->printCheckList();
+        note->getChecklist()->printCheckListIndexed(curCheck);
     }
     void printTargetInfo() override {
+        cout << "selected: ";
+        note->getChecklist()->printCheckItem(curCheck-1);
     }
     //TODO: add toggle option
     bool options(int option) override{
         cin.get();
         switch(option){
             case 1:
+                break;
+            case 2:
+                break;
+            case 3:
                 {
                     AddCheckMenu check(note);
                 }
                 break;
-            case 2:
+            case 4:
                 {
                     RemoveCheckMenu removeCheckMenu(note);
                 }
                 break;
-            case 3:
+            case 5:
                 return true;
         }
         return false;

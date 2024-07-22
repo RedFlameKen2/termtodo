@@ -79,6 +79,7 @@ public:
                 }
                 break;
             case 5:
+                //TODO: don't enter when there's no checklist
                 {
                     ChecklistMenu checklistMenu(note);
                 }

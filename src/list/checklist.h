@@ -68,6 +68,21 @@ public:
         for(CheckItem checkItem : checkItems)
             cout << "[" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
     }
+    void printCheckListIndexed(int current){
+        if(checkItems.empty()){
+            cout << "There is no CheckList!\n";
+            return;
+        }
+        int i = 1;
+        cout << "CheckList: "<< getProgBar() << "\n";
+        for(CheckItem checkItem : checkItems){
+            if(i == current)
+                cout << ">>> ";
+            else
+                cout << "\t";
+            cout << i++ << ") [" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
+        }
+    }
     void printCheckListIndexed(){
         if(checkItems.empty()){
             cout << "There is no CheckList!\n";
@@ -90,6 +105,9 @@ public:
         }
         bar += "]";
         return bar;
+    }
+    void printCheckItem(int index){
+        cout << "[" << (checkItems[index].checked ? "x" : " ") << "] " << checkItems[index].title << "\n";
     }
 };
 
