@@ -11,7 +11,7 @@ ToDo:
 - [x] Notes
 - [x] CheckLists
 - [x] DueDates
-- [ ] CheckList Progress Bar
+- [x] CheckList Progress Bar
 - [ ] Optional: Workspaces (enables you to have multiple sets of lists)
 
 Group Members: <br>

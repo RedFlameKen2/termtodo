@@ -203,7 +203,7 @@ bool promptConfirm(string prompt){
     string input;
     while(true){
         printBar();
-        input = promptString(" (y)es/(n)o\nEnter Answer:");
+        input = promptString(prompt + " (y)es/(n)o\nEnter Answer:");
         clearTerm();
         stolower(input);
         if  (

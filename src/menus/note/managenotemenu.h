@@ -17,7 +17,7 @@ private:
         }
         curNote = input;
         updateNote();
-        cout << "List Successfully Changed!";
+        cout << "List Successfully Changed!\n";
     }
     void updateNote(){
         note->fullUpdate(*((*todoLists)[*curList-1].getNote(curNote-1)));
@@ -57,6 +57,7 @@ public:
     bool options(int option) override{
         cin.get();
         switch(option){
+            //TODO: display notes when changing
             case 1:
                 changeCurNote();
                 break;
@@ -78,9 +79,8 @@ public:
                 }
                 break;
             case 5:
-                //TODO: make a check list manager
                 {
-                    AddCheckMenu addCheckMenu(note);
+                    ChecklistMenu checklistMenu(note);
                 }
                 break;
             case 6:

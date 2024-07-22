@@ -46,6 +46,17 @@ public:
             cout << "\n";
         }
     }
+    void printNotesMin(){
+        if(notes.empty()){
+            cout << "The list is empty!\n";
+            return;
+        }
+        cout << "Notes of the List " << title << ": \n";
+        int i = 0;
+        for(Note note : notes){
+            cout << to_string(++i) << ") " << note.title << "\n";
+        }
+    }
     vector<Note> * getNotes(){
         return &notes;
     }

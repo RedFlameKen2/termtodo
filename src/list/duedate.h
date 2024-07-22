@@ -17,7 +17,7 @@ private:
 
     string * readDBFormat(string data){
         data += " ";
-        string * dueData = new string[5];
+        string * dueData = new string[5];//lols
         int j = 0;
         for(int i = 0; i < 5; i++){
             while(data[j] != ' ')
@@ -140,6 +140,7 @@ public:
         write+=to_string(time.tm_min);
         return write;
     }
+    //TODO: create a function for getting format as string
     void printDueDate(){
         cout << "DueDate: ";
         if(!on){
