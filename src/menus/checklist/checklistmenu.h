@@ -17,7 +17,6 @@ private:
             cout << "\nInvalid number, Try Again!";
         }
         curCheck = index;
-        cout << "\n";
     }
 public:
     ChecklistMenu(){

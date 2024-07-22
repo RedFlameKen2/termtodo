@@ -120,6 +120,7 @@ void clearTerm(){
         system("clear");
     else if (getOS() == "Windows 64 bit" || getOS() == "Windows 32 bit")
         system("cls");
+    cout << "\n";
 }
 
 void notify(){

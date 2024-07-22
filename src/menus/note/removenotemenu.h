@@ -28,6 +28,7 @@ private:
         while(true){
             printBar();
             id = promptInt("Enter title to remove: ");
+            clearTerm();
             if(idExists(id))
                 break;
             cout << "Note Doesn't Exist! Try Again!\n";
@@ -39,7 +40,7 @@ public:
     RemoveNoteMenu(vector<ToDoList> * todoLists, int * curList) {
         this->todoLists = todoLists;
         this->curList = curList;
-        maxOpts = 3;
+        maxOpts = 4;
         menu();
     }
     void printHelp() override {
@@ -52,8 +53,7 @@ public:
     void printInfo() override {
         (*todoLists)[*curList-1].printNotes();
     }
-    /*void printTargetInfo() override {*/
-    /*}*/
+    //TODO: make this thing remove by number instead
     bool options(int option) override {
         switch(option){
             case 1:
@@ -63,6 +63,7 @@ public:
                 removeByID();
                 break;
             case 3:
+                removeByTitle();
                 break;
             case 4:
                 return true;

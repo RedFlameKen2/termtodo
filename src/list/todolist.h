@@ -40,10 +40,9 @@ public:
             cout << "The list is empty!\n";
             return;
         }
-        cout << "[Notes of the List " << title << "]\n";
+        cout << "\n[Notes of the List " << title << "]\n";
         for(Note note : notes){
             note.printData();
-            cout << "\n";
         }
     }
     void printNotesMin(){

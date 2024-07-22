@@ -10,6 +10,7 @@ private:
             (*todoLists)[*curList-1].printNotesMin();
             printBar();
             index = promptInt ("Enter the number of the note to be moved: ");
+            clearTerm();
             if(index > 0 && index <= (*todoLists)[*curList - 1].getNotes()->size())
                 break;
             cout << "\nInvalid note number!\n";
@@ -66,7 +67,6 @@ public:
         cout << "4) Move\n";
         cout << "5) Cancel";
     }
-    //TODO: have only one show up, min or default
     void printInfo() override{
         (*todoLists)[*curList-1].printNotes();
     }
@@ -90,6 +90,7 @@ public:
                 {
                     int prev = *curList;
                     changeCurList();
+                    curNote = 1;
                     listSwitch(prev, 0);
                 }
                 break;

@@ -55,7 +55,6 @@ protected:
             cout << "Current List: "<< *curList << ") " << (*todoLists)[*curList-1].getTitle() << "\n";
             input = promptInt("\nSelect a list number: ");
             clearTerm();
-            cout << "\n";
             if(input <= todoLists->size() && input > 0)
                 break;
             cout << "Not an existing list, Try Again!\n";
@@ -89,7 +88,6 @@ public:
                 printTargetInfo();
                 option = promptInt("Enter option: ");
                 clearTerm();
-                cout << "\n";
                 if(optionValid(option))
                     break;
                 cout << "Invalid Option, Try Again!\n";

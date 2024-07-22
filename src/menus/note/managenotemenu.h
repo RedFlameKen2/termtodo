@@ -12,7 +12,6 @@ private:
             printTargetInfo();
             input = promptInt("\nSelect a Note number: ");
             clearTerm();
-            cout << "\n";
             if(input <= (*todoLists)[*curList-1].getNotes()->size() && input > 0)
                 break;
             cout << "Not an existing Note, Try Again!\n";

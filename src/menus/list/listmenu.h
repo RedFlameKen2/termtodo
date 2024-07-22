@@ -5,7 +5,6 @@ private:
     void changeCurList(){
         int input;
         while(true){
-            cout << "\n";
             displayLists();
             printBar();
             printTargetInfo();

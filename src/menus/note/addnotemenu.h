@@ -35,13 +35,11 @@ public:
                 printBar();
                 note.title = promptString("\nEnter Title of the Note: ");
                 clearTerm();
-                cout << "\n";
                 break;
             case 2:
                 printBar();
                 note.desc = promptString("\nEnter Description of the Note: ");
                 clearTerm();
-                cout << "\n";
                 break;
             case 3:
                 {
@@ -56,7 +54,10 @@ public:
                 }
                 break;
             case 5:
-                //TODO: check if note is initiated, if not, don't save
+                if(note.title == ""){
+                    cout << "Please set the title of the note!";
+                    break;
+                }
                 note.listName = (*todoLists)[*curList-1].getTitle();
                 (*todoLists)[*curList-1].addNote(note);
                 writeDB(note.getDBFormat());
