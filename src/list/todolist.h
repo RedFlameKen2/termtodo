@@ -40,11 +40,11 @@ public:
         return notes.empty();
     }
     void printNotes(){
-        cout << "\n[Notes of the List " << title << "]\n";
         if(notes.empty()){
             cout << "The list is empty!\n";
             return;
         }
+        cout << "[Notes of the List " << (title) << "]\n";
         for(Note note : notes){
             note.printData();
         }
