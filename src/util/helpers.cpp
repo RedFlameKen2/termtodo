@@ -203,7 +203,7 @@ bool promptConfirm(string prompt){
     string input;
     while(true){
         printBar();
-        input = promptString(prompt + " (y)es/(n)o\nEnter Answer:");
+        input = promptString(prompt + " (y)es/(n)o\nEnter Answer: ");
         clearTerm();
         stolower(input);
         if  (
@@ -216,7 +216,7 @@ bool promptConfirm(string prompt){
         printBar();
         cout << "Invalid input, Try Again!\n";
     }
-    if(input[0] == 'y')
+    if(tolower(input[0]) == 'y')
         return true;
     return false;
 }

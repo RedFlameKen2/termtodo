@@ -114,12 +114,11 @@ public:
         case 8:
             return true;
         case 9:
+            cin.get();
             if(promptConfirm("Are you sure you want to exit?")){
                 cout << "Program Terminating, Goodbye!";
                 exit(1);
             }
-            cout << "Program Terminating, Goodbye!";
-            exit(1);
             break;
     }
     return false;
