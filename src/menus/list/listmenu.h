@@ -59,7 +59,6 @@ public:
         maxOpts = 9;
         menu();
     }
-    //TODO: change the order of the cases into something more comfortable
     void printHelp() override{
         cout << "Here is a list of options for managing your lists: \n";
         cout << "1) Change current list\n";

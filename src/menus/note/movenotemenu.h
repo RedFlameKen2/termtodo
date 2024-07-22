@@ -71,11 +71,10 @@ public:
         (*todoLists)[*curList-1].printNotes();
     }
     void printTargetInfo() override{
-        //TODO: make this prettier
         cout << "Moving from: " << *curList << ") " << (*todoLists)[*curList-1].getTitle();
         cout << "\nMoving to: " << targetList << ") " << (*todoLists)[targetList-1].getTitle();
         Note note = *(*todoLists)[*curList-1].getNote(curNote-1);
-        cout << "\nMoving: #"<< curNote << "\nID:" << note.id << " " << note.title << "\n";
+        cout << "\nMoving #"<< curNote << " [ID:" << note.id << "] [TITLE: " << note.title << "]\n";
     }
     bool options(int option) override{
         if(todoLists->size() < 2){
