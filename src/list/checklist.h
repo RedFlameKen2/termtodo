@@ -61,7 +61,7 @@ public:
     }
     void printCheckList(){
         if(checkItems.empty()){
-            cout << "There is no CheckList!\n";
+            cout << "\tThere is no CheckList!\n";
             return;
         }
         cout << "\tCHECKLIST: "<< getProgBar() << "\n";

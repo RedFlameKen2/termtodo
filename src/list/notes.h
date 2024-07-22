@@ -41,7 +41,7 @@ public:
     Note() : id(0), title(""), desc(""), listName(""){
     }
     void printData(){
-        cout << "\n<For note ID " << id << ">\n";
+        cout << "\n=======\t[ ID: " << id << " ] ====================\n";
         cout << "\tTITLE: " << title << "\n";
         cout << "\tDESCRIPTION: " << desc << "\n";
         dueDate.printDueDate();
