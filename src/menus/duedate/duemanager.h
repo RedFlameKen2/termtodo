@@ -3,7 +3,7 @@
 class ManageDueMenu : public Menu {
 private:
     Note * note = new Note;
-    DueDate * dueDate;
+    DueDate * dueDate = new DueDate();
 public:
     ManageDueMenu(Note * note) : note(note){
         /*dueDate = &(note->dueDate);*/
@@ -29,7 +29,8 @@ public:
     bool options(int option) override{
         switch(option){
             case 1:
-                dueDate->setDay(); break;
+                dueDate->setDay();
+                break;
             case 2:
                 dueDate->setMonth();
                 break;

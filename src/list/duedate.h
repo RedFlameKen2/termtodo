@@ -43,9 +43,9 @@ public:
     }
     void initCurDay(){
         time = getCurTime();
-        toggleOn();
+        toggle();
     }
-    void toggleOn(){
+    void toggle(){
         on = !on;
     }
     void setMonth(){
