@@ -54,12 +54,15 @@ public:
                 }
                 break;
             case 5:
+                //TODO: check if note is initiated, if not, don't save
                 note.listName = (*todoLists)[*curList-1].getTitle();
                 (*todoLists)[*curList-1].addNote(note);
                 writeDB(note.getDBFormat());
                 return true;
             case 6:
-                return true;
+                if(promptConfirm("Are you sure you want to cancel?\nProgress will be lost"))
+                    return true;
+                break;
         }
         return false;
     }

@@ -24,6 +24,7 @@ public:
     }
     void printTargetInfo() override {
     }
+    //TODO: add toggle option
     bool options(int option) override{
         cin.get();
         switch(option){
