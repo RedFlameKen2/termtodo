@@ -77,7 +77,7 @@ public:
         cout << "CheckList: "<< getProgBar() << "\n";
         for(CheckItem checkItem : checkItems){
             if(i == current)
-                cout << ">>> ";
+                cout << ">>>>\t";
             else
                 cout << "\t";
             cout << i++ << ") [" << (checkItem.checked ? "x" : " ") << "] " << checkItem.title << "\n";
@@ -108,6 +108,9 @@ public:
     }
     void printCheckItem(int index){
         cout << "[" << (checkItems[index].checked ? "x" : " ") << "] " << checkItems[index].title << "\n";
+    }
+    void toggleCheck(int index){
+        checkItems[index].checked = !checkItems[index].checked;
     }
 };
 

@@ -5,12 +5,16 @@ private:
     Note *note = new Note;
     int curCheck = 1;
     void changeCheckitem(){
-        int index;
+        int index = 0;
         while(true){
             printBar();
             printInfo();
             printBar();
             index = promptInt("Enter the checklist number: ");
+            clearTerm();
+            if(index <= note->getChecklist()->size() && index > 0)
+                break;
+            cout << "Invalid number, Try Again!\n";
         }
         curCheck = index;
     }
@@ -39,13 +43,14 @@ public:
         cout << "selected: ";
         note->getChecklist()->printCheckItem(curCheck-1);
     }
-    //TODO: add toggle option
     bool options(int option) override{
         cin.get();
         switch(option){
             case 1:
+                changeCheckitem();
                 break;
             case 2:
+                note->getChecklist()->toggleCheck(curCheck-1);
                 break;
             case 3:
                 {
