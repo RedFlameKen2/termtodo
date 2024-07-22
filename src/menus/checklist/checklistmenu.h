@@ -35,7 +35,6 @@ public:
                 break;
             case 2:
                 {
-                    //TODO: don't save to db immediately
                     RemoveCheckMenu removeCheckMenu(note);
                 }
                 break;

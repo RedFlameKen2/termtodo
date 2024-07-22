@@ -1,6 +1,5 @@
 #include "addcheckmenu.h"
 
-//TODO: remove in db too
 class RemoveCheckMenu : public Menu {
     private:
         int index;
@@ -18,10 +17,6 @@ class RemoveCheckMenu : public Menu {
                 cout << "Invalid number, Try Again!\n";
             }
             checkList.remove(index-1);
-        }
-        void saveChecklist(){
-            *(note->getChecklist()) = checkList;
-            updateDB(note->getDBFormat(), note->id);
         }
     public:
         RemoveCheckMenu(){
@@ -51,7 +46,7 @@ class RemoveCheckMenu : public Menu {
                     removeCheckItem();
                     break;
                 case 2:
-                    saveChecklist();
+                    *(note->getChecklist()) = checkList;
                     return true;
                 case 3:
                     if(promptConfirm("Are you sure you want to cancel?\nprogress will be lost"))
