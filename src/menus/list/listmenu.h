@@ -2,21 +2,6 @@
 
 class ListMenu : public Menu{
 private:
-    void changeCurList(){
-        int input;
-        while(true){
-            displayLists();
-            printBar();
-            printTargetInfo();
-            input = promptInt("Select a list number: ");
-            clearTerm();
-            if(input <= todoLists->size() && input > 0)
-                break;
-            cout << "Not an existing list, Try Again!\n";
-        }
-        *curList = input;
-        cout << "\nList Successfully Changed!";
-    }
 public:
     ListMenu(){
         maxOpts = 9;
