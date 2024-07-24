@@ -3,11 +3,11 @@
 #include "../util/helpers.h"
 
 bool listExists(vector<ToDoList> *todoLists, string title){
+    bool found = false;
     for(ToDoList x : *todoLists)
-        for(Note note : *x.getNotes())
-            if(note.title == title)
-            return true;
-    return false;
+        if(x.getTitle() == title)
+            found = true;
+    return found;
 }
 ToDoList * currentToDoList(vector<ToDoList> *todoLists, int * curList){
     return &(*todoLists)[*curList-1];
