@@ -41,6 +41,10 @@ protected:
     int maxOpts;
     int * curList = new int;
     void displayLists(){
+        if(todoLists->empty()){
+            cout << "There are no lists!\n";
+            return;
+        }
         int i = 1;
         for(ToDoList todoList : *todoLists){
             cout << "List #" << i << ": " << todoList.getTitle() << "\n";
@@ -48,6 +52,10 @@ protected:
         }
     }
     void changeCurList(){
+        if(todoLists->empty()){
+            cout << "There are no lists!\n";
+            return;
+        }
         int input;
         while(true){
             displayLists();
@@ -97,7 +105,8 @@ public:
         }
     }
     virtual void printTargetInfo(){
-        cout << "Current List: "<< *curList << ") " << (*todoLists)[*curList-1].getTitle() << "\n";
+        if(!todoLists->empty())
+            cout << "Current List: "<< *curList << ") " << (*todoLists)[*curList-1].getTitle() << "\n";
     }
     virtual void printInfo(){
     }

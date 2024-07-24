@@ -10,6 +10,7 @@ using std::string;
 using std::cout;
 using std::to_string;
 
+//TODO: implement am/pm
 class DueDate {
 private:
     bool on = false;

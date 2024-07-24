@@ -130,12 +130,15 @@ void deleteListInDB(string title){
     titles.erase(std::next(titles.begin(), i));
     for(string x : titles)
         data += x + ",";
-    data[data.size()-1] = '\n';
+    if(data != "")
+        data[data.size()-1] = '\n';
     writeTitleLine(data);
     deleteListNotesInDB(title);
 }
 
-void removeList(vector<ToDoList> *todoLists, int index){
+void removeList(vector<ToDoList> *todoLists, int * curList, int index){
+    if(*curList == todoLists->size())
+        *curList = *curList - 1;
     deleteListInDB((*todoLists)[index].getTitle());
     todoLists->erase(std::next(todoLists->begin(), index));
 }

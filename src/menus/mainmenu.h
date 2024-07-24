@@ -20,6 +20,7 @@ private:
         cout << "\nSuccessfully Added New list";
 
     }
+    //TODO: change the curList when removing a list
     void removeListMenu(){
         int index = 0;
         while(true){
@@ -34,7 +35,7 @@ private:
             cout << "\nlist doesn't exist, Try Again!";
         }
         /*todoLists->erase(std::next(todoLists->begin(), index-1));*/
-        removeList(todoLists, index-1);
+        removeList(todoLists, curList, index-1);
         cout << "\nSuccessfully Removed list";
     }
 public:
