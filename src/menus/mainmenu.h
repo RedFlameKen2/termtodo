@@ -17,10 +17,11 @@ private:
             cout << "\na list with that name already exists, Try Again!";
         }
         addList(todoLists, title);
+        if(*curList == 0)
+            *curList = 1;
         cout << "\nSuccessfully Added New list";
 
     }
-    //TODO: change the curList when removing a list
     void removeListMenu(){
         int index = 0;
         while(true){
@@ -73,9 +74,10 @@ public:
                 }
                 break;
             case 4:
-                {
+                if(!todoLists->empty())
                     removeListMenu();
-                }
+                else
+                    cout << "There are no lists!\n";
                 break;
             case 5:
                 if(promptConfirm("Are you sure you want to exit?")){
