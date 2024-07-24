@@ -42,7 +42,7 @@ private:
 public:
     MainMenu(vector<ToDoList> *todoLists, int *curList)
     {
-        //Passes the address form main.cpp
+        //Passes the address from main.cpp
         this->todoLists = todoLists;
         this->curList = curList;
         maxOpts = 5;
