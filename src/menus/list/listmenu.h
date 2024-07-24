@@ -1,5 +1,5 @@
 #include "../note/movenotemenu.h"
-
+//List Menu give the user all the options to manage the list
 class ListMenu : public Menu{
 private:
 public:
@@ -8,6 +8,7 @@ public:
         menu();
     }
     ListMenu(vector<ToDoList> * todoLists, int * curList){
+        //Passes address from previous Menu
         this->todoLists = todoLists;
         this->curList = curList;
         maxOpts = 9;

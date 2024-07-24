@@ -18,6 +18,7 @@ private:
         }
         addList(todoLists, title);
         cout << "\nSuccessfully Added New list";
+    
 
     }
     void removeListMenu(){
@@ -29,22 +30,25 @@ private:
             printBar();
             index = promptInt("Enter list number to remove: ");
             clearTerm();
+            //Checks if the inputed number is an existing list if not then make the user try again
             if(index <= todoLists->size() && index > 0)
                 break;
             cout << "\nlist doesn't exist, Try Again!";
         }
-        /*todoLists->erase(std::next(todoLists->begin(), index-1));*/
+        
         removeList(todoLists, index-1);
         cout << "\nSuccessfully Removed list";
     }
 public:
     MainMenu(vector<ToDoList> *todoLists, int *curList)
     {
+        //Passes the address form main.cpp
         this->todoLists = todoLists;
         this->curList = curList;
         maxOpts = 5;
         menu();
     }
+    //override changes what a virtual funtion does
     void printHelp() override
     {
         cout << "List of options: \n";
