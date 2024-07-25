@@ -125,6 +125,13 @@ public:
     }
     void toggleAM(){
         am = !am;
+        if(time.tm_hour == 12){
+            if(am)
+                time.tm_hour = 0;
+            else
+                time.tm_hour = 12;
+            return;
+        }
         if(am)
             time.tm_hour -= 12;
         else
