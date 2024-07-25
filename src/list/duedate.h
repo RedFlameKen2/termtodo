@@ -137,6 +137,9 @@ public:
         else
             time.tm_hour += 12;
     }
+    bool isAM_V(){
+        return am;
+    }
     int getMonth(){
         return time.tm_mon;
     }
@@ -205,8 +208,9 @@ public:
         out += to_string(time.tm_mday) + ", ";
         out += to_string(1900 + time.tm_year)+ " ";
         std::stringstream ss;
-        ss << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
+        ss << std::setfill('0') << std::setw(2) << get12Hour() << ":";
         ss << std::setfill('0') << std::setw(2) << time.tm_min;
+        ss << (am ? " AM" : " PM");
         out += string(ss.str());
         return out;
     }

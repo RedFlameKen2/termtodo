@@ -46,7 +46,8 @@ private:
                     notif += "The Note ";
                     notif += note.title + " is Due RIGHT NOW! Time: ";
                     stringstream ss;
-                    ss << to_string(note.dueDate.getHour()) << " : " << to_string(note.dueDate.getMin());
+                    ss << to_string(note.dueDate.get12Hour()) << " : " << to_string(note.dueDate.getMin()) 
+                        << (note.dueDate.isAM_V() ? " AM" : " PM");
                     notif += string(ss.str());
                     setNotifString(notif);
                     return;
