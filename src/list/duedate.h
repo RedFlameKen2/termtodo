@@ -14,6 +14,7 @@ using std::to_string;
 class DueDate {
 private:
     bool on = false;
+    bool am = true;
     tm time;
 
     string * readDBFormat(string data){
@@ -44,12 +45,14 @@ public:
     bool isOn(){
         return on;
     }
-    void initCurDay(){
-        time = getCurTime();
-        toggle();
-    }
     void toggle(){
         on = !on;
+    }
+    void initCurDay(){
+        time = getCurTime();
+        if(!isAM())
+            am = false;
+        toggle();
     }
     void setMonth(){
         int month;
@@ -95,11 +98,18 @@ public:
             printBar();
             hour = promptInt("Enter the Hour: ");
             clearTerm();
-            if(hour < 24 && hour > 0)
+            if(hour <= 12 && hour > 0)
                 break;
             cout << "Invalid Hour, Try Again!\n";
         }
-        time.tm_hour = hour;
+        if(hour == 12){
+            if(am)
+                time.tm_hour = 0;
+            else
+                time.tm_hour = 12;
+            return;
+        }
+        time.tm_hour = hour + (am ? 0 : 12);
     }
     void setMin(){
         int min;
@@ -113,6 +123,13 @@ public:
         }
         time.tm_min = min;
     }
+    void toggleAM(){
+        am = !am;
+        if(am)
+            time.tm_hour -= 12;
+        else
+            time.tm_hour += 12;
+    }
     int getMonth(){
         return time.tm_mon;
     }
@@ -124,6 +141,14 @@ public:
     }
     int getHour(){
         return time.tm_hour;
+    }
+    int get12Hour(){
+        int hour = time.tm_hour;
+        if(time.tm_hour == 0 || time.tm_hour == 12)
+            return 12;
+        if(time.tm_hour > 12)
+            hour -= 12;
+        return hour;
     }
     int getMin(){
         return time.tm_min;
@@ -152,8 +177,17 @@ public:
         cout << MONTH_NAMES[time.tm_mon] << " ";
         cout << time.tm_mday << ", ";
         cout << 1900 + time.tm_year << " ";
-        cout << std::setfill('0') << std::setw(2) << time.tm_hour << ":";
-        cout << std::setfill('0') << std::setw(2) << time.tm_min << "\n";
+        cout << std::setfill('0') << std::setw(2) << get12Hour() << ":";
+        cout << std::setfill('0') << std::setw(2) << time.tm_min;
+        cout << (am ? " AM" : " PM") << "\n";
+    }
+    bool isAM(){
+        bool am;
+        if(getHour() < 12)
+            am = true;
+        else
+            am = false;
+        return am;
     }
     string getDueDateData(){
         string out;

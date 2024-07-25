@@ -206,14 +206,14 @@ int id_Randomizer(){
 
 	return random;
 }
-
 int promptInt(string prompt){
     string input = "";
     while(true){
         cout << prompt;
         getline(cin, input);
-        if(strIsDigit(input))
-            break;
+        if(input != "")
+            if(strIsDigit(input))
+                break;
         cout << "Invalid Input, try again!\n";
     }
     return stoi(input);

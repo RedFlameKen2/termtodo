@@ -11,7 +11,7 @@ public:
             dueDate = &note->dueDate;
         else
             dueDate->initCurDay();
-        maxOpts = 7;
+        maxOpts = 8;
         menu();
     }
     void printHelp() override{
@@ -21,8 +21,9 @@ public:
         cout << "3) Set Year\n";
         cout << "4) Set Hour\n";
         cout << "5) Set Minute\n";
-        cout << "6) Save\n";
-        cout << "7) Cancel\n";
+        cout << "6) Toggle Meridiem (AM/PM)\n";
+        cout << "7) Save\n";
+        cout << "8) Cancel\n";
     }
     void printInfo() override{
         dueDate->printDueDate();
@@ -47,10 +48,13 @@ public:
                 dueDate->setMin();
                 break;
             case 6:
+                dueDate->toggleAM();
+                break;
+            case 7:
                 note->dueDate = *dueDate;
                 cout << "Due date set successfully!\n";
                 return true;
-            case 7:
+            case 8:
                 if(promptConfirm("Are you sure you want to exit?\nProgress will be lost"))
                     return true;
                 break;
