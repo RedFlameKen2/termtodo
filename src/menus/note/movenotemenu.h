@@ -26,10 +26,6 @@ private:
         cout << "\nNote successfully moved!\n";
     }
     void changeTargetList(){
-        if(todoLists->size() < 3){
-            cout << "\nThere aren't any other lists to move to!\n";
-            return;
-        }
         int input;
         while(true){
             displayLists();
@@ -90,7 +86,6 @@ public:
                 {
                     int prev = *curList;
                     changeCurList();
-                    curNote = 1;
                     listSwitch(prev, 0);
                 }
                 break;
