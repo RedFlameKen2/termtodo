@@ -3,14 +3,13 @@
 class ManageDueMenu : public Menu {
 private:
     Note * note = new Note;
-    DueDate * dueDate = new DueDate();
+    DueDate dueDate;
 public:
     ManageDueMenu(Note * note) : note(note){
-        /*dueDate = &(note->dueDate);*/
         if(note->dueDate.isOn())
-            dueDate = &note->dueDate;
+            dueDate.updateDueDate(note->dueDate);
         else
-            dueDate->initCurDay();
+            dueDate.initCurDay();
         maxOpts = 8;
         menu();
     }
@@ -26,32 +25,32 @@ public:
         cout << "8) Cancel\n";
     }
     void printInfo() override{
-        dueDate->printDueDate();
+        dueDate.printDueDate();
     }
     void printTargetInfo() override{
     }
     bool options(int option) override{
         switch(option){
             case 1:
-                dueDate->setDay();
+                dueDate.setDay();
                 break;
             case 2:
-                dueDate->setMonth();
+                dueDate.setMonth();
                 break;
             case 3:
-                dueDate->setYear();
+                dueDate.setYear();
                 break;
             case 4:
-                dueDate->setHour();
+                dueDate.setHour();
                 break;
             case 5:
-                dueDate->setMin();
+                dueDate.setMin();
                 break;
             case 6:
-                dueDate->toggleAM();
+                dueDate.toggleAM();
                 break;
             case 7:
-                note->dueDate = *dueDate;
+                note->dueDate = dueDate;
                 cout << "Due date set successfully!\n";
                 return true;
             case 8:

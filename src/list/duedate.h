@@ -225,4 +225,12 @@ public:
             return true;
         return false;
     }
+    void updateDueDate(DueDate dueDate){
+        on = dueDate.isOn();
+        time.tm_mon = dueDate.time.tm_mon;
+        time.tm_mday = dueDate.time.tm_mday;
+        time.tm_year = dueDate.time.tm_year;
+        time.tm_hour = dueDate.time.tm_hour;
+        time.tm_min = dueDate.time.tm_min;
+    }
 };
